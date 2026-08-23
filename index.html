@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octopus Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #4600ff;
+            color: #ffffff;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 8rem;
+            letter-spacing: -4px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .email-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 2rem;
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .email-icon {
+            width: 36px;
+            height: 36px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 5rem;
+            }
+            .email-container {
+                font-size: 1.25rem;
+            }
+            .email-icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>octopus<span style="color: #00eaff;">lab</span></h1>
+
+    <a href="mailto:octopuslabunity@gmail.com" class="email-container">
+        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <span>octopuslabunity@gmail.com</span>
+    </a>
+
+</body>
+</html>
