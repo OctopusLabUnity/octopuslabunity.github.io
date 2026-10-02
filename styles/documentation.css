@@ -1,0 +1,443 @@
+.page-documentation {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.documentation-nav {
+  width: 320px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-muted);
+}
+
+.documentation-nav-logo {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 108px;
+  margin: 0 0 24px 0;
+  background-color: var(--color-transparent);
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.documentation-nav-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.documentation-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.documentation-nav-logo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15%;
+  z-index: -1;
+  width: 130%;
+  height: 100%;
+  background-color: var(--color-brand);
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 0.2s;
+}
+
+.documentation-nav-logo::after {
+  content: "";
+  position: relative;
+  height: 64px;
+  aspect-ratio: 780 / 192;
+  background-color: currentColor;
+  -webkit-mask-image: url("../images/logo.png");
+  mask-image: url("../images/logo.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.documentation-nav-logo:link,
+.documentation-nav-logo:visited {
+  color: var(--color-text);
+}
+
+.documentation-nav-logo:hover,
+.documentation-nav-logo:active {
+  color: var(--color-surface);
+}
+
+.documentation-nav-logo:hover::before,
+.documentation-nav-logo:active::before {
+  transform: translateX(0) skewX(-12deg);
+}
+
+.documentation-copyright {
+  margin: 0;
+  padding: 16px 24px;
+  flex-shrink: 0;
+  font-variation-settings:
+    "wght" 500,
+    "wdth" 120;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: var(--color-caption);
+}
+
+.documentation-copyright--page {
+  display: none;
+}
+
+.documentation-nav-group {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.documentation-nav-toggle {
+  width: 100%;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  border-bottom: 1px solid var(--color-text-muted);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 130;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  text-align: left;
+}
+
+.documentation-nav-toggle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.documentation-nav-group.is-open > .documentation-nav-toggle::after {
+  transform: rotate(225deg);
+}
+
+.documentation-nav-panel {
+  overflow: hidden;
+}
+
+.documentation-nav-group.is-animating .documentation-nav-links a,
+.documentation-nav-group.is-animating .documentation-nav-links a::before {
+  transition: none;
+}
+
+.documentation-nav-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.documentation-nav-links a {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: inherit;
+  font-variation-settings:
+    "wght" 500,
+    "wdth" 110;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  background-color: transparent;
+  transition: color 0.2s;
+  background-color: var(--color-surface-soft);
+}
+
+.documentation-nav-links a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15%;
+  z-index: -1;
+  width: 130%;
+  height: 100%;
+  background-color: var(--color-brand);
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 0.2s;
+}
+
+.documentation-nav-links a:hover {
+  color: var(--color-surface);
+}
+
+.documentation-nav-links a:hover::before {
+  transform: translateX(0) skewX(-12deg);
+}
+
+.documentation-section {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 48px;
+}
+
+.documentation-content {
+  width: 100%;
+  max-width: 780px;
+  margin: 80px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.documentation-content .button-medium {
+  align-self: flex-start;
+  color: var(--color-text);
+  border-color: var(--color-text);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.documentation-content .button-medium::before {
+  background-color: var(--color-brand);
+}
+
+.documentation-content .button-medium:hover {
+  color: var(--color-surface);
+  border-color: var(--color-brand);
+}
+
+.documentation-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.documentation-title h1 {
+  margin-top: 0;
+}
+
+.documentation-version {
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 110;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.documentation-figure-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.documentation-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.documentation-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.documentation-content > img {
+  margin: 24px 0;
+}
+
+.documentation-content img {
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(20, 20, 28, 0.92);
+  opacity: 0;
+  visibility: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-lightbox-image {
+  max-width: min(96vw, 1400px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-out;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform-origin: center center;
+  will-change: transform;
+  touch-action: none;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--color-surface);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.image-lightbox-close::before,
+.image-lightbox-close::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.image-lightbox-close::before {
+  transform: rotate(45deg);
+}
+
+.image-lightbox-close::after {
+  transform: rotate(-45deg);
+}
+
+.image-lightbox-close:hover {
+  opacity: 1;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.documentation-figure figcaption {
+  font-variation-settings:
+    "wght" 400,
+    "wdth" 100;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-caption);
+  opacity: 1;
+}
+
+@media (max-width: 960px) {
+  .page-documentation {
+    flex-direction: column;
+  }
+
+  .documentation-nav {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: auto;
+    overflow: visible;
+    background-color: var(--color-surface-soft);
+  }
+
+  .documentation-nav-group {
+    display: none;
+  }
+
+  .documentation-nav-logo {
+    margin: 0;
+    background-color: var(--color-surface-muted);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-text-muted);
+  }
+
+  .documentation-nav-logo:link,
+  .documentation-nav-logo:visited,
+  .documentation-nav-logo:hover,
+  .documentation-nav-logo:active {
+    color: var(--color-text);
+  }
+
+  .documentation-nav-logo::before {
+    display: none;
+  }
+
+  .documentation-copyright--nav {
+    display: none;
+  }
+
+  .documentation-copyright--page {
+    display: block;
+    padding: 28px;
+    text-align: center;
+    border-top: 1px solid var(--color-text-muted);
+  }
+
+  .documentation-section {
+    padding: 0 28px;
+  }
+
+  .documentation-figure-row {
+    gap: 12px;
+  }
+
+  .documentation-figure figcaption {
+    font-size: 12px;
+  }
+}

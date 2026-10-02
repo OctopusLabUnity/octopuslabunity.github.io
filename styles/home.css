@@ -1,0 +1,114 @@
+.page-home {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-brand);
+}
+
+.page-home::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 0% 0%, var(--color-brand-glow-a) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, var(--color-brand-glow-b) 0%, transparent 50%);
+  filter: blur(90px);
+}
+
+.home-content {
+  width: min(780px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  padding: 64px 32px;
+  box-sizing: border-box;
+}
+
+.home-logo {
+  height: 128px;
+  aspect-ratio: 780 / 192;
+  margin-top: -32px;
+  flex-shrink: 0;
+  background-image: url("../images/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.home-section-title {
+  margin: 0;
+  color: var(--color-surface);
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 120;
+  font-size: 28px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.home-section-desc {
+  margin: 0;
+  max-width: 420px;
+  color: var(--color-surface);
+  font-variation-settings:
+    "wght" 500,
+    "wdth" 120;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.6;
+}
+
+.home-section .button-medium {
+  margin-top: auto;
+}
+
+.home-divider {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--color-surface);
+}
+
+.home-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 32px;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .home-logo {
+    height: 96px;
+  }
+
+  .home-products {
+    grid-template-columns: 1fr;
+  }
+
+  .home-section-title {
+    font-size: calc(28px * 0.9);
+  }
+
+  .home-section-desc {
+    font-size: 14px;
+  }
+}

@@ -1,81 +1,61 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Octopus Lab</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: #4600ff;
-            color: #ffffff;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 800;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 8rem;
-            letter-spacing: -4px;
-            margin-bottom: 24px;
-            line-height: 1.1;
-        }
-
-        .email-container {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 2rem;
-            color: #ffffff;
-            text-decoration: none;
-            opacity: 0.9;
-        }
-
-        .email-icon {
-            width: 36px;
-            height: 36px;
-            fill: currentColor;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 5rem;
-            }
-            .email-container {
-                font-size: 1.25rem;
-            }
-            .email-icon {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <h1>octopus<span style="color: #00eaff;">lab</span></h1>
-
-    <a href="mailto:octopuslabunity@gmail.com" class="email-container">
-        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </svg>
-        <span>octopuslabunity@gmail.com</span>
-    </a>
-
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wdth,wght@8..144,75..150,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>Octopus Lab | Home</title>
+  </head>
+  <body class="page-home">
+    <div class="home-content">
+      <div class="home-logo"></div>
+      <section class="home-section" aria-labelledby="home-contact-title">
+        <h2 id="home-contact-title" class="home-section-title">Get in touch</h2>
+        <p class="home-section-desc">Questions, feedback, or support.</p>
+        <a class="button-medium" href="mailto:octopuslabunity@gmail.com">
+          <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
+          octopuslabunity@gmail.com
+        </a>
+      </section>
+      <hr class="home-divider" />
+      <div class="home-products">
+        <section class="home-section" aria-labelledby="home-rich-gradient-title">
+          <h2 id="home-rich-gradient-title" class="home-section-title">
+            Rich Gradient
+          </h2>
+          <p class="home-section-desc">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit sed.
+          </p>
+          <a class="button-medium" href="./RichGradient/">
+            <i class="fa-brands fa-unity button-medium-icon" aria-hidden="true"></i>
+            Documentation
+          </a>
+        </section>
+        <section class="home-section" aria-labelledby="home-gradient-map-title">
+          <h2 id="home-gradient-map-title" class="home-section-title">
+            Gradient Map Shader
+          </h2>
+          <p class="home-section-desc">
+            Ut enim ad minim veniam quis nostrud exercitation ullamco.
+          </p>
+          <a class="button-medium" href="./GradientMapShader/">
+            <i class="fa-brands fa-unity button-medium-icon" aria-hidden="true"></i>
+            Documentation
+          </a>
+        </section>
+      </div>
+    </div>
+  </body>
 </html>

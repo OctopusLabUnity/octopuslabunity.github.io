@@ -1,3 +1,394 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wdth,wght@8..144,75..150,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/documentation.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <title>Octopus Lab | Gradient Map Shader</title>
+  </head>
+  <body class="page-documentation">
+    <nav class="documentation-nav">
+      <a class="documentation-nav-logo" href="../" aria-label="Octopus Lab Home"></a>
+      <div class="documentation-nav-scroll">
+        <div class="documentation-nav-group is-open">
+          <button type="button" class="documentation-nav-toggle" aria-expanded="true">
+            Getting Started
+          </button>
+          <div class="documentation-nav-panel">
+            <div class="documentation-nav-links">
+              <a href="#overview">Overview</a>
+              <a href="#concepts">Concepts</a>
+              <a href="#setup">Setup</a>
+              <a href="#import">Import Checklist</a>
+              <a href="#first-material">First Material</a>
+            </div>
+          </div>
+        </div>
+        <div class="documentation-nav-group">
+          <button type="button" class="documentation-nav-toggle" aria-expanded="false">
+            Authoring
+          </button>
+          <div class="documentation-nav-panel">
+            <div class="documentation-nav-links">
+              <a href="#shader-graph">Shader Graph</a>
+              <a href="#hlsl">HLSL Snippets</a>
+              <a href="#maps">Creating Maps</a>
+              <a href="#luminance">Luminance</a>
+              <a href="#strength">Strength</a>
+            </div>
+          </div>
+        </div>
+        <div class="documentation-nav-group">
+          <button type="button" class="documentation-nav-toggle" aria-expanded="false">
+            Reference
+          </button>
+          <div class="documentation-nav-panel">
+            <div class="documentation-nav-links">
+              <a href="#properties">Properties</a>
+              <a href="#keywords">Keywords</a>
+              <a href="#pipelines">Pipelines</a>
+              <a href="#api">C# API</a>
+            </div>
+          </div>
+        </div>
+        <div class="documentation-nav-group">
+          <button type="button" class="documentation-nav-toggle" aria-expanded="false">
+            Recipes
+          </button>
+          <div class="documentation-nav-panel">
+            <div class="documentation-nav-links">
+              <a href="#stylize">Stylize</a>
+              <a href="#toon">Toon Grades</a>
+              <a href="#heat">Heat Maps</a>
+              <a href="#night">Night Vision</a>
+            </div>
+          </div>
+        </div>
+        <div class="documentation-nav-group">
+          <button type="button" class="documentation-nav-toggle" aria-expanded="false">
+            Support
+          </button>
+          <div class="documentation-nav-panel">
+            <div class="documentation-nav-links">
+              <a href="#troubleshooting">Troubleshooting</a>
+              <a href="#faq">FAQ</a>
+              <a href="#performance">Performance</a>
+              <a href="#related">Related</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="documentation-copyright documentation-copyright--nav">
+        © 2026 Octopus Lab
+      </p>
+    </nav>
+    <div class="documentation-section">
+      <div class="documentation-content">
+        <div class="documentation-title">
+          <h1 id="overview">Gradient Map Shader</h1>
+          <span class="documentation-version">v1.1.0</span>
+        </div>
+        <a
+          class="button-medium"
+          href="https://assetstore.unity.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-unity button-medium-icon" aria-hidden="true"></i>
+          Download on Asset Store
+        </a>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+          odio. Praesent libero. Sed cursus ante dapibus diam. Start with
+          <a href="#setup">Setup</a> if this is your first import.
+        </p>
+        <div class="documentation-figure-row">
+          <figure class="documentation-figure">
+            <img
+              src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&q=80"
+              alt="Abstract painted color map"
+            />
+            <figcaption>
+              Source albedo before luminance remapping through a LUT.
+            </figcaption>
+          </figure>
+          <figure class="documentation-figure">
+            <img
+              src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&q=80"
+              alt="Neon gradient wall"
+            />
+            <figcaption>
+              Result after applying a neon-style gradient map.
+            </figcaption>
+          </figure>
+        </div>
+        <pre><code class="language-csharp">Shader "OctopusLab/GradientMap"
+{
+  Properties
+  {
+    _MainTex ("Texture", 2D) = "white" {}
+    _GradientMap ("Gradient Map", 2D) = "white" {}
+  }
+}</code></pre>
+        <p>
+          Duis sagittis ipsum. Praesent mauris. For authored ramps instead of
+          lookups, see <a href="../RichGradient/">Rich Gradient</a>.
+        </p>
+        <h2 id="concepts">Concepts</h2>
+        <blockquote>
+          Mappa graduum lumen in colorem convertit, umbras in tonos mutat.
+        </blockquote>
+        <p>
+          Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+          Luminance becomes the U coordinate into a 1D color map. Continue to
+          <a href="#shader-graph">Shader Graph</a> for node wiring.
+        </p>
+        <img
+          src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80"
+          alt="Neon gradient wall"
+        />
+        <h2 id="setup">Setup</h2>
+        <p>
+          Curabitur sodales ligula in libero. Download from the
+          <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store</a>,
+          then create a material. Follow the
+          <a href="#import">Import Checklist</a>.
+        </p>
+        <ol>
+          <li>Import the shader package</li>
+          <li>Assign a gradient map texture</li>
+          <li>Tune strength until the look settles</li>
+          <li>Save a material preset for reuse</li>
+        </ol>
+        <h2 id="import">Import Checklist</h2>
+        <ul>
+          <li>Confirm URP or Built-in shader variant is present</li>
+          <li>Set gradient map to Clamp, no mipmaps if 1D</li>
+          <li>Disable sRGB on data LUTs when needed</li>
+        </ul>
+        <img
+          src="https://picsum.photos/seed/gradientmap1/1200/640"
+          alt="Import checklist visual"
+        />
+        <h2 id="first-material">First Material</h2>
+        <pre><code class="language-csharp">var mat = new Material(Shader.Find("OctopusLab/GradientMap"));
+mat.SetTexture("_MainTex", albedo);
+mat.SetTexture("_GradientMap", gradientTex);
+mat.SetFloat("_Strength", 1f);</code></pre>
+        <p>
+          Nullam tincidunt adipiscing enim. Review
+          <a href="#properties">Properties</a> after the material is ready.
+        </p>
+        <h2 id="shader-graph">Shader Graph</h2>
+        <p>
+          Curabitur ligula sapien, tincidunt non, euismod vitae. Sample luminance,
+          then Sample Texture 2D for your
+          <a href="https://docs.unity3d.com/Manual/shader-graph.html" target="_blank" rel="noopener noreferrer">gradient LUT</a>.
+        </p>
+        <img
+          src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&q=80"
+          alt="Abstract tech gradient"
+        />
+        <blockquote>
+          Umbra sine colore, color sine umbra — ambo opus sunt.
+        </blockquote>
+        <ul>
+          <li>Convert albedo to grayscale for the U sample</li>
+          <li>Keep V fixed at 0.5 for 1D maps</li>
+          <li>Lerp back to the source with Strength</li>
+        </ul>
+        <h2 id="hlsl">HLSL Snippets</h2>
+        <pre><code class="language-csharp">float lum = dot(albedo.rgb, float3(0.299, 0.587, 0.114));
+float3 mapped = SAMPLE_TEXTURE2D(_GradientMap, sampler_GradientMap, float2(lum, 0.5)).rgb;
+return lerp(albedo.rgb, mapped, _Strength);</code></pre>
+        <p>
+          Aenean quam. In scelerisque sem at dolor. If something looks off, check
+          <a href="#troubleshooting">Troubleshooting</a>.
+        </p>
+        <h2 id="maps">Creating Maps</h2>
+        <p>
+          Bake with <a href="../RichGradient/#examples">Rich Gradient examples</a>
+          or paint a strip in any image tool. Prefer horizontal 256×1 or 256×4.
+        </p>
+        <img
+          src="https://picsum.photos/seed/gradientmap2/1200/400"
+          alt="Gradient strip placeholder"
+        />
+        <h2 id="luminance">Luminance</h2>
+        <p>
+          Default Rec.601 weights work for most albedo. Override with
+          <code>_LuminanceWeights</code> for artistic control — see
+          <a href="#strength">Strength</a>.
+        </p>
+        <h2 id="strength">Strength</h2>
+        <p>
+          Zero keeps the original albedo; one fully replaces it. Animate for
+          transitions into <a href="#stylize">Stylize</a> looks.
+        </p>
+        <h2 id="properties">Properties</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>_MainTex</td>
+              <td>Source albedo texture</td>
+            </tr>
+            <tr>
+              <td>_GradientMap</td>
+              <td>1D gradient lookup texture</td>
+            </tr>
+            <tr>
+              <td>_Strength</td>
+              <td>Blend amount between source and map</td>
+            </tr>
+            <tr>
+              <td>_LuminanceWeights</td>
+              <td>Optional custom RGB weights</td>
+            </tr>
+          </tbody>
+        </table>
+        <pre><code class="language-csharp">material.SetFloat("_Strength", 0.85f);
+material.SetTexture("_GradientMap", gradientTex);</code></pre>
+        <h2 id="keywords">Keywords</h2>
+        <p>
+          Optional keywords toggle dithering and debug luminance visualization.
+          Enable only what you need for
+          <a href="#performance">Performance</a>.
+        </p>
+        <h2 id="pipelines">Pipelines</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Pipeline</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Built-in</td>
+              <td>Supported</td>
+            </tr>
+            <tr>
+              <td>URP</td>
+              <td>Supported</td>
+            </tr>
+            <tr>
+              <td>HDRP</td>
+              <td>Experimental</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="api">C# API</h2>
+        <pre><code class="language-csharp">public static void ApplyMap(Material mat, Texture2D map, float strength)
+{
+    mat.SetTexture("_GradientMap", map);
+    mat.SetFloat("_Strength", Mathf.Clamp01(strength));
+}</code></pre>
+        <h2 id="stylize">Stylize</h2>
+        <p>
+          Push comic and illustration palettes through short LUTs. Compare with
+          <a href="#toon">Toon Grades</a>.
+        </p>
+        <div class="documentation-figure-row">
+          <figure class="documentation-figure">
+            <img
+              src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80"
+              alt="Colorful ink splash stylized look"
+            />
+            <figcaption>
+              Stylized remap with a short comic-style LUT.
+            </figcaption>
+          </figure>
+          <figure class="documentation-figure">
+            <img
+              src="https://picsum.photos/seed/gradientmap3/800/600"
+              alt="Heat map placeholder"
+            />
+            <figcaption>
+              Heat-map recipe for intensity visualization.
+            </figcaption>
+          </figure>
+        </div>
+        <h2 id="toon">Toon Grades</h2>
+        <p>
+          Quantized ramps with few stops create hard shade breaks. Pair with
+          <a href="#heat">Heat Maps</a> for debug views.
+        </p>
+        <h2 id="heat">Heat Maps</h2>
+        <p>
+          Cool-to-warm strips visualize intensity. Useful during lighting passes.
+          See <a href="#night">Night Vision</a> for another recipe.
+        </p>
+        <h2 id="night">Night Vision</h2>
+        <p>
+          Green-heavy maps on luminance create classic NVG vibes. Back to
+          <a href="#overview">Overview</a> or <a href="#setup">Setup</a>.
+        </p>
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <p>
+          Pink materials usually mean a missing shader — reimport from the
+          <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store</a>.
+        </p>
+        <ul>
+          <li>Map looks banding: increase bake resolution</li>
+          <li>Colors inverted: flip the gradient direction</li>
+          <li>No change visible: confirm Strength is above zero</li>
+          <li>Washed out: check sRGB on the LUT</li>
+        </ul>
+        <blockquote>
+          Si mappa vacua est, mundus griseus manet.
+        </blockquote>
+        <pre><code class="language-csharp">#if UNITY_EDITOR
+Debug.Assert(gradientTex != null, "Gradient map texture is missing.");
+Debug.Assert(mat.HasProperty("_Strength"), "Shader missing _Strength.");
+#endif</code></pre>
+        <h2 id="faq">FAQ</h2>
+        <ul>
+          <li>Can I use vertical maps? Yes — swap UV axes in the graph.</li>
+          <li>Does it work with normal maps? Drive luminance from albedo only.</li>
+          <li>Mobile friendly? Yes with small LUTs and clamped strength.</li>
+        </ul>
+        <h2 id="performance">Performance</h2>
+        <p>
+          One extra texture sample is cheap. Keep maps tiny and shared across
+          materials. Browse other packages from the
+          <a href="../">home page</a>.
+        </p>
+        <img
+          src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1200&q=80"
+          alt="Abstract colorful paint texture"
+        />
+        <h2 id="related">Related</h2>
+        <p>
+          Author ramps with <a href="../RichGradient/">Rich Gradient</a>, then
+          feed them into this shader. Revisit
+          <a href="#shader-graph">Shader Graph</a> when wiring new looks.
+        </p>
+      </div>
+    </div>
+    <footer class="documentation-copyright documentation-copyright--page">
+      © 2026 Octopus Lab
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/nav-accordion.js"></script>
+    <script src="../scripts/lightbox.js"></script>
+  </body>
 </html>
