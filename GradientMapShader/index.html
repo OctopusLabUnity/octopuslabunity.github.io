@@ -144,25 +144,36 @@
           odio. Praesent libero. Sed cursus ante dapibus diam. Start with
           <a href="#setup">Setup</a> if this is your first import.
         </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img
-              src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&q=80"
-              alt="Abstract painted color map"
-            />
-            <figcaption>
-              Source albedo before luminance remapping through a LUT.
-            </figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img
-              src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&q=80"
-              alt="Neon gradient wall"
-            />
-            <figcaption>
-              Result after applying a neon-style gradient map.
-            </figcaption>
-          </figure>
+        <div class="documentation-gallery">
+          <img
+            src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1200&q=80"
+            alt="Abstract painted color map"
+            decoding="async"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80"
+            alt="Neon gradient wall"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1200&q=80"
+            alt="Abstract color field"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1557683316-973673baf926?w=1200&q=80"
+            alt="Purple blue gradient sample"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="https://picsum.photos/seed/gradientmap-overview/1600/900"
+            alt="Wide landscape sample"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <pre><code class="language-csharp">Shader "OctopusLab/GradientMap"
 {
@@ -428,6 +439,7 @@ Debug.Assert(mat.HasProperty("_Strength"), "Shader missing _Strength.");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="../scripts/nav-accordion.js"></script>
+    <script src="../scripts/gallery.js"></script>
     <script src="../scripts/lightbox.js"></script>
   </body>
 </html>

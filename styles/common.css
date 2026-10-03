@@ -3,7 +3,7 @@
   --color-brand-glow-a: #d000e3;
   --color-brand-glow-b: #ffe100;
   --color-text: #2a2a2a;
-  --color-caption: #b2b5cd;
+  --color-caption: #bfc0cd;
   --color-selection: #ffae7e;
   --color-surface: #ffffff;
   --color-surface-soft: #eff0f6;
@@ -347,31 +347,31 @@ th {
 
 @media (max-width: 960px) {
   h1 {
-    font-size: calc(40px * 0.9);
+    font-size: calc(40px * 0.85);
   }
 
   h2 {
-    font-size: calc(28px * 0.9);
+    font-size: calc(28px * 0.85);
   }
 
   h3 {
-    font-size: calc(20px * 0.9);
+    font-size: calc(20px * 0.85);
   }
 
   p,
   ul,
   ol,
   blockquote {
-    font-size: calc(16px * 0.9);
+    font-size: calc(16px * 0.85);
   }
 
   table {
-    font-size: calc(15px * 0.9);
+    font-size: calc(15px * 0.85);
   }
 
   code,
   pre {
-    font-size: calc(14px * 0.9);
+    font-size: calc(14px * 0.85);
   }
 
   .button-large {

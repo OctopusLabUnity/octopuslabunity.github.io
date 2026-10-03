@@ -19,12 +19,24 @@
   closeButton.className = "image-lightbox-close";
   closeButton.setAttribute("aria-label", "Close image preview");
 
+  const prevButton = document.createElement("button");
+  prevButton.type = "button";
+  prevButton.className = "image-lightbox-nav image-lightbox-prev";
+  prevButton.setAttribute("aria-label", "Previous image");
+  prevButton.hidden = true;
+
+  const nextButton = document.createElement("button");
+  nextButton.type = "button";
+  nextButton.className = "image-lightbox-nav image-lightbox-next";
+  nextButton.setAttribute("aria-label", "Next image");
+  nextButton.hidden = true;
+
   const image = document.createElement("img");
   image.className = "image-lightbox-image";
   image.alt = "";
   image.draggable = false;
 
-  lightbox.append(closeButton, image);
+  lightbox.append(closeButton, prevButton, nextButton, image);
   document.body.append(lightbox);
 
   let lastFocused = null;
@@ -46,6 +58,8 @@
   let lastTapTime = 0;
   let lastTapX = 0;
   let lastTapY = 0;
+  let galleryImages = [];
+  let galleryIndex = -1;
 
   function applyTransform(withTransition = false) {
     image.style.transition = withTransition ? "transform 0.2s ease" : "none";
@@ -85,11 +99,42 @@
     return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
   }
 
-  function openLightbox(source) {
-    lastFocused = document.activeElement;
+  function isControlTarget(target) {
+    return (
+      target === closeButton ||
+      closeButton.contains(target) ||
+      target === prevButton ||
+      prevButton.contains(target) ||
+      target === nextButton ||
+      nextButton.contains(target)
+    );
+  }
+
+  function updateNavVisibility() {
+    const showNav = galleryImages.length > 1;
+    prevButton.hidden = !showNav;
+    nextButton.hidden = !showNav;
+  }
+
+  function showImage(source) {
     image.src = source.currentSrc || source.src;
     image.alt = source.alt || "";
     resetTransform();
+  }
+
+  function openLightbox(source) {
+    const gallery = source.closest(".documentation-gallery");
+    if (gallery) {
+      galleryImages = [...gallery.querySelectorAll("img")];
+      galleryIndex = galleryImages.indexOf(source);
+    } else {
+      galleryImages = [];
+      galleryIndex = -1;
+    }
+
+    lastFocused = document.activeElement;
+    showImage(source);
+    updateNavVisibility();
     lightbox.hidden = false;
     requestAnimationFrame(() => {
       lightbox.classList.add("is-open");
@@ -104,6 +149,9 @@
     lightbox.classList.remove("is-open");
     document.body.classList.remove("lightbox-open");
     pointers.clear();
+    galleryImages = [];
+    galleryIndex = -1;
+    updateNavVisibility();
 
     let done = false;
     const finish = () => {
@@ -120,6 +168,13 @@
 
     lightbox.addEventListener("transitionend", finish, { once: true });
     window.setTimeout(finish, 250);
+  }
+
+  function stepGallery(delta) {
+    if (galleryImages.length < 2) return;
+    galleryIndex =
+      (galleryIndex + delta + galleryImages.length) % galleryImages.length;
+    showImage(galleryImages[galleryIndex]);
   }
 
   content.addEventListener("click", (event) => {
@@ -139,16 +194,46 @@
     event.stopPropagation();
   });
 
+  prevButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    stepGallery(-1);
+  });
+
+  nextButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    stepGallery(1);
+  });
+
+  prevButton.addEventListener("pointerdown", (event) => {
+    event.stopPropagation();
+  });
+
+  nextButton.addEventListener("pointerdown", (event) => {
+    event.stopPropagation();
+  });
+
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+    if (!lightbox.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
       closeLightbox();
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      stepGallery(-1);
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      stepGallery(1);
     }
   });
 
   lightbox.addEventListener("pointerdown", (event) => {
-    if (event.target === closeButton || closeButton.contains(event.target)) {
-      return;
-    }
+    if (isControlTarget(event.target)) return;
 
     lightbox.setPointerCapture(event.pointerId);
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });

@@ -115,7 +115,7 @@
 
 @media (max-width: 960px) {
   .home-logo {
-    height: 96px;
+    height: 88px;
   }
 
   .home-products {
@@ -123,7 +123,7 @@
   }
 
   .home-section-title {
-    font-size: calc(28px * 0.9);
+    font-size: calc(28px * 0.85);
   }
 
   .home-section-desc {
