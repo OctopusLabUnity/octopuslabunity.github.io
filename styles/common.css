@@ -3,8 +3,7 @@
   --color-brand-glow-a: #d000e3;
   --color-brand-glow-b: #ffe100;
   --color-text: #2a2a2a;
-  --color-caption: #bfc0cd;
-  --color-selection: #ffae7e;
+  --color-selection: #ffde5a;
   --color-surface: #ffffff;
   --color-surface-soft: #eff0f6;
   --color-surface-border: #d2d4e7;
@@ -134,7 +133,7 @@ li {
 
 blockquote {
   padding: 16px 20px;
-  border-left: 3px solid var(--color-brand);
+  border-left: 5px solid var(--color-brand);
   background-color: var(--color-surface-soft);
   font-variation-settings:
     "wght" 500,
@@ -148,7 +147,7 @@ pre {
   overflow-x: auto;
   padding: 16px 20px;
   background-color: var(--color-surface-soft);
-  border: 1px solid var(--color-surface-border);
+  border: 2px solid var(--color-surface-border);
   border-radius: 0;
 }
 

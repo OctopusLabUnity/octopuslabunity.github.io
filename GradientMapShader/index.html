@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wdth,wght@8..144,75..150,1..1000&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght@8..144,-10..0,75..150,1..1000&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles/common.css" />
@@ -42,6 +42,8 @@
               <a href="#">Download</a>
               <a href="#overview">1.1. Overview</a>
               <a href="#concepts">1.2. Concepts</a>
+              <a class="is-nested" href="#luminance-mapping">1.2.1. Luminance Mapping</a>
+              <a class="is-nested" href="#strength-blend">1.2.2. Strength Blend</a>
               <a href="#setup">1.3. Setup</a>
               <a href="#import">1.4. Import Checklist</a>
               <a href="#first-material">1.5. First Material</a>
@@ -55,6 +57,8 @@
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
               <a href="#shader-graph">2.1. Shader Graph</a>
+              <a class="is-nested" href="#graph-setup">2.1.1. Graph Setup</a>
+              <a class="is-nested" href="#node-tips">2.1.2. Node Tips</a>
               <a href="#hlsl">2.2. HLSL Snippets</a>
               <a href="#maps">2.3. Creating Maps</a>
               <a href="#luminance">2.4. Luminance</a>
@@ -95,6 +99,8 @@
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
               <a href="#troubleshooting">5.1. Troubleshooting</a>
+              <a class="is-nested" href="#common-issues">5.1.1. Common Issues</a>
+              <a class="is-nested" href="#debug-checks">5.1.2. Debug Checks</a>
               <a href="#faq">5.2. FAQ</a>
               <a href="#performance">5.3. Performance</a>
               <a href="#changelog">5.4. Changelog</a>
@@ -137,8 +143,9 @@
       </div>
       <div class="documentation-content">
         <div class="documentation-title">
-          <h1 id="overview">1.1. Overview</h1>
+          <h1 id="getting-started">1. Getting Started</h1>
         </div>
+        <h2 id="overview">1.1. Overview</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
           odio. Praesent libero. Sed cursus ante dapibus diam. Start with
@@ -196,6 +203,16 @@
           Luminance becomes the U coordinate into a 1D color map. Continue to
           <a href="#shader-graph">Shader Graph</a> for node wiring.
         </p>
+        <h3 id="luminance-mapping">1.2.1. Luminance Mapping</h3>
+        <p>
+          Dark values sample the left of the map; bright values sample the right.
+          Keep your LUT horizontal so U follows intensity.
+        </p>
+        <h3 id="strength-blend">1.2.2. Strength Blend</h3>
+        <p>
+          Strength lerps between the original albedo and the remapped color so
+          you can dial the look in gradually.
+        </p>
         <img
           src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80"
           alt="Neon gradient wall"
@@ -232,6 +249,7 @@ mat.SetFloat("_Strength", 1f);</code></pre>
           Nullam tincidunt adipiscing enim. Review
           <a href="#properties">Properties</a> after the material is ready.
         </p>
+        <h1 id="authoring">2. Authoring</h1>
         <h2 id="shader-graph">2.1. Shader Graph</h2>
         <p>
           Curabitur ligula sapien, tincidunt non, euismod vitae. Sample luminance,
@@ -242,9 +260,15 @@ mat.SetFloat("_Strength", 1f);</code></pre>
           src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&q=80"
           alt="Abstract tech gradient"
         />
+        <h3 id="graph-setup">2.1.1. Graph Setup</h3>
         <blockquote>
           Umbra sine colore, color sine umbra — ambo opus sunt.
         </blockquote>
+        <p>
+          Wire albedo into a luminance convert node, then feed that as the U
+          sample into your gradient texture.
+        </p>
+        <h3 id="node-tips">2.1.2. Node Tips</h3>
         <ul>
           <li>Convert albedo to grayscale for the U sample</li>
           <li>Keep V fixed at 0.5 for 1D maps</li>
@@ -278,6 +302,7 @@ return lerp(albedo.rgb, mapped, _Strength);</code></pre>
           Zero keeps the original albedo; one fully replaces it. Animate for
           transitions into <a href="#stylize">Stylize</a> looks.
         </p>
+        <h1 id="reference">3. Reference</h1>
         <h2 id="properties">3.1. Properties</h2>
         <table>
           <thead>
@@ -342,6 +367,7 @@ material.SetTexture("_GradientMap", gradientTex);</code></pre>
     mat.SetTexture("_GradientMap", map);
     mat.SetFloat("_Strength", Mathf.Clamp01(strength));
 }</code></pre>
+        <h1 id="recipes">4. Recipes</h1>
         <h2 id="stylize">4.1. Stylize</h2>
         <p>
           Push comic and illustration palettes through short LUTs. Compare with
@@ -382,11 +408,13 @@ material.SetTexture("_GradientMap", gradientTex);</code></pre>
           Green-heavy maps on luminance create classic NVG vibes. Back to
           <a href="#overview">Overview</a> or <a href="#setup">Setup</a>.
         </p>
+        <h1 id="support">5. Support</h1>
         <h2 id="troubleshooting">5.1. Troubleshooting</h2>
         <p>
           Pink materials usually mean a missing shader — reimport from the
           <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store</a>.
         </p>
+        <h3 id="common-issues">5.1.1. Common Issues</h3>
         <ul>
           <li>Map looks banding: increase bake resolution</li>
           <li>Colors inverted: flip the gradient direction</li>
@@ -396,6 +424,7 @@ material.SetTexture("_GradientMap", gradientTex);</code></pre>
         <blockquote>
           Si mappa vacua est, mundus griseus manet.
         </blockquote>
+        <h3 id="debug-checks">5.1.2. Debug Checks</h3>
         <pre><code class="language-csharp">#if UNITY_EDITOR
 Debug.Assert(gradientTex != null, "Gradient map texture is missing.");
 Debug.Assert(mat.HasProperty("_Strength"), "Shader missing _Strength.");

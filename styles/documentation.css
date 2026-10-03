@@ -190,6 +190,14 @@
   background-color: var(--color-surface-soft);
 }
 
+.documentation-nav-links a.is-nested {
+  padding-left: 56px;
+  font-variation-settings:
+    "wght" 450,
+    "wdth" 105;
+  font-size: 13px;
+}
+
 .documentation-nav-links a::before {
   content: "";
   position: absolute;
@@ -305,6 +313,27 @@
 
 .documentation-title h1 {
   margin-top: 0;
+}
+
+.documentation-content > h1 {
+  margin-top: 28px;
+}
+
+.documentation-content > h2 {
+  margin-top: 20px;
+}
+
+.documentation-content > h3 {
+  margin-top: 16px;
+}
+
+.documentation-content > h1 + h2,
+.documentation-title + h2 {
+  margin-top: 8px;
+}
+
+.documentation-content > h2 + h3 {
+  margin-top: 8px;
 }
 
 .documentation-product {
@@ -629,10 +658,13 @@ body.lightbox-open {
 .documentation-figure figcaption {
   font-variation-settings:
     "wght" 400,
-    "wdth" 105;
-  font-size: 13px;
+    "wdth" 105,
+    "slnt" -10;
+  font-size: 12px;
   line-height: 1.4;
-  color: var(--color-caption);
+  font-style: oblique 10deg;
+  text-align: center;
+  color: var(--color-text);
   opacity: 1;
 }
 
@@ -839,6 +871,24 @@ body.lightbox-open {
   .documentation-content {
     margin: 28px 0 48px;
     gap: 16px;
+  }
+
+  .documentation-content > h1 {
+    margin-top: 20px;
+  }
+
+  .documentation-content > h2 {
+    margin-top: 12px;
+  }
+
+  .documentation-content > h3 {
+    margin-top: 10px;
+  }
+
+  .documentation-content > h1 + h2,
+  .documentation-title + h2,
+  .documentation-content > h2 + h3 {
+    margin-top: 4px;
   }
 
   .documentation-content > img {
