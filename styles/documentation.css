@@ -46,7 +46,6 @@
   margin: 0;
   background-color: var(--color-transparent);
   color: var(--color-text);
-  transition: color 0.15s;
 }
 
 .documentation-nav-scroll {
@@ -84,9 +83,21 @@
   color: var(--color-text);
 }
 
-.documentation-nav-logo:hover,
-.documentation-nav-logo:active {
-  color: var(--color-brand);
+@media (hover: hover) and (min-width: 961px) {
+  .documentation-nav-logo:hover,
+  .documentation-nav-logo:active {
+    color: var(--color-brand);
+  }
+
+  .documentation-nav-logo:hover::after,
+  .documentation-nav-logo:active::after {
+    background-color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-brand),
+      var(--color-brand-2)
+    );
+  }
 }
 
 .documentation-copyright {
@@ -105,6 +116,49 @@
 
 .documentation-copyright--page {
   display: none;
+}
+
+.documentation-theme-toggle {
+  flex-shrink: 0;
+  width: 100%;
+  margin: 0;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-top: 1px solid var(--color-surface-border);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 120;
+  font-size: 13px;
+  letter-spacing: -0.2px;
+  text-align: center;
+}
+
+.documentation-theme-toggle-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+@media (hover: hover) and (min-width: 961px) {
+  .documentation-theme-toggle:hover .documentation-theme-toggle-label,
+  .documentation-theme-toggle:hover .documentation-theme-toggle-icon {
+    background-image: linear-gradient(
+      to right,
+      var(--color-brand),
+      var(--color-brand-2)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 .documentation-nav-group {
@@ -132,12 +186,32 @@
   font-size: 16px;
   letter-spacing: -0.5px;
   text-align: left;
-  transition: color 0.15s, border-color 0.15s, border-bottom-width 0.15s;
 }
 
-.documentation-nav-toggle:hover {
-  color: var(--color-brand);
-  border-bottom: 1px solid var(--color-brand);
+@media (hover: hover) and (min-width: 961px) {
+  .documentation-nav-toggle:hover {
+    color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-brand),
+      var(--color-brand-2)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom-color: transparent;
+    border-image: linear-gradient(
+        to right,
+        var(--color-brand),
+        var(--color-brand-2)
+      )
+      1;
+  }
+
+  .documentation-nav-toggle:hover::after {
+    border-right-color: var(--color-brand);
+    border-bottom-color: var(--color-brand-2);
+  }
 }
 
 .documentation-nav-toggle::after {
@@ -206,17 +280,23 @@
   z-index: -1;
   width: 130%;
   height: 100%;
-  background-color: var(--color-brand);
+  background: linear-gradient(
+    to right,
+    var(--color-brand),
+    var(--color-brand-2)
+  );
   transform: translateX(-100%) skewX(-12deg);
   transition: transform 0.15s;
 }
 
-.documentation-nav-links a:hover {
-  color: var(--color-surface);
-}
+@media (hover: hover) and (min-width: 961px) {
+  .documentation-nav-links a:hover {
+    color: var(--color-on-gradient);
+  }
 
-.documentation-nav-links a:hover::before {
-  transform: translateX(0) skewX(-12deg);
+  .documentation-nav-links a:hover::before {
+    transform: translateX(0) skewX(-12deg);
+  }
 }
 
 .documentation-section {
@@ -295,13 +375,19 @@
 
 .documentation-masthead .button-medium::before,
 .documentation-content .button-medium::before {
-  background-color: var(--color-brand);
+  background: linear-gradient(
+    to right,
+    var(--color-brand),
+    var(--color-brand-2)
+  );
 }
 
-.documentation-masthead .button-medium:hover,
-.documentation-content .button-medium:hover {
-  color: var(--color-surface);
-  border-color: var(--color-brand);
+@media (hover: hover) and (min-width: 961px) {
+  .documentation-masthead .button-medium:hover,
+  .documentation-content .button-medium:hover {
+    color: var(--color-on-gradient);
+    border-color: var(--color-brand);
+  }
 }
 
 .documentation-title {
@@ -435,7 +521,7 @@
   justify-content: center;
   border: none;
   color: var(--color-text);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: color-mix(in srgb, var(--color-surface) 60%, transparent);
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
@@ -489,17 +575,19 @@
   z-index: 0;
   width: 320%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   transform: translateX(-110%) skewX(-12deg);
   transition: transform 0.15s;
 }
 
-.documentation-gallery-nav:hover {
-  color: var(--color-brand);
-}
+@media (hover: hover) and (min-width: 961px) {
+  .documentation-gallery-nav:hover {
+    color: var(--color-brand);
+  }
 
-.documentation-gallery-nav:hover::after {
-  transform: translateX(-15%) skewX(-12deg);
+  .documentation-gallery-nav:hover::after {
+    transform: translateX(-15%) skewX(-12deg);
+  }
 }
 
 .documentation-figure {
@@ -595,8 +683,14 @@
   transform: rotate(-45deg);
 }
 
-.image-lightbox-close:hover {
-  opacity: 1;
+@media (hover: hover) and (min-width: 961px) {
+  .image-lightbox-close:hover {
+    opacity: 1;
+  }
+
+  .image-lightbox-nav:hover {
+    opacity: 1;
+  }
 }
 
 .image-lightbox-nav {
@@ -615,10 +709,6 @@
   opacity: 0.8;
   transform: translateY(-50%);
   transition: opacity 0.15s;
-}
-
-.image-lightbox-nav:hover {
-  opacity: 1;
 }
 
 .image-lightbox-nav[hidden] {
@@ -790,7 +880,7 @@ body.lightbox-open {
     padding: 0 68px;
     background-color: var(--color-surface);
     color: var(--color-text);
-    transition: height 0.25s ease, color 0.15s;
+    transition: height 0.25s ease;
   }
 
   .documentation-nav-logo::after {
@@ -812,13 +902,16 @@ body.lightbox-open {
     color: var(--color-text);
   }
 
-  .documentation-nav-logo:hover,
-  .documentation-nav-logo:active {
-    color: var(--color-brand);
-  }
-
   .documentation-copyright--nav {
     display: none;
+  }
+
+  .documentation-theme-toggle {
+    display: none;
+  }
+
+  .documentation-nav.is-menu-open .documentation-theme-toggle {
+    display: flex;
   }
 
   body.nav-menu-open {
@@ -926,5 +1019,13 @@ body.lightbox-open {
 
   .image-lightbox-next {
     right: 4px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 960px) {
+  .documentation-masthead,
+  .documentation-content {
+    padding: 0 80px;
+    max-width: calc(780px + 160px);
   }
 }

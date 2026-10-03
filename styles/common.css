@@ -1,19 +1,36 @@
 :root {
-  --color-brand: #ff3e31;
-  --color-brand-glow-a: #d000e3;
-  --color-brand-glow-b: #ffe100;
-  --color-text: #2a2a2a;
+  --color-brand: #fa514b;
+  --color-brand-2: #dc2c83;
+  --color-gradient-0: #ffa500;
+  --color-gradient-40: #fa514b;
+  --color-gradient-70: #dc2c83;
+  --color-gradient-100: #b418b7;
+  --color-text: #373737;
   --color-selection: #ffde5a;
   --color-surface: #ffffff;
   --color-surface-soft: #eff0f6;
   --color-surface-border: #d2d4e7;
+  --color-on-gradient: #ffffff;
+  --color-text-dark: #f2f2f7;
+  --color-selection-dark: #812131;
+  --color-surface-dark: #1a1a22;
+  --color-surface-soft-dark: #262632;
+  --color-surface-border-dark: #3a3a48;
   --color-transparent: #ffffff00;
   --color-code-muted: #6b7280;
-  --color-code-property: #9f2aaf;
-  --color-code-string: #00ab25;
-  --color-code-function: #1780ff;
+  --color-code-property: #c231bd;
+  --color-code-string: #59b30b;
+  --color-code-function: #179aff;
   --color-code-variable: #d97706;
-  --color-code-keyword: #b231d5;
+  --color-code-keyword: #c231bd;
+}
+
+[data-theme="dark"] {
+  --color-text: var(--color-text-dark);
+  --color-selection: var(--color-selection-dark);
+  --color-surface: var(--color-surface-dark);
+  --color-surface-soft: var(--color-surface-soft-dark);
+  --color-surface-border: var(--color-surface-border-dark);
 }
 
 * {
@@ -98,7 +115,7 @@ blockquote a {
   letter-spacing: -0.25px;
   padding: 0 2px;
   background-image:
-    linear-gradient(var(--color-brand), var(--color-brand)),
+    linear-gradient(to right, var(--color-brand), var(--color-brand-2)),
     linear-gradient(var(--color-text), var(--color-text));
   background-position: left bottom, left bottom;
   background-repeat: no-repeat, no-repeat;
@@ -108,12 +125,14 @@ blockquote a {
     background-size 0.15s;
 }
 
-p a:hover,
-li a:hover,
-td a:hover,
-blockquote a:hover {
-  color: var(--color-surface);
-  background-size: 100% 100%, 100% 2px;
+@media (hover: hover) and (min-width: 961px) {
+  p a:hover,
+  li a:hover,
+  td a:hover,
+  blockquote a:hover {
+    color: var(--color-on-gradient);
+    background-size: 100% 100%, 100% 2px;
+  }
 }
 
 ul,
@@ -284,12 +303,14 @@ th {
   transition: transform 0.15s;
 }
 
-.button-large:hover {
-  color: var(--color-brand);
-}
+@media (hover: hover) and (min-width: 961px) {
+  .button-large:hover {
+    color: var(--color-brand);
+  }
 
-.button-large:hover::before {
-  transform: translateX(0) skewX(-12deg);
+  .button-large:hover::before {
+    transform: translateX(0) skewX(-12deg);
+  }
 }
 
 .button-medium {
@@ -336,12 +357,14 @@ th {
   transition: transform 0.15s;
 }
 
-.button-medium:hover {
-  color: var(--color-brand);
-}
+@media (hover: hover) and (min-width: 961px) {
+  .button-medium:hover {
+    color: var(--color-brand);
+  }
 
-.button-medium:hover::before {
-  transform: translateX(0) skewX(-12deg);
+  .button-medium:hover::before {
+    transform: translateX(0) skewX(-12deg);
+  }
 }
 
 @media (max-width: 960px) {
@@ -380,5 +403,43 @@ th {
 
   .button-medium {
     font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 960px) {
+  h1 {
+    font-size: calc(40px * 0.92);
+  }
+
+  h2 {
+    font-size: calc(28px * 0.92);
+  }
+
+  h3 {
+    font-size: calc(20px * 0.92);
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote {
+    font-size: calc(16px * 0.92);
+  }
+
+  table {
+    font-size: calc(15px * 0.92);
+  }
+
+  code,
+  pre {
+    font-size: calc(14px * 0.92);
+  }
+
+  .button-large {
+    font-size: calc(24px * 0.92);
+  }
+
+  .button-medium {
+    font-size: calc(16px * 0.92);
   }
 }

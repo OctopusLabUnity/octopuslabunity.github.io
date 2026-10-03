@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./scripts/theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,8 +28,10 @@
           Lorem ipsum dolor sit amet consectetur adipiscing elit sed.<br>
           Questions, feedback, or support.</p>
         <a class="button-medium" href="mailto:octopuslabunity@gmail.com">
-          <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
-          octopuslabunity@gmail.com
+          <span class="button-label">
+            <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
+            octopuslabunity@gmail.com
+          </span>
         </a>
       </section>
       <hr class="home-divider" />
@@ -41,7 +44,7 @@
             Lorem ipsum dolor sit amet consectetur adipiscing elit sed.
           </p>
           <a class="button-medium" href="./RichGradient/">
-            Documentation
+            <span class="button-label">Documentation</span>
           </a>
         </section>
         <section class="home-section" aria-labelledby="home-gradient-map-title">
@@ -52,10 +55,21 @@
             Ut enim ad minim veniam quis nostrud exercitation ullamco.
           </p>
           <a class="button-medium" href="./GradientMapShader/">
-            Documentation
+            <span class="button-label">Documentation</span>
           </a>
         </section>
       </div>
     </div>
+    <button
+      type="button"
+      class="home-theme-toggle"
+      aria-pressed="false"
+      aria-label="Switch to dark mode"
+    >
+      <i
+        class="fa-solid fa-moon home-theme-toggle-icon"
+        aria-hidden="true"
+      ></i>
+    </button>
   </body>
 </html>
