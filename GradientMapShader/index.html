@@ -20,72 +20,85 @@
   </head>
   <body class="page-documentation">
     <nav class="documentation-nav">
-      <a class="documentation-nav-logo" href="../" aria-label="Octopus Lab Home"></a>
-      <div class="documentation-nav-scroll">
+      <div class="documentation-nav-bar">
+        <button
+          type="button"
+          class="documentation-nav-menu"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="documentation-nav-scroll"
+        >
+          <span class="documentation-nav-menu-icon" aria-hidden="true"></span>
+        </button>
+        <a class="documentation-nav-logo" href="../" aria-label="Octopus Lab Home"></a>
+      </div>
+      <div class="documentation-nav-scroll" id="documentation-nav-scroll">
         <div class="documentation-nav-group is-open">
           <button type="button" class="documentation-nav-toggle" aria-expanded="true">
-            Getting Started
+            1. Getting Started
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#overview">Overview</a>
-              <a href="#concepts">Concepts</a>
-              <a href="#setup">Setup</a>
-              <a href="#import">Import Checklist</a>
-              <a href="#first-material">First Material</a>
+              <a href="#">Download</a>
+              <a href="#overview">1.1. Overview</a>
+              <a href="#concepts">1.2. Concepts</a>
+              <a href="#setup">1.3. Setup</a>
+              <a href="#import">1.4. Import Checklist</a>
+              <a href="#first-material">1.5. First Material</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Authoring
+            2. Authoring
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#shader-graph">Shader Graph</a>
-              <a href="#hlsl">HLSL Snippets</a>
-              <a href="#maps">Creating Maps</a>
-              <a href="#luminance">Luminance</a>
-              <a href="#strength">Strength</a>
+              <a href="#shader-graph">2.1. Shader Graph</a>
+              <a href="#hlsl">2.2. HLSL Snippets</a>
+              <a href="#maps">2.3. Creating Maps</a>
+              <a href="#luminance">2.4. Luminance</a>
+              <a href="#strength">2.5. Strength</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Reference
+            3. Reference
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#properties">Properties</a>
-              <a href="#keywords">Keywords</a>
-              <a href="#pipelines">Pipelines</a>
-              <a href="#api">C# API</a>
+              <a href="#properties">3.1. Properties</a>
+              <a href="#keywords">3.2. Keywords</a>
+              <a href="#pipelines">3.3. Pipelines</a>
+              <a href="#api">3.4. C# API</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Recipes
+            4. Recipes
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#stylize">Stylize</a>
-              <a href="#toon">Toon Grades</a>
-              <a href="#heat">Heat Maps</a>
-              <a href="#night">Night Vision</a>
+              <a href="#stylize">4.1. Stylize</a>
+              <a href="#toon">4.2. Toon Grades</a>
+              <a href="#heat">4.3. Heat Maps</a>
+              <a href="#night">4.4. Night Vision</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Support
+            5. Support
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#troubleshooting">Troubleshooting</a>
-              <a href="#faq">FAQ</a>
-              <a href="#performance">Performance</a>
-              <a href="#related">Related</a>
+              <a href="#troubleshooting">5.1. Troubleshooting</a>
+              <a href="#faq">5.2. FAQ</a>
+              <a href="#performance">5.3. Performance</a>
+              <a href="#changelog">5.4. Changelog</a>
+              <a href="#licence">5.5. Licence</a>
             </div>
           </div>
         </div>
@@ -95,11 +108,23 @@
       </p>
     </nav>
     <div class="documentation-section">
-      <div class="documentation-content">
-        <div class="documentation-title">
-          <h1 id="overview">Gradient Map Shader</h1>
+      <div class="documentation-hero">
+        <img
+          class="documentation-hero-image"
+          src="./images/hero.jpg"
+          alt=""
+        />
+        <img
+          class="documentation-hero-logo"
+          src="./images/logo.png"
+          alt="Gradient Map Shader"
+        />
+      </div>
+      <div class="documentation-masthead">
+        <p class="documentation-product">
+          <span class="documentation-product-name">Gradient Map Shader</span>
           <span class="documentation-version">v1.1.0</span>
-        </div>
+        </p>
         <a
           class="button-medium"
           href="https://assetstore.unity.com/"
@@ -109,6 +134,11 @@
           <i class="fa-brands fa-unity button-medium-icon" aria-hidden="true"></i>
           Download on Asset Store
         </a>
+      </div>
+      <div class="documentation-content">
+        <div class="documentation-title">
+          <h1 id="overview">1.1. Overview</h1>
+        </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
           odio. Praesent libero. Sed cursus ante dapibus diam. Start with
@@ -146,7 +176,7 @@
           Duis sagittis ipsum. Praesent mauris. For authored ramps instead of
           lookups, see <a href="../RichGradient/">Rich Gradient</a>.
         </p>
-        <h2 id="concepts">Concepts</h2>
+        <h2 id="concepts">1.2. Concepts</h2>
         <blockquote>
           Mappa graduum lumen in colorem convertit, umbras in tonos mutat.
         </blockquote>
@@ -159,7 +189,7 @@
           src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80"
           alt="Neon gradient wall"
         />
-        <h2 id="setup">Setup</h2>
+        <h2 id="setup">1.3. Setup</h2>
         <p>
           Curabitur sodales ligula in libero. Download from the
           <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store</a>,
@@ -172,7 +202,7 @@
           <li>Tune strength until the look settles</li>
           <li>Save a material preset for reuse</li>
         </ol>
-        <h2 id="import">Import Checklist</h2>
+        <h2 id="import">1.4. Import Checklist</h2>
         <ul>
           <li>Confirm URP or Built-in shader variant is present</li>
           <li>Set gradient map to Clamp, no mipmaps if 1D</li>
@@ -182,7 +212,7 @@
           src="https://picsum.photos/seed/gradientmap1/1200/640"
           alt="Import checklist visual"
         />
-        <h2 id="first-material">First Material</h2>
+        <h2 id="first-material">1.5. First Material</h2>
         <pre><code class="language-csharp">var mat = new Material(Shader.Find("OctopusLab/GradientMap"));
 mat.SetTexture("_MainTex", albedo);
 mat.SetTexture("_GradientMap", gradientTex);
@@ -191,7 +221,7 @@ mat.SetFloat("_Strength", 1f);</code></pre>
           Nullam tincidunt adipiscing enim. Review
           <a href="#properties">Properties</a> after the material is ready.
         </p>
-        <h2 id="shader-graph">Shader Graph</h2>
+        <h2 id="shader-graph">2.1. Shader Graph</h2>
         <p>
           Curabitur ligula sapien, tincidunt non, euismod vitae. Sample luminance,
           then Sample Texture 2D for your
@@ -209,7 +239,7 @@ mat.SetFloat("_Strength", 1f);</code></pre>
           <li>Keep V fixed at 0.5 for 1D maps</li>
           <li>Lerp back to the source with Strength</li>
         </ul>
-        <h2 id="hlsl">HLSL Snippets</h2>
+        <h2 id="hlsl">2.2. HLSL Snippets</h2>
         <pre><code class="language-csharp">float lum = dot(albedo.rgb, float3(0.299, 0.587, 0.114));
 float3 mapped = SAMPLE_TEXTURE2D(_GradientMap, sampler_GradientMap, float2(lum, 0.5)).rgb;
 return lerp(albedo.rgb, mapped, _Strength);</code></pre>
@@ -217,7 +247,7 @@ return lerp(albedo.rgb, mapped, _Strength);</code></pre>
           Aenean quam. In scelerisque sem at dolor. If something looks off, check
           <a href="#troubleshooting">Troubleshooting</a>.
         </p>
-        <h2 id="maps">Creating Maps</h2>
+        <h2 id="maps">2.3. Creating Maps</h2>
         <p>
           Bake with <a href="../RichGradient/#examples">Rich Gradient examples</a>
           or paint a strip in any image tool. Prefer horizontal 256×1 or 256×4.
@@ -226,18 +256,18 @@ return lerp(albedo.rgb, mapped, _Strength);</code></pre>
           src="https://picsum.photos/seed/gradientmap2/1200/400"
           alt="Gradient strip placeholder"
         />
-        <h2 id="luminance">Luminance</h2>
+        <h2 id="luminance">2.4. Luminance</h2>
         <p>
           Default Rec.601 weights work for most albedo. Override with
           <code>_LuminanceWeights</code> for artistic control — see
           <a href="#strength">Strength</a>.
         </p>
-        <h2 id="strength">Strength</h2>
+        <h2 id="strength">2.5. Strength</h2>
         <p>
           Zero keeps the original albedo; one fully replaces it. Animate for
           transitions into <a href="#stylize">Stylize</a> looks.
         </p>
-        <h2 id="properties">Properties</h2>
+        <h2 id="properties">3.1. Properties</h2>
         <table>
           <thead>
             <tr>
@@ -266,13 +296,13 @@ return lerp(albedo.rgb, mapped, _Strength);</code></pre>
         </table>
         <pre><code class="language-csharp">material.SetFloat("_Strength", 0.85f);
 material.SetTexture("_GradientMap", gradientTex);</code></pre>
-        <h2 id="keywords">Keywords</h2>
+        <h2 id="keywords">3.2. Keywords</h2>
         <p>
           Optional keywords toggle dithering and debug luminance visualization.
           Enable only what you need for
           <a href="#performance">Performance</a>.
         </p>
-        <h2 id="pipelines">Pipelines</h2>
+        <h2 id="pipelines">3.3. Pipelines</h2>
         <table>
           <thead>
             <tr>
@@ -295,13 +325,13 @@ material.SetTexture("_GradientMap", gradientTex);</code></pre>
             </tr>
           </tbody>
         </table>
-        <h2 id="api">C# API</h2>
+        <h2 id="api">3.4. C# API</h2>
         <pre><code class="language-csharp">public static void ApplyMap(Material mat, Texture2D map, float strength)
 {
     mat.SetTexture("_GradientMap", map);
     mat.SetFloat("_Strength", Mathf.Clamp01(strength));
 }</code></pre>
-        <h2 id="stylize">Stylize</h2>
+        <h2 id="stylize">4.1. Stylize</h2>
         <p>
           Push comic and illustration palettes through short LUTs. Compare with
           <a href="#toon">Toon Grades</a>.
@@ -326,22 +356,22 @@ material.SetTexture("_GradientMap", gradientTex);</code></pre>
             </figcaption>
           </figure>
         </div>
-        <h2 id="toon">Toon Grades</h2>
+        <h2 id="toon">4.2. Toon Grades</h2>
         <p>
           Quantized ramps with few stops create hard shade breaks. Pair with
           <a href="#heat">Heat Maps</a> for debug views.
         </p>
-        <h2 id="heat">Heat Maps</h2>
+        <h2 id="heat">4.3. Heat Maps</h2>
         <p>
           Cool-to-warm strips visualize intensity. Useful during lighting passes.
           See <a href="#night">Night Vision</a> for another recipe.
         </p>
-        <h2 id="night">Night Vision</h2>
+        <h2 id="night">4.4. Night Vision</h2>
         <p>
           Green-heavy maps on luminance create classic NVG vibes. Back to
           <a href="#overview">Overview</a> or <a href="#setup">Setup</a>.
         </p>
-        <h2 id="troubleshooting">Troubleshooting</h2>
+        <h2 id="troubleshooting">5.1. Troubleshooting</h2>
         <p>
           Pink materials usually mean a missing shader — reimport from the
           <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store</a>.
@@ -359,13 +389,13 @@ material.SetTexture("_GradientMap", gradientTex);</code></pre>
 Debug.Assert(gradientTex != null, "Gradient map texture is missing.");
 Debug.Assert(mat.HasProperty("_Strength"), "Shader missing _Strength.");
 #endif</code></pre>
-        <h2 id="faq">FAQ</h2>
+        <h2 id="faq">5.2. FAQ</h2>
         <ul>
           <li>Can I use vertical maps? Yes — swap UV axes in the graph.</li>
           <li>Does it work with normal maps? Drive luminance from albedo only.</li>
           <li>Mobile friendly? Yes with small LUTs and clamped strength.</li>
         </ul>
-        <h2 id="performance">Performance</h2>
+        <h2 id="performance">5.3. Performance</h2>
         <p>
           One extra texture sample is cheap. Keep maps tiny and shared across
           materials. Browse other packages from the
@@ -375,12 +405,21 @@ Debug.Assert(mat.HasProperty("_Strength"), "Shader missing _Strength.");
           src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1200&q=80"
           alt="Abstract colorful paint texture"
         />
-        <h2 id="related">Related</h2>
+        <h2 id="changelog">5.4. Changelog</h2>
         <p>
-          Author ramps with <a href="../RichGradient/">Rich Gradient</a>, then
-          feed them into this shader. Revisit
-          <a href="#shader-graph">Shader Graph</a> when wiring new looks.
+          Release notes for Gradient Map Shader are maintained in the package
+          changelog.
         </p>
+        <a class="button-medium" href="./CHANGELOG.md">
+          View Changelog
+        </a>
+        <h2 id="licence">5.5. Licence</h2>
+        <p>
+          Review the full licence terms included with this package.
+        </p>
+        <a class="button-medium" href="./LICENSE.md">
+          View Licence
+        </a>
       </div>
     </div>
     <footer class="documentation-copyright documentation-copyright--page">

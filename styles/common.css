@@ -1,21 +1,20 @@
 :root {
-  --color-brand: #5100ff;
-  --color-brand-glow-a: #ea00ff;
-  --color-brand-glow-b: #00fbff;
-  --color-text: rgb(42, 42, 42);
-  --color-text-muted: rgba(74, 74, 74, 0.2);
-  --color-surface: white;
-  --color-surface-muted: #dfe1ef;
-  --color-surface-soft: #f0f1fa;
-  --color-transparent: rgb(255, 255, 255, 0);
-  --color-selection: #bdcbff;
+  --color-brand: #ff3e31;
+  --color-brand-glow-a: #d000e3;
+  --color-brand-glow-b: #ffe100;
+  --color-text: #2a2a2a;
+  --color-caption: #b2b5cd;
+  --color-selection: #ffae7e;
+  --color-surface: #ffffff;
+  --color-surface-soft: #eff0f6;
+  --color-surface-border: #d2d4e7;
+  --color-transparent: #ffffff00;
   --color-code-muted: #6b7280;
   --color-code-property: #9f2aaf;
   --color-code-string: #00ab25;
   --color-code-function: #1780ff;
   --color-code-variable: #d97706;
   --color-code-keyword: #b231d5;
-  --color-caption: #9698af;
 }
 
 * {
@@ -75,7 +74,7 @@ h3:first-child {
 p {
   font-variation-settings:
     "wght" 400,
-    "wdth" 100;
+    "wdth" 105;
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text);
@@ -121,6 +120,9 @@ blockquote a:hover {
 ul,
 ol {
   padding-left: 24px;
+  font-variation-settings:
+    "wght" 400,
+    "wdth" 105;
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text);
@@ -136,7 +138,7 @@ blockquote {
   background-color: var(--color-surface-soft);
   font-variation-settings:
     "wght" 500,
-    "wdth" 100;
+    "wdth" 105;
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-text);
@@ -146,7 +148,7 @@ pre {
   overflow-x: auto;
   padding: 16px 20px;
   background-color: var(--color-surface-soft);
-  border: 1px solid var(--color-text-muted);
+  border: 1px solid var(--color-surface-border);
   border-radius: 0;
 }
 
@@ -218,6 +220,9 @@ li code {
 table {
   width: 100%;
   border-collapse: collapse;
+  font-variation-settings:
+    "wght" 400,
+    "wdth" 105;
   font-size: 15px;
   line-height: 1.5;
   color: var(--color-text);
@@ -227,7 +232,7 @@ th,
 td {
   padding: 10px 12px;
   text-align: left;
-  border-bottom: 1px solid var(--color-text-muted);
+  border-bottom: 1px solid var(--color-surface-border);
 }
 
 th {
@@ -259,7 +264,7 @@ th {
   border-style: solid;
   border-color: var(--color-surface);
   background-color: var(--color-transparent);
-  transition: color 0.2s;
+  transition: color 0.15s;
 }
 
 .button-large-icon {
@@ -277,7 +282,7 @@ th {
   height: 100%;
   background-color: var(--color-surface);
   transform: translateX(-100%) skewX(-12deg);
-  transition: transform 0.2s;
+  transition: transform 0.15s;
 }
 
 .button-large:hover {
@@ -311,7 +316,7 @@ th {
   border-style: solid;
   border-color: var(--color-surface);
   background-color: var(--color-transparent);
-  transition: color 0.2s;
+  transition: color 0.15s;
 }
 
 .button-medium-icon {
@@ -329,7 +334,7 @@ th {
   height: 100%;
   background-color: var(--color-surface);
   transform: translateX(-100%) skewX(-12deg);
-  transition: transform 0.2s;
+  transition: transform 0.15s;
 }
 
 .button-medium:hover {

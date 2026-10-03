@@ -15,7 +15,23 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface-muted);
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-surface-border);
+}
+
+.documentation-nav-bar {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 24px 0;
+}
+
+.documentation-nav-menu {
+  display: none;
 }
 
 .documentation-nav-logo {
@@ -27,11 +43,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 108px;
-  margin: 0 0 24px 0;
+  height: 96px;
+  margin: 0;
   background-color: var(--color-transparent);
   color: var(--color-text);
-  transition: color 0.2s;
+  transition: color 0.15s;
 }
 
 .documentation-nav-scroll {
@@ -58,7 +74,7 @@
   height: 100%;
   background-color: var(--color-brand);
   transform: translateX(-100%) skewX(-12deg);
-  transition: transform 0.2s;
+  transition: transform 0.15s;
 }
 
 .documentation-nav-logo::after {
@@ -97,7 +113,7 @@
   padding: 16px 24px;
   flex-shrink: 0;
   font-variation-settings:
-    "wght" 500,
+    "wght" 700,
     "wdth" 120;
   font-size: 12px;
   line-height: 1.4;
@@ -124,7 +140,7 @@
   justify-content: space-between;
   gap: 12px;
   border: 0;
-  border-bottom: 1px solid var(--color-text-muted);
+  border-bottom: 1px solid var(--color-surface-border);
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -135,6 +151,12 @@
   font-size: 16px;
   letter-spacing: -0.5px;
   text-align: left;
+  transition: color 0.15s, border-color 0.15s, border-bottom-width 0.15s;
+}
+
+.documentation-nav-toggle:hover {
+  color: var(--color-brand);
+  border-bottom: 1px solid var(--color-brand);
 }
 
 .documentation-nav-toggle::after {
@@ -171,7 +193,7 @@
   z-index: 0;
   overflow: hidden;
   width: 100%;
-  padding: 12px 24px;
+  padding: 12px 24px 12px 40px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -183,7 +205,7 @@
   text-align: left;
   text-decoration: none;
   background-color: transparent;
-  transition: color 0.2s;
+  transition: color 0.15s;
   background-color: var(--color-surface-soft);
 }
 
@@ -197,7 +219,7 @@
   height: 100%;
   background-color: var(--color-brand);
   transform: translateX(-100%) skewX(-12deg);
-  transition: transform 0.2s;
+  transition: transform 0.15s;
 }
 
 .documentation-nav-links a:hover {
@@ -212,31 +234,80 @@
   flex: 1;
   min-width: 0;
   display: flex;
-  justify-content: center;
-  padding: 0 48px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 
+.documentation-hero {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.documentation-hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.documentation-hero-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 128px;
+  width: auto;
+  max-width: calc(100% - 48px);
+  object-fit: contain;
+}
+
+.documentation-masthead,
 .documentation-content {
   width: 100%;
-  max-width: 780px;
-  margin: 80px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  max-width: calc(780px + 96px);
+  padding: 0 48px;
   min-width: 0;
 }
 
+.documentation-masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.documentation-content {
+  margin: 40px 0 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.documentation-masthead .button-medium,
 .documentation-content .button-medium {
+  flex-shrink: 0;
   align-self: flex-start;
   color: var(--color-text);
   border-color: var(--color-text);
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.15s, border-color 0.15s;
 }
 
+.documentation-masthead .button-medium::before,
 .documentation-content .button-medium::before {
   background-color: var(--color-brand);
 }
 
+.documentation-masthead .button-medium:hover,
 .documentation-content .button-medium:hover {
   color: var(--color-surface);
   border-color: var(--color-brand);
@@ -251,6 +322,25 @@
 
 .documentation-title h1 {
   margin-top: 0;
+}
+
+.documentation-product {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+  color: var(--color-text);
+}
+
+.documentation-product-name {
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 120;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
 }
 
 .documentation-version {
@@ -374,7 +464,7 @@ body.lightbox-open {
 .documentation-figure figcaption {
   font-variation-settings:
     "wght" 400,
-    "wdth" 100;
+    "wdth" 105;
   font-size: 13px;
   line-height: 1.4;
   color: var(--color-caption);
@@ -392,19 +482,122 @@ body.lightbox-open {
     top: 0;
     z-index: 10;
     height: auto;
+    max-height: 100vh;
     overflow: visible;
-    background-color: var(--color-surface-soft);
+    background-color: var(--color-surface);
+  }
+
+  .documentation-nav-bar {
+    margin: 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-surface-border);
+  }
+
+  .documentation-nav-menu {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .documentation-nav-menu-icon,
+  .documentation-nav-menu-icon::before,
+  .documentation-nav-menu-icon::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: currentColor;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .documentation-nav-menu-icon {
+    position: relative;
+  }
+
+  .documentation-nav-menu-icon::before,
+  .documentation-nav-menu-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .documentation-nav-menu-icon::before {
+    top: -7px;
+  }
+
+  .documentation-nav-menu-icon::after {
+    top: 7px;
+  }
+
+  .documentation-nav.is-menu-open .documentation-nav-menu-icon {
+    background-color: transparent;
+  }
+
+  .documentation-nav.is-menu-open .documentation-nav-menu-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .documentation-nav.is-menu-open .documentation-nav-menu-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .documentation-nav-scroll {
+    display: none;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    background-color: var(--color-surface);
+  }
+
+  .documentation-nav.is-menu-open {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .documentation-nav.is-menu-open .documentation-nav-scroll {
+    display: flex;
   }
 
   .documentation-nav-group {
-    display: none;
+    display: flex;
   }
 
   .documentation-nav-logo {
-    margin: 0;
-    background-color: var(--color-surface-muted);
+    height: 108px;
+    padding: 0 68px;
+    background-color: var(--color-surface);
     color: var(--color-text);
-    border-bottom: 1px solid var(--color-text-muted);
+    transition: height 0.25s ease, color 0.15s;
+  }
+
+  .documentation-nav-logo::after {
+    height: 76px;
+    max-width: 100%;
+    transition: height 0.25s ease;
+  }
+
+  .documentation-nav.is-compact .documentation-nav-logo {
+    height: 64px;
+  }
+
+  .documentation-nav.is-compact .documentation-nav-logo::after {
+    height: 48px;
   }
 
   .documentation-nav-logo:link,
@@ -422,15 +615,38 @@ body.lightbox-open {
     display: none;
   }
 
+  body.nav-menu-open {
+    overflow: hidden;
+  }
+
   .documentation-copyright--page {
     display: block;
     padding: 28px;
     text-align: center;
-    border-top: 1px solid var(--color-text-muted);
+    border-top: 1px solid var(--color-surface-border);
   }
 
   .documentation-section {
+    padding: 0;
+  }
+
+  .documentation-masthead,
+  .documentation-content {
     padding: 0 28px;
+    max-width: calc(780px + 56px);
+  }
+
+  .documentation-masthead {
+    margin-top: 28px;
+  }
+
+  .documentation-content {
+    margin: 28px 0 48px;
+    gap: 16px;
+  }
+
+  .documentation-content > img {
+    margin: 12px 0;
   }
 
   .documentation-figure-row {

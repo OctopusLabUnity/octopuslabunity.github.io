@@ -33,7 +33,7 @@
 }
 
 .home-logo {
-  height: 128px;
+  height: clamp(128px, 16vh, 176px);
   aspect-ratio: 780 / 192;
   margin-top: -32px;
   flex-shrink: 0;
@@ -55,6 +55,12 @@
 
 .home-section-title {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  max-width: 100%;
+  text-align: left;
   color: var(--color-surface);
   font-variation-settings:
     "wght" 700,
@@ -62,6 +68,18 @@
   font-size: 28px;
   letter-spacing: -0.5px;
   line-height: 1.2;
+}
+
+.home-section-title-icon {
+  flex: none;
+  font-size: 1.15em;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.home-section-title span {
+  min-width: 0;
+  text-align: left;
 }
 
 .home-section-desc {

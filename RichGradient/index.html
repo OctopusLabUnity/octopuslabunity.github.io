@@ -20,74 +20,86 @@
   </head>
   <body class="page-documentation">
     <nav class="documentation-nav">
-      <a class="documentation-nav-logo" href="../" aria-label="Octopus Lab Home"></a>
-      <div class="documentation-nav-scroll">
+      <div class="documentation-nav-bar">
+        <button
+          type="button"
+          class="documentation-nav-menu"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="documentation-nav-scroll"
+        >
+          <span class="documentation-nav-menu-icon" aria-hidden="true"></span>
+        </button>
+        <a class="documentation-nav-logo" href="../" aria-label="Octopus Lab Home"></a>
+      </div>
+      <div class="documentation-nav-scroll" id="documentation-nav-scroll">
         <div class="documentation-nav-group is-open">
           <button type="button" class="documentation-nav-toggle" aria-expanded="true">
-            Getting Started
+            1. Getting Started
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#overview">Overview</a>
-              <a href="#features">Features</a>
-              <a href="#installation">Installation</a>
-              <a href="#quickstart">Quickstart</a>
-              <a href="#requirements">Requirements</a>
+              <a href="#">Download</a>
+              <a href="#overview">1.1. Overview</a>
+              <a href="#features">1.2. Features</a>
+              <a href="#installation">1.3. Installation</a>
+              <a href="#quickstart">1.4. Quickstart</a>
+              <a href="#requirements">1.5. Requirements</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Workflow
+            2. Workflow
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#usage">Usage</a>
-              <a href="#editor">Editor Tools</a>
-              <a href="#baking">Baking</a>
-              <a href="#runtime">Runtime API</a>
-              <a href="#materials">Materials</a>
+              <a href="#usage">2.1. Usage</a>
+              <a href="#editor">2.2. Editor Tools</a>
+              <a href="#baking">2.3. Baking</a>
+              <a href="#runtime">2.4. Runtime API</a>
+              <a href="#materials">2.5. Materials</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Reference
+            3. Reference
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#parameters">Parameters</a>
-              <a href="#blend-modes">Blend Modes</a>
-              <a href="#wrap-modes">Wrap Modes</a>
-              <a href="#events">Events</a>
-              <a href="#scripting">Scripting</a>
+              <a href="#parameters">3.1. Parameters</a>
+              <a href="#blend-modes">3.2. Blend Modes</a>
+              <a href="#wrap-modes">3.3. Wrap Modes</a>
+              <a href="#events">3.4. Events</a>
+              <a href="#scripting">3.5. Scripting</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Examples
+            4. Examples
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#examples">Gallery</a>
-              <a href="#sky">Sky Blends</a>
-              <a href="#ui">UI Ramps</a>
-              <a href="#particles">Particles</a>
-              <a href="#post">Post Effects</a>
+              <a href="#examples">4.1. Gallery</a>
+              <a href="#sky">4.2. Sky Blends</a>
+              <a href="#ui">4.3. UI Ramps</a>
+              <a href="#particles">4.4. Particles</a>
+              <a href="#post">4.5. Post Effects</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            Support
+            5. Support
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#faq">FAQ</a>
-              <a href="#performance">Performance</a>
-              <a href="#changelog">Changelog</a>
-              <a href="#related">Related Tools</a>
+              <a href="#faq">5.1. FAQ</a>
+              <a href="#performance">5.2. Performance</a>
+              <a href="#changelog">5.3. Changelog</a>
+              <a href="#licence">5.4. Licence</a>
             </div>
           </div>
         </div>
@@ -97,11 +109,23 @@
       </p>
     </nav>
     <div class="documentation-section">
-      <div class="documentation-content">
-        <div class="documentation-title">
-          <h1 id="overview">Rich Gradient</h1>
+      <div class="documentation-hero">
+        <img
+          class="documentation-hero-image"
+          src="./images/hero.jpg"
+          alt=""
+        />
+        <img
+          class="documentation-hero-logo"
+          src="./images/logo.png"
+          alt="Rich Gradient"
+        />
+      </div>
+      <div class="documentation-masthead">
+        <p class="documentation-product">
+          <span class="documentation-product-name">Rich Gradient</span>
           <span class="documentation-version">v1.2.0</span>
-        </div>
+        </p>
         <a
           class="button-medium"
           href="https://assetstore.unity.com/"
@@ -111,6 +135,11 @@
           <i class="fa-brands fa-unity button-medium-icon" aria-hidden="true"></i>
           Download on Asset Store
         </a>
+      </div>
+      <div class="documentation-content">
+        <div class="documentation-title">
+          <h1 id="overview">1.1. Overview</h1>
+        </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -147,7 +176,7 @@
           <a href="../GradientMapShader/">Gradient Map Shader</a> if you need
           lookup-based remapping instead.
         </p>
-        <h2 id="features">Features</h2>
+        <h2 id="features">1.2. Features</h2>
         <p>
           Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
           impedit quo minus id quod maxime placeat facere possimus. Rich Gradient
@@ -164,7 +193,7 @@
           src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80"
           alt="Colorful soft gradient backdrop"
         />
-        <h2 id="installation">Installation</h2>
+        <h2 id="installation">1.3. Installation</h2>
         <p>
           At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium. Import from the
@@ -184,7 +213,7 @@ public class RichGradientAsset : ScriptableObject
     public Gradient gradient;
     public int steps = 256;
 }</code></pre>
-        <h2 id="quickstart">Quickstart</h2>
+        <h2 id="quickstart">1.4. Quickstart</h2>
         <p>
           Temporibus autem quibusdam et aut officiis debitis aut rerum
           necessitatibus saepe eveniet. Bake once, sample forever — see
@@ -199,7 +228,7 @@ material.SetTexture("_Gradient", gradient.Bake());</code></pre>
           src="https://picsum.photos/seed/richgradient1/1200/640"
           alt="Sample texture placeholder"
         />
-        <h2 id="requirements">Requirements</h2>
+        <h2 id="requirements">1.5. Requirements</h2>
         <p>
           Unity 2021.3 LTS or newer is recommended. GPU texture sampling is
           required for material usage. Review
@@ -236,7 +265,7 @@ material.SetTexture("_Gradient", gradient.Bake());</code></pre>
             </tr>
           </tbody>
         </table>
-        <h2 id="usage">Usage</h2>
+        <h2 id="usage">2.1. Usage</h2>
         <p>
           Itaque earum rerum hic tenetur a sapiente delectus. Bind the baked
           texture like any other
@@ -266,7 +295,7 @@ material.SetTexture("_Gradient", gradient.Bake());</code></pre>
             </figcaption>
           </figure>
         </div>
-        <h2 id="editor">Editor Tools</h2>
+        <h2 id="editor">2.2. Editor Tools</h2>
         <p>
           Et harum quidem rerum facilis est et expedita distinctio. The inspector
           preview updates as you drag stops. Open
@@ -277,7 +306,7 @@ material.SetTexture("_Gradient", gradient.Bake());</code></pre>
           <li>HDR color fields when enabled</li>
           <li>One-click rebake</li>
         </ul>
-        <h2 id="baking">Baking</h2>
+        <h2 id="baking">2.3. Baking</h2>
         <p>
           Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
           quam nihil molestiae consequatur. Higher steps reduce banding. See
@@ -286,7 +315,7 @@ material.SetTexture("_Gradient", gradient.Bake());</code></pre>
         <pre><code class="language-csharp">gradient.intensity = 1.25f;
 gradient.steps = 128;
 gradient.Rebuild();</code></pre>
-        <h2 id="runtime">Runtime API</h2>
+        <h2 id="runtime">2.4. Runtime API</h2>
         <p>
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium. Rebuild sparingly on device; prefer
@@ -299,7 +328,7 @@ gradient.Rebuild();</code></pre>
     gradient.Rebuild();
     ApplyToMaterials();
 }</code></pre>
-        <h2 id="materials">Materials</h2>
+        <h2 id="materials">2.5. Materials</h2>
         <p>
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
           fugit. Sample with UV.x or a custom scalar. Jump to
@@ -309,7 +338,7 @@ gradient.Rebuild();</code></pre>
           src="https://picsum.photos/seed/richgradient2/1200/640"
           alt="Material preview placeholder"
         />
-        <h2 id="parameters">Parameters</h2>
+        <h2 id="parameters">3.1. Parameters</h2>
         <table>
           <thead>
             <tr>
@@ -346,7 +375,7 @@ gradient.Rebuild();</code></pre>
             </tr>
           </tbody>
         </table>
-        <h2 id="blend-modes">Blend Modes</h2>
+        <h2 id="blend-modes">3.2. Blend Modes</h2>
         <p>
           Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
           Linear is default; SmoothStep softens transitions; Posterize quantizes
@@ -360,25 +389,25 @@ gradient.Rebuild();</code></pre>
 }
 
 gradient.blendMode = BlendMode.SmoothStep;</code></pre>
-        <h2 id="wrap-modes">Wrap Modes</h2>
+        <h2 id="wrap-modes">3.3. Wrap Modes</h2>
         <p>
           Clamp holds edge colors; Repeat tiles the ramp; Mirror ping-pongs.
           Useful for looping UI — check <a href="#ui">UI Ramps</a>.
         </p>
-        <h2 id="events">Events</h2>
+        <h2 id="events">3.4. Events</h2>
         <p>
           Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis.
           Subscribe to rebuild callbacks when caching textures. See
           <a href="#scripting">Scripting</a>.
         </p>
-        <h2 id="scripting">Scripting</h2>
+        <h2 id="scripting">3.5. Scripting</h2>
         <pre><code class="language-csharp">void ApplyToParticles(ParticleSystem ps, RichGradient rg)
 {
     var texture = rg.Bake();
     var renderer = ps.GetComponent&lt;ParticleSystemRenderer&gt;();
     renderer.material.SetTexture("_Gradient", texture);
 }</code></pre>
-        <h2 id="examples">Gallery</h2>
+        <h2 id="examples">4.1. Gallery</h2>
         <p>
           Browse more tools on the <a href="../">Octopus Lab home</a>. Visual
           samples below illustrate common looks.
@@ -406,17 +435,17 @@ gradient.blendMode = BlendMode.SmoothStep;</code></pre>
         <blockquote>
           Gradientes multiplicantur, sed anima una manet.
         </blockquote>
-        <h2 id="sky">Sky Blends</h2>
+        <h2 id="sky">4.2. Sky Blends</h2>
         <p>
           Horizon ramps with two to four stops keep skies lightweight. Pair with
           <a href="#post">Post Effects</a> for mood shifts.
         </p>
-        <h2 id="ui">UI Ramps</h2>
+        <h2 id="ui">4.3. UI Ramps</h2>
         <p>
           Health bars and meters read clearly with warm-to-cool ramps. See
           <a href="#particles">Particles</a> for motion use cases.
         </p>
-        <h2 id="particles">Particles</h2>
+        <h2 id="particles">4.4. Particles</h2>
         <p>
           Trail and sheet colors driven by baked LUTs. Share feedback on the
           <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store page</a>.
@@ -425,35 +454,38 @@ gradient.blendMode = BlendMode.SmoothStep;</code></pre>
           src="https://picsum.photos/seed/richgradient3/1200/640"
           alt="Particle look placeholder"
         />
-        <h2 id="post">Post Effects</h2>
+        <h2 id="post">4.5. Post Effects</h2>
         <p>
           Grade full-screen looks by sampling a 1D ramp in a blit pass. Return to
           <a href="#overview">Overview</a> or revisit
           <a href="#installation">Installation</a>.
         </p>
-        <h2 id="faq">FAQ</h2>
+        <h2 id="faq">5.1. FAQ</h2>
         <ul>
           <li>Why banding? Increase steps or enable SmoothStep.</li>
           <li>Why pink shader? Reimport and check pipeline.</li>
           <li>Can I animate stops? Yes — rebuild at a controlled rate.</li>
         </ul>
-        <h2 id="performance">Performance</h2>
+        <h2 id="performance">5.2. Performance</h2>
         <p>
           Prefer offline baking. Keep steps at 128–256 for mobile. Profile with
           the Unity Frame Debugger when combining many materials.
         </p>
-        <h2 id="changelog">Changelog</h2>
-        <ol>
-          <li>1.2.0 — HDR stop support</li>
-          <li>1.1.0 — Mirror wrap mode</li>
-          <li>1.0.0 — Initial release</li>
-        </ol>
-        <h2 id="related">Related Tools</h2>
+        <h2 id="changelog">5.3. Changelog</h2>
         <p>
-          Continue with
-          <a href="../GradientMapShader/">Gradient Map Shader</a> for luminance
-          remapping, or browse the <a href="../">home page</a>.
+          Release notes for Rich Gradient are maintained in the package
+          changelog.
         </p>
+        <a class="button-medium" href="./CHANGELOG.md">
+          View Changelog
+        </a>
+        <h2 id="licence">5.4. Licence</h2>
+        <p>
+          Review the full licence terms included with this package.
+        </p>
+        <a class="button-medium" href="./LICENSE.md">
+          View Licence
+        </a>
       </div>
     </div>
     <footer class="documentation-copyright documentation-copyright--page">

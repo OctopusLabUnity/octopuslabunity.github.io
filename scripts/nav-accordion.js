@@ -71,4 +71,54 @@
       });
     });
   });
+
+  const nav = document.querySelector(".documentation-nav");
+  if (!nav) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 960px)");
+  const menuButton = nav.querySelector(".documentation-nav-menu");
+  const navScroll = nav.querySelector(".documentation-nav-scroll");
+
+  function setMenuOpen(isOpen) {
+    nav.classList.toggle("is-menu-open", isOpen);
+    document.body.classList.toggle("nav-menu-open", isOpen);
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+    }
+  }
+
+  function updateNavCompact() {
+    const isCompact = mobileQuery.matches && window.scrollY > 8;
+    nav.classList.toggle("is-compact", isCompact);
+  }
+
+  function handleBreakpointChange() {
+    if (!mobileQuery.matches) {
+      setMenuOpen(false);
+    }
+    updateNavCompact();
+  }
+
+  if (menuButton) {
+    menuButton.addEventListener("click", () => {
+      if (!mobileQuery.matches) return;
+      setMenuOpen(!nav.classList.contains("is-menu-open"));
+    });
+  }
+
+  if (navScroll) {
+    navScroll.addEventListener("click", (event) => {
+      const link = event.target.closest("a[href]");
+      if (!link || !mobileQuery.matches) return;
+      setMenuOpen(false);
+    });
+  }
+
+  window.addEventListener("scroll", updateNavCompact, { passive: true });
+  mobileQuery.addEventListener("change", handleBreakpointChange);
+  handleBreakpointChange();
 })();
