@@ -75,9 +75,11 @@
   const nav = document.querySelector(".documentation-nav");
   if (!nav) return;
 
+  const SCROLL_DURATION_MS = 250;
   const mobileQuery = window.matchMedia("(max-width: 960px)");
   const menuButton = nav.querySelector(".documentation-nav-menu");
   const navScroll = nav.querySelector(".documentation-nav-scroll");
+  let scrollFrame = 0;
 
   function setMenuOpen(isOpen) {
     nav.classList.toggle("is-menu-open", isOpen);
@@ -103,6 +105,64 @@
     updateNavCompact();
   }
 
+  function getStickyOffset() {
+    if (!mobileQuery.matches) return 0;
+    return nav.getBoundingClientRect().height;
+  }
+
+  function lerpScrollTo(targetY) {
+    if (scrollFrame) {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = 0;
+    }
+
+    const startY = window.scrollY;
+    const delta = targetY - startY;
+    if (Math.abs(delta) < 1) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+
+    const startTime = performance.now();
+
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+    }
+
+    function tick(now) {
+      const t = Math.min(1, (now - startTime) / SCROLL_DURATION_MS);
+      window.scrollTo(0, startY + delta * easeInOutCubic(t));
+      if (t < 1) {
+        scrollFrame = requestAnimationFrame(tick);
+        return;
+      }
+      scrollFrame = 0;
+    }
+
+    scrollFrame = requestAnimationFrame(tick);
+  }
+
+  function scrollToHash(hash) {
+    if (!hash || hash === "#") {
+      lerpScrollTo(0);
+      return true;
+    }
+
+    const id = hash.startsWith("#") ? hash.slice(1) : hash;
+    if (!id) {
+      lerpScrollTo(0);
+      return true;
+    }
+
+    const target = document.getElementById(id);
+    if (!target) return false;
+
+    const top =
+      target.getBoundingClientRect().top + window.scrollY - getStickyOffset();
+    lerpScrollTo(Math.max(0, top));
+    return true;
+  }
+
   if (menuButton) {
     menuButton.addEventListener("click", () => {
       if (!mobileQuery.matches) return;
@@ -112,9 +172,17 @@
 
   if (navScroll) {
     navScroll.addEventListener("click", (event) => {
-      const link = event.target.closest("a[href]");
-      if (!link || !mobileQuery.matches) return;
-      setMenuOpen(false);
+      const link = event.target.closest('a[href^="#"]');
+      if (!link || !navScroll.contains(link)) return;
+
+      const hash = link.getAttribute("href");
+      if (!hash) return;
+
+      event.preventDefault();
+      if (mobileQuery.matches) setMenuOpen(false);
+      if (scrollToHash(hash)) {
+        history.pushState(null, "", hash === "#" ? location.pathname : hash);
+      }
     });
   }
 

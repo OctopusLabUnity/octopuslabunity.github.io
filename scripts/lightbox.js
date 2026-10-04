@@ -58,12 +58,14 @@
   let lastTapTime = 0;
   let lastTapX = 0;
   let lastTapY = 0;
+  let pointerDownTarget = null;
   let galleryImages = [];
   let galleryIndex = -1;
 
   function applyTransform(withTransition = false) {
     image.style.transition = withTransition ? "transform 0.2s ease" : "none";
     image.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+    lightbox.classList.toggle("is-zoomed", scale > 1);
   }
 
   function resetTransform(withTransition = false) {
@@ -237,6 +239,7 @@
 
     lightbox.setPointerCapture(event.pointerId);
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    pointerDownTarget = event.target;
     moved = false;
 
     if (pointers.size === 1) {
@@ -313,6 +316,9 @@
     }
 
     if (pointers.size === 0) {
+      const tapTarget = pointerDownTarget;
+      pointerDownTarget = null;
+
       if (scale < 1.05) {
         resetTransform(true);
       } else {
@@ -331,7 +337,7 @@
       lastTapX = event.clientX;
       lastTapY = event.clientY;
 
-      if (isDoubleTap && event.target === image) {
+      if (isDoubleTap && tapTarget === image) {
         lastTapTime = 0;
         if (scale > 1) {
           resetTransform(true);
@@ -345,7 +351,12 @@
         return;
       }
 
-      if (scale <= 1 && event.target === lightbox) {
+      if (scale > 1 && tapTarget === image) {
+        resetTransform(true);
+        return;
+      }
+
+      if (scale <= 1 && tapTarget === lightbox) {
         closeLightbox();
       }
     }

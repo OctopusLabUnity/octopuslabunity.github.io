@@ -1,22 +1,30 @@
 :root {
-  --color-brand: #fa514b;
-  --color-brand-2: #dc2c83;
-  --color-gradient-0: #ffa500;
-  --color-gradient-40: #fa514b;
-  --color-gradient-70: #dc2c83;
-  --color-gradient-100: #b418b7;
+  /* Light Mode */
   --color-text: #373737;
   --color-selection: #ffde5a;
   --color-surface: #ffffff;
   --color-surface-soft: #eff0f6;
   --color-surface-border: #d2d4e7;
-  --color-on-gradient: #ffffff;
+
+  /* Dark Mode */
   --color-text-dark: #f2f2f7;
   --color-selection-dark: #812157;
-  --color-surface-dark: #1a1a22;
-  --color-surface-soft-dark: #262632;
-  --color-surface-border-dark: #3a3a48;
+  --color-surface-dark: #20202a;
+  --color-surface-soft-dark: #2c2c38;
+  --color-surface-border-dark: #404050;
+
+  /* Static */
+  --color-brand: #fa514b;
+  --color-brand-2: #eb3691;
+  --color-gradient-0: #ffa500;
+  --color-gradient-45: #fa514b;
+  --color-gradient-70: #eb3691;
+  --color-gradient-100: #c51cc8;
+  --color-on-gradient: #ffffff;
   --color-transparent: #ffffff00;
+  --color-lightbox-background: rgba(32, 32, 42, 0.92);
+  --color-lightbox-button-hover: #ffffff;
+  --color-lightbox-icon: #ffffff;
   --color-code-muted: #6b7280;
   --color-code-property: #c231bd;
   --color-code-string: #59b30b;
@@ -125,7 +133,7 @@ blockquote a {
     background-size 0.15s;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   p a:hover,
   li a:hover,
   td a:hover,
@@ -303,7 +311,7 @@ th {
   transition: transform 0.15s;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .button-large:hover {
     color: var(--color-brand);
   }
@@ -357,7 +365,7 @@ th {
   transition: transform 0.15s;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .button-medium:hover {
     color: var(--color-brand);
   }

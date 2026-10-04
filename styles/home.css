@@ -11,7 +11,7 @@
   background: linear-gradient(
     to bottom right,
     var(--color-gradient-0) 0%,
-    var(--color-gradient-40) 40%,
+    var(--color-gradient-45) 45%,
     var(--color-gradient-70) 70%,
     var(--color-gradient-100) 100%
   );
@@ -106,7 +106,7 @@
   align-items: center;
   justify-content: center;
   border: 0;
-  background-color: var(--color-on-gradient);
+  background-color: var(--color-surface);
   color: transparent;
   cursor: pointer;
 }
@@ -125,10 +125,6 @@
   color: transparent;
 }
 
-[data-theme="dark"] .home-theme-toggle {
-  background-color: #000000;
-}
-
 .page-home .button-medium .button-label,
 .page-home .button-large .button-label {
   display: inline-flex;
@@ -137,7 +133,7 @@
   gap: inherit;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .page-home .button-medium:hover,
   .page-home .button-large:hover {
     color: var(--color-brand);
@@ -185,27 +181,16 @@
 }
 
 [data-theme="dark"] .home-logo {
-  filter: brightness(0);
-}
-
-[data-theme="dark"] .home-section-title,
-[data-theme="dark"] .home-section-desc {
-  color: #000000;
-}
-
-[data-theme="dark"] .home-divider {
-  border-top-color: #000000;
-}
-
-[data-theme="dark"] .page-home .button-medium,
-[data-theme="dark"] .page-home .button-large {
-  color: #000000;
-  border-color: #000000;
-}
-
-[data-theme="dark"] .page-home .button-medium::before,
-[data-theme="dark"] .page-home .button-large::before {
-  background-color: #000000;
+  background-color: var(--color-surface-dark);
+  background-image: none;
+  -webkit-mask-image: url("../images/logo.png");
+  mask-image: url("../images/logo.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 @media (max-width: 960px) {

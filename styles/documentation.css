@@ -62,12 +62,11 @@
   display: none;
 }
 
+.documentation-nav-logo::before,
 .documentation-nav-logo::after {
   content: "";
-  position: relative;
   height: 64px;
   aspect-ratio: 780 / 192;
-  background-color: currentColor;
   -webkit-mask-image: url("../images/logo.png");
   mask-image: url("../images/logo.png");
   -webkit-mask-size: contain;
@@ -78,25 +77,35 @@
   mask-position: center;
 }
 
+.documentation-nav-logo::after {
+  position: relative;
+  background-color: currentColor;
+}
+
+.documentation-nav-logo::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  background-image: linear-gradient(
+    to right,
+    var(--color-brand),
+    var(--color-brand-2)
+  );
+  transform: translate(-50%, -50%);
+  clip-path: polygon(0 0, 0 0, -12% 100%, -12% 100%);
+  transition: clip-path 0.15s;
+  pointer-events: none;
+}
+
 .documentation-nav-logo:link,
 .documentation-nav-logo:visited {
   color: var(--color-text);
 }
 
-@media (hover: hover) and (min-width: 961px) {
-  .documentation-nav-logo:hover,
-  .documentation-nav-logo:active {
-    color: var(--color-brand);
-  }
-
-  .documentation-nav-logo:hover::after,
-  .documentation-nav-logo:active::after {
-    background-color: transparent;
-    background-image: linear-gradient(
-      to right,
-      var(--color-brand),
-      var(--color-brand-2)
-    );
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
+  .documentation-nav-logo:hover::before {
+    clip-path: polygon(0 0, 112% 0, 100% 100%, -12% 100%);
   }
 }
 
@@ -146,7 +155,7 @@
   line-height: 1;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .documentation-theme-toggle:hover .documentation-theme-toggle-label,
   .documentation-theme-toggle:hover .documentation-theme-toggle-icon {
     background-image: linear-gradient(
@@ -188,7 +197,7 @@
   text-align: left;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .documentation-nav-toggle:hover {
     color: transparent;
     background-image: linear-gradient(
@@ -289,7 +298,7 @@
   transition: transform 0.15s;
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .documentation-nav-links a:hover {
     color: var(--color-on-gradient);
   }
@@ -382,7 +391,7 @@
   );
 }
 
-@media (hover: hover) and (min-width: 961px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
   .documentation-masthead .button-medium:hover,
   .documentation-content .button-medium:hover {
     color: var(--color-on-gradient);
@@ -552,9 +561,14 @@
   z-index: 1;
   width: 12px;
   height: 12px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
   flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask:
+    linear-gradient(#000 0 0) top / 100% 2px no-repeat,
+    linear-gradient(#000 0 0) right / 2px 100% no-repeat;
+  mask:
+    linear-gradient(#000 0 0) top / 100% 2px no-repeat,
+    linear-gradient(#000 0 0) right / 2px 100% no-repeat;
 }
 
 .documentation-gallery-prev::before {
@@ -580,9 +594,14 @@
   transition: transform 0.15s;
 }
 
-@media (hover: hover) and (min-width: 961px) {
-  .documentation-gallery-nav:hover {
-    color: var(--color-brand);
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
+  .documentation-gallery-nav:hover::before {
+    background-color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-brand),
+      var(--color-brand-2)
+    );
   }
 
   .documentation-gallery-nav:hover::after {
@@ -619,8 +638,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background-color: rgba(20, 20, 28, 0.92);
+  padding: 72px 80px;
+  background-color: var(--color-lightbox-background);
   opacity: 0;
   visibility: hidden;
   touch-action: none;
@@ -635,9 +654,16 @@
   visibility: visible;
 }
 
+.image-lightbox.is-zoomed .image-lightbox-close,
+.image-lightbox.is-zoomed .image-lightbox-nav {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .image-lightbox-image {
-  max-width: min(96vw, 1400px);
-  max-height: 92vh;
+  max-width: min(calc(100vw - 160px), 1400px);
+  max-height: calc(100vh - 144px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -653,43 +679,66 @@
   position: absolute;
   top: 16px;
   right: 16px;
+  z-index: 1;
+  overflow: hidden;
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  background: transparent;
-  color: var(--color-surface);
+  background-color: transparent;
+  color: var(--color-lightbox-icon);
   cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.15s;
-}
-
-.image-lightbox-close::before,
-.image-lightbox-close::after {
-  content: "";
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: currentColor;
+  transition:
+    opacity 0.15s,
+    visibility 0.15s;
 }
 
 .image-lightbox-close::before {
+  content: "";
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-lightbox-icon);
   transform: rotate(45deg);
+  -webkit-mask:
+    linear-gradient(#000 0 0) center / 100% 2px no-repeat,
+    linear-gradient(#000 0 0) center / 2px 100% no-repeat;
+  mask:
+    linear-gradient(#000 0 0) center / 100% 2px no-repeat,
+    linear-gradient(#000 0 0) center / 2px 100% no-repeat;
 }
 
-.image-lightbox-close::after {
-  transform: rotate(-45deg);
+.image-lightbox-close::after,
+.image-lightbox-nav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15%;
+  z-index: 0;
+  width: 130%;
+  height: 100%;
+  background-color: var(--color-lightbox-button-hover);
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 0.15s;
 }
 
-@media (hover: hover) and (min-width: 961px) {
-  .image-lightbox-close:hover {
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) and (min-width: 961px) {
+  .image-lightbox-close:hover::after,
+  .image-lightbox-nav:hover::after {
+    transform: translateX(0) skewX(-12deg);
   }
 
-  .image-lightbox-nav:hover {
-    opacity: 1;
+  .image-lightbox-close:hover::before,
+  .image-lightbox-nav:hover::before {
+    background-color: transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--color-brand),
+      var(--color-brand-2)
+    );
   }
 }
 
@@ -697,18 +746,20 @@
   position: absolute;
   top: 50%;
   z-index: 1;
+  overflow: hidden;
   width: 52px;
   height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  background: transparent;
-  color: var(--color-surface);
+  background-color: transparent;
+  color: var(--color-lightbox-icon);
   cursor: pointer;
-  opacity: 0.8;
   transform: translateY(-50%);
-  transition: opacity 0.15s;
+  transition:
+    opacity 0.15s,
+    visibility 0.15s;
 }
 
 .image-lightbox-nav[hidden] {
@@ -725,10 +776,17 @@
 
 .image-lightbox-nav::before {
   content: "";
+  position: relative;
+  z-index: 1;
   width: 16px;
   height: 16px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
+  background-color: var(--color-lightbox-icon);
+  -webkit-mask:
+    linear-gradient(#000 0 0) top / 100% 2px no-repeat,
+    linear-gradient(#000 0 0) right / 2px 100% no-repeat;
+  mask:
+    linear-gradient(#000 0 0) top / 100% 2px no-repeat,
+    linear-gradient(#000 0 0) right / 2px 100% no-repeat;
 }
 
 .image-lightbox-prev::before {
@@ -883,6 +941,7 @@ body.lightbox-open {
     transition: height 0.25s ease;
   }
 
+  .documentation-nav-logo::before,
   .documentation-nav-logo::after {
     height: 60px;
     max-width: 100%;
@@ -893,6 +952,7 @@ body.lightbox-open {
     height: 64px;
   }
 
+  .documentation-nav.is-compact .documentation-nav-logo::before,
   .documentation-nav.is-compact .documentation-nav-logo::after {
     height: 48px;
   }
@@ -1006,6 +1066,15 @@ body.lightbox-open {
 
   .documentation-figure figcaption {
     font-size: 12px;
+  }
+
+  .image-lightbox {
+    padding: 64px 56px;
+  }
+
+  .image-lightbox-image {
+    max-width: calc(100vw - 112px);
+    max-height: calc(100vh - 128px);
   }
 
   .image-lightbox-nav {
