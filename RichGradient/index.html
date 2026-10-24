@@ -18,6 +18,14 @@
     />
     <link rel="icon" type="image/png" href="../images/favicon.png" />
     <title>Octopus Lab | Rich Gradient</title>
+    <style>
+      .documentation-faq-question {
+        margin-bottom: 0.25rem;
+      }
+      .documentation-faq-answer {
+        margin-top: 0;
+      }
+    </style>
   </head>
   <body class="page-documentation">
     <nav class="documentation-nav">
@@ -40,14 +48,10 @@
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#">Download</a>
               <a href="#overview">1.1. Overview</a>
-              <a href="#features">1.2. Features</a>
-              <a class="is-nested" href="#authoring-features">1.2.1. Authoring</a>
-              <a class="is-nested" href="#pipeline-support">1.2.2. Pipeline Support</a>
-              <a href="#installation">1.3. Installation</a>
-              <a href="#quickstart">1.4. Quickstart</a>
-              <a href="#requirements">1.5. Requirements</a>
+              <a href="#installation">1.2. Installation</a>
+              <a href="#quickstart">1.3. Quickstart</a>
+              <a href="#requirements">1.4. Requirements</a>
             </div>
           </div>
         </div>
@@ -57,13 +61,8 @@
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#usage">2.1. Usage</a>
-              <a href="#editor">2.2. Editor Tools</a>
-              <a class="is-nested" href="#inspector">2.2.1. Inspector</a>
-              <a class="is-nested" href="#preview">2.2.2. Preview</a>
-              <a href="#baking">2.3. Baking</a>
-              <a href="#runtime">2.4. Runtime API</a>
-              <a href="#materials">2.5. Materials</a>
+              <a href="#editor-basics">2.1. Editor Basics</a>
+              <a href="#gradient-modes">2.2. Gradient Modes</a>
             </div>
           </div>
         </div>
@@ -73,41 +72,22 @@
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#parameters">3.1. Parameters</a>
-              <a href="#blend-modes">3.2. Blend Modes</a>
-              <a class="is-nested" href="#blend-linear">3.2.1. Linear</a>
-              <a class="is-nested" href="#blend-smoothstep">3.2.2. SmoothStep</a>
-              <a class="is-nested" href="#blend-posterize">3.2.3. Posterize</a>
-              <a href="#wrap-modes">3.3. Wrap Modes</a>
-              <a href="#events">3.4. Events</a>
-              <a href="#scripting">3.5. Scripting</a>
+              <a href="#api">3.1. RichGradient API</a>
+              <a href="#keys">3.2. Color &amp; Alpha Keys</a>
+              <a href="#interop">3.3. Unity Gradient Interop</a>
+              <a href="#code-examples">3.4. Code Examples</a>
             </div>
           </div>
         </div>
         <div class="documentation-nav-group">
           <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            4. Examples
+            4. Support
           </button>
           <div class="documentation-nav-panel">
             <div class="documentation-nav-links">
-              <a href="#examples">4.1. Gallery</a>
-              <a href="#sky">4.2. Sky Blends</a>
-              <a href="#ui">4.3. UI Ramps</a>
-              <a href="#particles">4.4. Particles</a>
-              <a href="#post">4.5. Post Effects</a>
-            </div>
-          </div>
-        </div>
-        <div class="documentation-nav-group">
-          <button type="button" class="documentation-nav-toggle" aria-expanded="false">
-            5. Support
-          </button>
-          <div class="documentation-nav-panel">
-            <div class="documentation-nav-links">
-              <a href="#faq">5.1. FAQ</a>
-              <a href="#performance">5.2. Performance</a>
-              <a href="#changelog">5.3. Changelog</a>
-              <a href="#licence">5.4. Licence</a>
+              <a href="#faq">4.1. FAQ</a>
+              <a href="#limitations">4.2. Limitations</a>
+              <a href="#changelog">4.3. Changelog</a>
             </div>
           </div>
         </div>
@@ -132,7 +112,7 @@
       <div class="documentation-hero">
         <img
           class="documentation-hero-image"
-          src="./images/hero.jpg"
+          src="./images/banner.png"
           alt=""
         />
         <img
@@ -144,11 +124,11 @@
       <div class="documentation-masthead">
         <p class="documentation-product">
           <span class="documentation-product-name">Rich Gradient</span>
-          <span class="documentation-version">v1.2.0</span>
+          <span class="documentation-version">v1.0.0</span>
         </p>
         <a
           class="button-medium"
-          href="https://assetstore.unity.com/"
+          href="https://assetstore.unity.com/packages/slug/414152"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -162,391 +142,291 @@
         </div>
         <h2 id="overview">1.1. Overview</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. See also the
-          <a href="#installation">installation guide</a> before you begin.
+          Rich Gradient is a serializable gradient type for Unity with up to
+          <strong>32 color keys and 32 alpha keys</strong> — four times what
+          Unity's built-in <code>Gradient</code> allows, which helps with
+          multi-stop looks like skies, status bars, or stylized lighting. Drop
+          a <code>RichGradient</code> field into any <code>MonoBehaviour</code>
+          or <code>ScriptableObject</code> exactly like a regular gradient
+          field, and get a dedicated editor window, an OKLab-based
+          <a href="#gradient-modes">Perceptual Blend mode</a> for smoother
+          transitions between saturated hues, and lossless two-way conversion
+          to and from Unity's native <code>Gradient</code>.
         </p>
-        <div class="documentation-gallery">
-          <img
-            src="https://images.unsplash.com/photo-1557683316-973673baf926?w=1200&q=80"
-            alt="Abstract purple and blue gradient"
-            decoding="async"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80"
-            alt="Colorful soft gradient backdrop"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1200&q=80"
-            alt="Pink and blue gradient sample"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200&q=80"
-            alt="Night sky reference"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="https://picsum.photos/seed/richgradient-overview/1600/900"
-            alt="Wide landscape sample"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <blockquote>
-          Gradientem divitem creavit, colores fluunt sicut aqua in mare.
-        </blockquote>
         <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Compare with
-          <a href="../GradientMapShader/">Gradient Map Shader</a> if you need
-          lookup-based remapping instead.
-        </p>
-        <h2 id="features">1.2. Features</h2>
-        <p>
-          Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-          impedit quo minus id quod maxime placeat facere possimus. Rich Gradient
-          focuses on authored color stops, HDR-friendly baking, and fast
-          runtime sampling. Explore <a href="#examples">Examples</a> for visuals.
-        </p>
-        <h3 id="authoring-features">1.2.1. Authoring</h3>
-        <ul>
-          <li>ScriptableObject authoring with live preview</li>
-          <li>Configurable bake resolution and wrap modes</li>
-          <li>Editor and runtime rebuild APIs</li>
-        </ul>
-        <h3 id="pipeline-support">1.2.2. Pipeline Support</h3>
-        <p>
-          Works with URP and Built-in pipelines out of the box. Keep bake steps
-          modest on mobile — see <a href="#performance">Performance</a>.
-        </p>
-        <img
-          src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1200&q=80"
-          alt="Colorful soft gradient backdrop"
-        />
-        <h2 id="installation">1.3. Installation</h2>
-        <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium. Import from the
-          <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Unity Asset Store</a>
-          then open the sample scene. Continue with
+          It has no render-pipeline dependency. Continue with
+          <a href="#installation">Installation</a> or jump straight to
           <a href="#quickstart">Quickstart</a>.
         </p>
-        <ol>
-          <li>Open Package Manager and install Rich Gradient</li>
-          <li>Import the Samples folder into your project</li>
-          <li>Create a Rich Gradient asset via Create menu</li>
-          <li>Assign the baked texture to your material</li>
-        </ol>
-        <pre><code class="language-csharp">[CreateAssetMenu(menuName = "Octopus Lab/Rich Gradient")]
-public class RichGradientAsset : ScriptableObject
-{
-    public Gradient gradient;
-    public int steps = 256;
-}</code></pre>
-        <h2 id="quickstart">1.4. Quickstart</h2>
+        <h2 id="installation">1.2. Installation</h2>
         <p>
-          Temporibus autem quibusdam et aut officiis debitis aut rerum
-          necessitatibus saepe eveniet. Bake once, sample forever — see
-          <a href="#baking">Baking</a> for quality tips.
+          Import Rich Gradient from the
+          <a href="https://assetstore.unity.com/packages/slug/414152" target="_blank" rel="noopener noreferrer">Unity Asset Store</a>.
+          The package files are added under:
+        </p>
+        <pre><code class="language-text">Assets/OctopusLab/RichGradient</code></pre>
+        <p>
+          Continue with <a href="#quickstart">Quickstart</a> to add your first
+          gradient field.
+        </p>
+        <h2 id="quickstart">1.3. Quickstart</h2>
+        <p>
+          Add a <code>RichGradient</code> field to any component. A new gradient
+          is white and fully opaque.
         </p>
         <pre><code class="language-csharp">using OctopusLab.RichGradient;
+using UnityEngine;
 
-var gradient = new RichGradient();
-gradient.SetColors(Color.red, Color.blue);
-material.SetTexture("_Gradient", gradient.Bake());</code></pre>
-        <img
-          src="https://picsum.photos/seed/richgradient1/1200/640"
-          alt="Sample texture placeholder"
-        />
-        <h2 id="requirements">1.5. Requirements</h2>
+public class GradientUser : MonoBehaviour
+{
+    [SerializeField] private RichGradient _gradient = new();
+
+    private void Start()
+    {
+        Color mid = _gradient.Evaluate(0.5f);
+        Debug.Log(mid);
+    }
+}</code></pre>
         <p>
-          Unity 2021.3 LTS or newer is recommended. GPU texture sampling is
-          required for material usage. Review
-          <a href="#performance">Performance</a> before shipping mobile builds.
+          <code>Evaluate</code> takes a time from 0 to 1 and returns the color,
+          including alpha. Values outside that range are clamped. Times before
+          the first key or after the last key use that endpoint key.
+        </p>
+        <figure class="documentation-figure">
+          <img
+            src="./images/inspector.png"
+            alt="RichGradient swatch field in the Unity Inspector"
+          />
+          <figcaption>
+            The <code>RichGradient</code> swatch as it appears in the Inspector.
+          </figcaption>
+        </figure>
+        <h2 id="requirements">1.4. Requirements</h2>
+        <ul>
+          <li>Unity 2022.3 or newer (tested in 2022.3, 2023.2, and 6000.0)</li>
+          <li>No other package dependencies</li>
+          <li>No render-pipeline dependency — tested in the Built-in and Universal Render Pipelines</li>
+          <li>Works in both Linear and Gamma color space projects</li>
+        </ul>
+        <h1 id="workflow">2. Workflow</h1>
+        <h2 id="editor-basics">2.1. Editor Basics</h2>
+        <p>
+          A serialized <code>RichGradient</code> is drawn as a swatch. Click the
+          swatch, or focus it and press Space or Enter, to open the editor. It
+          works much like Unity's own gradient editor:
+        </p>
+        <ul>
+          <li>Click an empty spot on the top row to add an alpha key, or on the bottom row to add a color key.</li>
+          <li>Drag a key to move it.</li>
+          <li>Drag a key away from its row to remove it.</li>
+          <li>Press Delete or Backspace to remove the selected key.</li>
+          <li>One color key and one alpha key always remain, and each row holds at most 32 keys.</li>
+          <li>Alpha is edited with its own slider — the color field does not edit alpha.</li>
+        </ul>
+        <figure class="documentation-figure">
+          <img
+            src="./images/editor.png"
+            alt="Rich Gradient Editor window with several color and alpha keys"
+          />
+          <figcaption>
+            The Rich Gradient Editor window.
+          </figcaption>
+        </figure>
+        <h2 id="gradient-modes">2.2. Gradient Modes</h2>
+        <p>
+          <code>Mode</code> controls how both color and alpha interpolate
+          between keys:
         </p>
         <table>
           <thead>
             <tr>
-              <th>Platform</th>
-              <th>Supported</th>
-              <th>Notes</th>
+              <th>Mode</th>
+              <th>Color</th>
+              <th>Alpha</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Windows / macOS / Linux</td>
-              <td>Yes</td>
-              <td>Editor + Player</td>
+              <td><code>Blend</code></td>
+              <td>Interpolates in RGB</td>
+              <td>Interpolates</td>
             </tr>
             <tr>
-              <td>iOS / Android</td>
-              <td>Yes</td>
-              <td>Prefer 128–256 steps</td>
+              <td><code>Fixed</code></td>
+              <td>Holds each key until the next key</td>
+              <td>Holds each key until the next key</td>
             </tr>
             <tr>
-              <td>Consoles</td>
-              <td>Yes</td>
-              <td>Bake offline when possible</td>
-            </tr>
-            <tr>
-              <td>WebGL</td>
-              <td>Yes</td>
-              <td>Watch texture memory</td>
+              <td><code>PerceptualBlend</code></td>
+              <td>Interpolates in OKLab color space</td>
+              <td>Interpolates</td>
             </tr>
           </tbody>
         </table>
-        <h1 id="workflow">2. Workflow</h1>
-        <h2 id="usage">2.1. Usage</h2>
         <p>
-          Itaque earum rerum hic tenetur a sapiente delectus. Bind the baked
-          texture like any other
-          <a href="https://docs.unity3d.com/Manual/Textures.html" target="_blank" rel="noopener noreferrer">Unity texture</a>.
-          Cross-check <a href="#parameters">Parameters</a>.
+          Perceptual blending keeps transitions between saturated colors more
+          even than RGB blending.
+        </p>
+        <pre><code class="language-csharp">_gradient.Mode = RichGradientMode.PerceptualBlend;</code></pre>
+        <figure class="documentation-figure">
+          <img
+            src="./images/blend-modes.png"
+            alt="Comparison of Blend and PerceptualBlend across saturated hues"
+          />
+          <figcaption>
+            <code>Blend</code> vs. <code>PerceptualBlend</code> across saturated
+            hues.
+          </figcaption>
+        </figure>
+        <h1 id="reference">3. Reference</h1>
+        <h2 id="api">3.1. RichGradient API</h2>
+        <p>All types are in the <code>OctopusLab.RichGradient</code> namespace.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Evaluate(float time)</code></td>
+              <td>Returns the color at that time, including alpha.</td>
+            </tr>
+            <tr>
+              <td><code>SetKeys(colorKeys, alphaKeys)</code></td>
+              <td>Replaces both sets of keys and raises <code>OnChanged</code>.</td>
+            </tr>
+            <tr>
+              <td><code>ColorKeys</code> / <code>AlphaKeys</code></td>
+              <td>Read or replace one set of keys.</td>
+            </tr>
+            <tr>
+              <td><code>Mode</code></td>
+              <td>Reads or sets the blend mode.</td>
+            </tr>
+            <tr>
+              <td><code>ColorKeyCount</code> / <code>AlphaKeyCount</code></td>
+              <td>Current number of keys in each set.</td>
+            </tr>
+            <tr>
+              <td><code>Clone()</code></td>
+              <td>Returns an independent copy.</td>
+            </tr>
+            <tr>
+              <td><code>OnChanged</code></td>
+              <td>Raised after the keys or the mode change.</td>
+            </tr>
+            <tr>
+              <td><code>MaxKeyCount</code></td>
+              <td>32 — the maximum number of color or alpha keys.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Keys passed to the API are clamped to the 0–1 range, sorted by time,
+          and limited to 32. Extra keys are discarded.
+        </p>
+        <h2 id="keys">3.2. Color &amp; Alpha Keys</h2>
+        <p>
+          <code>RichGradientColorKey</code> stores <code>Color</code> and
+          <code>Time</code>. <code>RichGradientAlphaKey</code> stores
+          <code>Alpha</code> and <code>Time</code>.
+        </p>
+        <pre><code class="language-csharp">var colorKeys = new[]
+{
+    new RichGradientColorKey(Color.red, 0f),
+    new RichGradientColorKey(Color.yellow, 0.5f),
+    new RichGradientColorKey(Color.blue, 1f)
+};
+
+var alphaKeys = new[]
+{
+    new RichGradientAlphaKey(1f, 0f),
+    new RichGradientAlphaKey(0f, 1f)
+};</code></pre>
+        <h2 id="interop">3.3. Unity Gradient Interop</h2>
+        <p>
+          <code>FromGradient(Gradient)</code> copies a Unity gradient into a new
+          <code>RichGradient</code>. <code>ToGradient()</code> copies a
+          <code>RichGradient</code> back into a Unity <code>Gradient</code>.
         </p>
         <blockquote>
-          Colorum mixtura perfecta est cum proportio servatur.
+          <code>ToGradient()</code> keeps at most 8 color keys and 8 alpha keys,
+          because that is Unity's <code>Gradient</code> limit. Keys are sorted
+          by time first, so the earliest 8 of each type are kept. See also
+          <a href="#limitations">Limitations</a>.
         </blockquote>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
-              alt="Abstract fluid gradient art"
-            />
-            <figcaption>
-              Fluid baking preview with SmoothStep blend enabled.
-            </figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img
-              src="https://picsum.photos/seed/richgradient2/800/600"
-              alt="Material preview placeholder"
-            />
-            <figcaption>
-              Material slot using a 256-step baked LUT texture.
-            </figcaption>
-          </figure>
-        </div>
-        <h2 id="editor">2.2. Editor Tools</h2>
+        <pre><code class="language-csharp">RichGradient fromUnity = RichGradient.FromGradient(unityGradient);
+Gradient backToUnity = fromUnity.ToGradient();</code></pre>
+        <h2 id="code-examples">3.4. Code Examples</h2>
         <p>
-          Et harum quidem rerum facilis est et expedita distinctio. The inspector
-          preview updates as you drag stops. Open
-          <a href="#runtime">Runtime API</a> when you need dynamic colors.
+          Reacting to <code>OnChanged</code> to refresh a texture whenever the
+          keys or mode change:
         </p>
-        <h3 id="inspector">2.2.1. Inspector</h3>
-        <ul>
-          <li>Stop color and alpha editing</li>
-          <li>HDR color fields when enabled</li>
-          <li>One-click rebake</li>
-        </ul>
-        <h3 id="preview">2.2.2. Preview</h3>
-        <p>
-          The live strip updates as you edit stops so you can judge banding
-          before baking for materials.
-        </p>
-        <h2 id="baking">2.3. Baking</h2>
-        <p>
-          Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-          quam nihil molestiae consequatur. Higher steps reduce banding. See
-          <a href="#blend-modes">Blend Modes</a> for interpolation choices.
-        </p>
-        <pre><code class="language-csharp">gradient.intensity = 1.25f;
-gradient.steps = 128;
-gradient.Rebuild();</code></pre>
-        <h2 id="runtime">2.4. Runtime API</h2>
-        <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium. Rebuild sparingly on device; prefer
-          pre-baked assets. Related:
-          <a href="../GradientMapShader/#overview">Gradient Map Shader</a>.
-        </p>
-        <pre><code class="language-csharp">public void SetMood(Color a, Color b)
+        <pre><code class="language-csharp">private void OnEnable()
 {
-    gradient.SetColors(a, b);
-    gradient.Rebuild();
-    ApplyToMaterials();
-}</code></pre>
-        <h2 id="materials">2.5. Materials</h2>
-        <p>
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-          fugit. Sample with UV.x or a custom scalar. Jump to
-          <a href="#examples">Gallery</a>.
-        </p>
-        <img
-          src="https://picsum.photos/seed/richgradient2/1200/640"
-          alt="Material preview placeholder"
-        />
-        <h1 id="reference">3. Reference</h1>
-        <h2 id="parameters">3.1. Parameters</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Default</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Intensity</td>
-              <td>float</td>
-              <td>1.0</td>
-            </tr>
-            <tr>
-              <td>Steps</td>
-              <td>int</td>
-              <td>256</td>
-            </tr>
-            <tr>
-              <td>Blend Mode</td>
-              <td>enum</td>
-              <td>Linear</td>
-            </tr>
-            <tr>
-              <td>Wrap Mode</td>
-              <td>enum</td>
-              <td>Clamp</td>
-            </tr>
-            <tr>
-              <td>HDR</td>
-              <td>bool</td>
-              <td>false</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2 id="blend-modes">3.2. Blend Modes</h2>
-        <p>
-          Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-          Linear is default; SmoothStep softens transitions; Posterize quantizes
-          bands. See <a href="#wrap-modes">Wrap Modes</a>.
-        </p>
-        <pre><code class="language-csharp">public enum BlendMode
-{
-    Linear,
-    SmoothStep,
-    Posterize
+    _richGradient.OnChanged += UpdateTexture;
 }
 
-gradient.blendMode = BlendMode.SmoothStep;</code></pre>
-        <h3 id="blend-linear">3.2.1. Linear</h3>
-        <p>
-          Straight interpolation between neighboring stops. Best for predictable
-          ramps and UI meters.
-        </p>
-        <h3 id="blend-smoothstep">3.2.2. SmoothStep</h3>
-        <p>
-          Eases into and out of each segment so midtones feel softer without
-          adding extra stops.
-        </p>
-        <h3 id="blend-posterize">3.2.3. Posterize</h3>
-        <p>
-          Quantizes the ramp into hard bands — useful for toon and stylized
-          looks.
-        </p>
-        <h2 id="wrap-modes">3.3. Wrap Modes</h2>
-        <p>
-          Clamp holds edge colors; Repeat tiles the ramp; Mirror ping-pongs.
-          Useful for looping UI — check <a href="#ui">UI Ramps</a>.
-        </p>
-        <h2 id="events">3.4. Events</h2>
-        <p>
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis.
-          Subscribe to rebuild callbacks when caching textures. See
-          <a href="#scripting">Scripting</a>.
-        </p>
-        <h2 id="scripting">3.5. Scripting</h2>
-        <pre><code class="language-csharp">void ApplyToParticles(ParticleSystem ps, RichGradient rg)
+private void OnDisable()
 {
-    var texture = rg.Bake();
-    var renderer = ps.GetComponent&lt;ParticleSystemRenderer&gt;();
-    renderer.material.SetTexture("_Gradient", texture);
+    _richGradient.OnChanged -= UpdateTexture;
+}
+
+private void UpdateTexture()
+{
+    for (int x = 0; x < _texture.width; x++)
+    {
+        float time = x / (_texture.width - 1f);
+        _texture.SetPixel(x, 0, _richGradient.Evaluate(time));
+    }
+
+    _texture.Apply();
 }</code></pre>
-        <h1 id="examples-section">4. Examples</h1>
-        <h2 id="examples">4.1. Gallery</h2>
-        <p>
-          Browse more tools on the <a href="../">Octopus Lab home</a>. Visual
-          samples below illustrate common looks.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img
-              src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=800&q=80"
-              alt="Pink and blue gradient sample"
-            />
-            <figcaption>
-              Warm-cool gallery look for UI and VFX prototyping.
-            </figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img
-              src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80"
-              alt="Night sky reference"
-            />
-            <figcaption>
-              Night sky reference for horizon blend samples.
-            </figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          Gradientes multiplicantur, sed anima una manet.
+        <h1 id="support">4. Support</h1>
+        <h2 id="faq">4.1. FAQ</h2>
+        <blockquote class="documentation-faq-question">
+          Why does <code>ToGradient()</code> show fewer keys than my Rich
+          Gradient?
         </blockquote>
-        <h2 id="sky">4.2. Sky Blends</h2>
-        <p>
-          Horizon ramps with two to four stops keep skies lightweight. Pair with
-          <a href="#post">Post Effects</a> for mood shifts.
+        <p class="documentation-faq-answer">
+          Unity's <code>Gradient</code> is limited to 8 keys.
+          <code>ToGradient()</code> sorts by time and keeps the earliest 8 of
+          each type.
         </p>
-        <h2 id="ui">4.3. UI Ramps</h2>
-        <p>
-          Health bars and meters read clearly with warm-to-cool ramps. See
-          <a href="#particles">Particles</a> for motion use cases.
+        <blockquote class="documentation-faq-question">
+          Can I use HDR colors?
+        </blockquote>
+        <p class="documentation-faq-answer">
+          Not currently — the editor color field does not support HDR colors.
+          It also does not support the eyedropper, since Unity's editor API
+          does not expose that tool to custom color fields.
         </p>
-        <h2 id="particles">4.4. Particles</h2>
-        <p>
-          Trail and sheet colors driven by baked LUTs. Share feedback on the
-          <a href="https://assetstore.unity.com/" target="_blank" rel="noopener noreferrer">Asset Store page</a>.
+        <blockquote class="documentation-faq-question">
+          Does Rich Gradient depend on URP or HDRP?
+        </blockquote>
+        <p class="documentation-faq-answer">
+          No. It has no render-pipeline dependency and works in any pipeline.
         </p>
-        <img
-          src="https://picsum.photos/seed/richgradient3/1200/640"
-          alt="Particle look placeholder"
-        />
-        <h2 id="post">4.5. Post Effects</h2>
-        <p>
-          Grade full-screen looks by sampling a 1D ramp in a blit pass. Return to
-          <a href="#overview">Overview</a> or revisit
-          <a href="#installation">Installation</a>.
-        </p>
-        <h1 id="support">5. Support</h1>
-        <h2 id="faq">5.1. FAQ</h2>
+        <h2 id="limitations">4.2. Limitations</h2>
         <ul>
-          <li>Why banding? Increase steps or enable SmoothStep.</li>
-          <li>Why pink shader? Reimport and check pipeline.</li>
-          <li>Can I animate stops? Yes — rebuild at a controlled rate.</li>
+          <li>
+            <code>ToGradient()</code> keeps at most 8 color keys and 8 alpha
+            keys, because that is Unity's <code>Gradient</code> limit. Keys are
+            sorted by time first, so the earliest 8 of each type are kept.
+          </li>
+          <li>Keys beyond 32 are discarded without a warning.</li>
+          <li>The editor color field does not support HDR colors.</li>
+          <li>The eyedropper is not available either, since Unity's editor API does not expose that tool to custom color fields.</li>
         </ul>
-        <h2 id="performance">5.2. Performance</h2>
-        <p>
-          Prefer offline baking. Keep steps at 128–256 for mobile. Profile with
-          the Unity Frame Debugger when combining many materials.
-        </p>
-        <h2 id="changelog">5.3. Changelog</h2>
+        <h2 id="changelog">4.3. Changelog</h2>
         <p>
           Release notes for Rich Gradient are maintained in the package
           changelog.
         </p>
         <a class="button-medium" href="./CHANGELOG.md">
           View Changelog
-        </a>
-        <h2 id="licence">5.4. Licence</h2>
-        <p>
-          Review the full licence terms included with this package.
-        </p>
-        <a class="button-medium" href="./LICENSE.md">
-          View Licence
         </a>
       </div>
     </div>

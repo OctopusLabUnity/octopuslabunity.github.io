@@ -344,7 +344,7 @@
   position: relative;
   z-index: 1;
   display: block;
-  height: 128px;
+  height: 200px;
   width: auto;
   max-width: calc(100% - 48px);
   object-fit: contain;
@@ -619,8 +619,7 @@
 
 .documentation-figure img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
 }
 
 .documentation-content > img {
@@ -994,7 +993,7 @@ body.lightbox-open {
   }
 
   .documentation-hero-logo {
-    height: 80px;
+    height: 130px;
     max-width: calc(100% - 32px);
   }
 
