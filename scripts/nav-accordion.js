@@ -1,76 +1,97 @@
 (() => {
   const DURATION_MS = 150;
 
-  document.querySelectorAll(".documentation-nav-group").forEach((group) => {
-    const toggle = group.querySelector(".documentation-nav-toggle");
-    const panel = group.querySelector(".documentation-nav-panel");
-    if (!toggle || !panel) return;
+  const accordionGroups = Array.from(
+    document.querySelectorAll(".documentation-nav-group")
+  )
+    .map((group) => {
+      const toggle = group.querySelector(".documentation-nav-toggle");
+      const panel = group.querySelector(".documentation-nav-panel");
+      if (!toggle || !panel) return null;
 
-    let animation = null;
-    let isOpen = group.classList.contains("is-open");
+      let animation = null;
+      let isOpen = group.classList.contains("is-open");
 
-    panel.style.height = isOpen ? "auto" : "0px";
-    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      panel.style.height = isOpen ? "auto" : "0px";
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
 
-    function animateHeight(from, to, onDone) {
-      if (animation) {
-        animation.cancel();
-        animation = null;
-      }
-
-      group.classList.add("is-animating");
-      panel.style.height = `${from}px`;
-
-      const running = panel.animate([{ height: `${from}px` }, { height: `${to}px` }], {
-        duration: DURATION_MS,
-        easing: "ease",
-        fill: "forwards",
-      });
-      animation = running;
-
-      running.finished
-        .then(() => {
-          if (animation !== running) return;
-          onDone();
-          running.cancel();
+      function animateHeight(from, to, onDone) {
+        if (animation) {
+          animation.cancel();
           animation = null;
-          group.classList.remove("is-animating");
-        })
-        .catch(() => {
-          if (animation === running) {
+        }
+
+        group.classList.add("is-animating");
+        panel.style.height = `${from}px`;
+
+        const running = panel.animate([{ height: `${from}px` }, { height: `${to}px` }], {
+          duration: DURATION_MS,
+          easing: "ease",
+          fill: "forwards",
+        });
+        animation = running;
+
+        running.finished
+          .then(() => {
+            if (animation !== running) return;
+            onDone();
+            running.cancel();
             animation = null;
             group.classList.remove("is-animating");
-          }
-        });
-    }
+          })
+          .catch(() => {
+            if (animation === running) {
+              animation = null;
+              group.classList.remove("is-animating");
+            }
+          });
+      }
 
-    toggle.addEventListener("click", () => {
-      const from = panel.getBoundingClientRect().height;
-
-      if (isOpen) {
+      function close() {
+        if (!isOpen) return;
+        const from = panel.getBoundingClientRect().height;
         isOpen = false;
         group.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
         animateHeight(from, 0, () => {
           panel.style.height = "0px";
         });
-        return;
       }
 
-      isOpen = true;
-      group.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
+      function open() {
+        if (isOpen) return;
+        const from = panel.getBoundingClientRect().height;
+        isOpen = true;
+        group.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
 
-      const previous = panel.style.height;
-      panel.style.height = "auto";
-      const to = panel.scrollHeight;
-      panel.style.height = previous;
-
-      animateHeight(from, to, () => {
+        const previous = panel.style.height;
         panel.style.height = "auto";
+        const to = panel.scrollHeight;
+        panel.style.height = previous;
+
+        animateHeight(from, to, () => {
+          panel.style.height = "auto";
+        });
+      }
+
+      const controller = { toggle, open, close, isOpen: () => isOpen };
+
+      toggle.addEventListener("click", () => {
+        if (controller.isOpen()) {
+          close();
+          return;
+        }
+
+        accordionGroups.forEach((other) => {
+          if (other && other !== controller && other.isOpen()) other.close();
+        });
+        open();
       });
-    });
-  });
+
+      return controller;
+    })
+    .filter(Boolean);
 
   const nav = document.querySelector(".documentation-nav");
   if (!nav) return;
