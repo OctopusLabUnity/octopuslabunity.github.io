@@ -430,10 +430,10 @@
         </p>
         <ul>
           <li><strong>Depth Size:</strong> How deep the gradient spreads, in meters.</li>
-          <li><strong>Depth Strength:</strong> How strong the depth effect is. 0 = none, 1 = full.</li>
+          <li><strong>Depth Strength:</strong> Brightness of shallow areas. 0 = the whole surface uses the dark end, 1 = full gradient.</li>
         </ul>
         <blockquote>
-          Depth needs Transparent <strong>Surface Type</strong> and
+          Depth needs <strong>Surface Type</strong> set to Transparent and
           <strong>Depth Texture</strong> enabled on the URP Asset.
         </blockquote>
         <figure class="documentation-figure documentation-figure--small">
@@ -458,7 +458,9 @@
           Transparent areas of the texture make the surface see-through. With
           <strong>Alpha Clipping</strong>, they are cut out. Use it for
           leaves, fences and cut-out shapes. Only the alpha channel is used,
-          and it follows the mesh UVs.
+          and it follows the mesh UVs. For a black and white map, set
+          <strong>Alpha Source</strong> to <strong>From Gray Scale</strong> in
+          its import settings.
         </p>
         <div class="documentation-figure-row">
           <figure class="documentation-figure">
@@ -579,7 +581,7 @@
         </p>
         <ul>
           <li><strong>Color:</strong> The fill color.</li>
-          <li><strong>Range:</strong> The fill color fades in from Start to End. 0 is the side the Direction points to, 1 is the opposite side.</li>
+          <li><strong>Range:</strong> The fill color fades in between the two values. 0 is the side the Direction points to, 1 is the opposite side.</li>
           <li><strong>Direction:</strong> Direction of the fill in the world. Pitch sets its height, Yaw turns it around.</li>
         </ul>
         <div class="documentation-figure-row">
@@ -600,7 +602,7 @@
         <p>
           Adds a color to the edges of the object, as seen from the camera.
           <strong>Range</strong> sets where the rim fades in, from the area
-          facing the camera (0) to the edges (1). Raise Min for a thinner rim.
+          facing the camera (0) to the edges (1). Raise the left value for a thinner rim.
           With a <a href="#basic-normal-map">Normal Map</a>, the rim follows
           its bumps too.
         </p>
@@ -697,7 +699,7 @@
         <ul>
           <li><strong>Gradient:</strong> Colors of the water.</li>
           <li><strong>Depth Size:</strong> How deep the gradient spreads, in meters.</li>
-          <li><strong>Depth Strength:</strong> How strong the depth effect is. 0 = none, 1 = full.</li>
+          <li><strong>Depth Strength:</strong> Brightness of shallow areas. 0 = the whole surface uses the dark end, 1 = full gradient.</li>
         </ul>
         <div class="documentation-figure-row">
           <figure class="documentation-figure">
