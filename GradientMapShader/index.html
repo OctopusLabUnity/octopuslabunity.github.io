@@ -224,875 +224,943 @@
         </a>
       </div>
       <div class="documentation-content">
-        <div class="documentation-title">
-          <h1 id="getting-started">1. Getting Started</h1>
-        </div>
-        <h2 id="overview">1.1. Overview</h2>
-        <p>
-          Gradient Map Shader is a set of stylized shaders for the Universal
-          Render Pipeline. Every color on the surface comes from a
-          <strong>gradient you pick</strong>: dark areas use the left end of
-          the gradient, light areas use the right end. Lights, shadows and
-          textures only decide <em>where</em> on the gradient a surface is —
-          never its color. What you see on screen is always your palette.
-        </p>
-        <p>
-          Gradients are edited with <a href="../RichGradient/">Rich Gradient</a>,
-          which is included in the package.
-        </p>
-        <div class="documentation-gallery">
-          <img
-            src="./images/gallery-01.png"
-            alt="Gradient Map Shader gallery image 1"
-            decoding="async"
-          />
-          <img
-            src="./images/gallery-02.png"
-            alt="Gradient Map Shader gallery image 2"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="./images/gallery-03.png"
-            alt="Gradient Map Shader gallery image 3"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="./images/gallery-04.png"
-            alt="Gradient Map Shader gallery image 4"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="./images/gallery-05.png"
-            alt="Gradient Map Shader gallery image 5"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <p>The package has four shaders:</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Shader</th>
-              <th>Use it for</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="#basic-shader">Basic</a></td>
-              <td>3D objects: characters, props, buildings, terrain meshes.</td>
-            </tr>
-            <tr>
-              <td><a href="#water-shader">Water</a></td>
-              <td>Water surfaces that get darker as they get deeper.</td>
-            </tr>
-            <tr>
-              <td><a href="#sprite-shader">Sprite</a></td>
-              <td>2D sprites.</td>
-            </tr>
-            <tr>
-              <td><a href="#skybox-shader">Skybox</a></td>
-              <td>A gradient sky.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Each feature can be turned off in the Inspector, so you only pay for
-          what you use. Continue with <a href="#installation">Installation</a>
-          or jump straight to <a href="#quickstart">Quickstart</a>.
-        </p>
-        <h2 id="installation">1.2. Installation</h2>
-        <p>
-          Import Gradient Map Shader from the
-          <a href="https://assetstore.unity.com/packages/slug/414162" target="_blank" rel="noopener noreferrer">Unity Asset Store</a>.
-          The package files are added under:
-        </p>
-        <pre><code class="language-text">Assets/OctopusLab/GradientMapShader</code></pre>
-        <p>
-          <a href="../RichGradient/">Rich Gradient</a> is included in the
-          package. It is the gradient type the materials use, with up to 32
-          color keys. There are no extra setup steps: no Renderer Feature, no
-          project settings to change.
-        </p>
-        <h2 id="quickstart">1.3. Quickstart</h2>
-        <ol>
-          <li>Create a material: <strong>Assets → Create → Material</strong>.</li>
-          <li>Set its shader to <strong>Octopus Lab → Gradient Map Shader → Basic</strong>.</li>
-          <li>In the <strong>Shading</strong> section, click the <strong>Gradient</strong> field and pick your colors.</li>
-          <li>Drag the material onto an object in the scene.</li>
-        </ol>
-        <blockquote>
-          To learn how to add keys and change blend modes in the Gradient
-          field, see <a href="../RichGradient/#editor-basics">Rich Gradient Editor Basics</a>.
-        </blockquote>
-        <figure class="documentation-figure">
-          <img
-            src="./images/quickstart-inspector.png"
-            alt="Gradient Map Shader Basic material in the Inspector"
-          />
-          <figcaption>
-            A Basic material in the Inspector. The Gradient field is in the
-            Shading section.
-          </figcaption>
-        </figure>
-        <p>
-          Try a few colors and rotate the Directional Light to see the result
-          change.
-        </p>
-        <figure class="documentation-figure">
-          <img
-            src="./images/quickstart-gradient-result.png"
-            alt="A gradient and the object it colors"
-          />
-          <figcaption>
-            The same object with two different gradients.
-          </figcaption>
-        </figure>
-        <h2 id="requirements">1.4. Requirements</h2>
-        <ul>
-          <li>Unity 2022.3 or newer</li>
-          <li>Universal Render Pipeline (URP) 14 or newer</li>
-          <li>Works in both Linear and Gamma color space projects</li>
-        </ul>
-        <p>
-          See <a href="#technical-details">Technical Details</a> for tested
-          versions and supported URP features.
-        </p>
+        <section class="documentation-main-section is-open">
+          <h1 id="getting-started">
+            <button type="button" class="documentation-main-toggle" aria-expanded="true">
+              1. Getting Started
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="overview">1.1. Overview</h2>
+            <p>
+              Gradient Map Shader is a set of stylized shaders for the Universal
+              Render Pipeline. Every color on the surface comes from a
+              <strong>gradient you pick</strong>: dark areas use the left end of
+              the gradient, light areas use the right end. Lights, shadows and
+              textures only decide <em>where</em> on the gradient a surface is —
+              never its color. What you see on screen is always your palette.
+            </p>
+            <p>
+              Gradients are edited with <a href="../RichGradient/">Rich Gradient</a>,
+              which is included in the package.
+            </p>
+            <div class="documentation-gallery">
+              <img
+                src="./images/gallery-01.png"
+                alt="Gradient Map Shader gallery image 1"
+                decoding="async"
+              />
+              <img
+                src="./images/gallery-02.png"
+                alt="Gradient Map Shader gallery image 2"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="./images/gallery-03.png"
+                alt="Gradient Map Shader gallery image 3"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="./images/gallery-04.png"
+                alt="Gradient Map Shader gallery image 4"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="./images/gallery-05.png"
+                alt="Gradient Map Shader gallery image 5"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <p>The package has four shaders:</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Shader</th>
+                  <th>Use it for</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#basic-shader">Basic</a></td>
+                  <td>3D objects: characters, props, buildings, terrain meshes.</td>
+                </tr>
+                <tr>
+                  <td><a href="#water-shader">Water</a></td>
+                  <td>Water surfaces that get darker as they get deeper.</td>
+                </tr>
+                <tr>
+                  <td><a href="#sprite-shader">Sprite</a></td>
+                  <td>2D sprites.</td>
+                </tr>
+                <tr>
+                  <td><a href="#skybox-shader">Skybox</a></td>
+                  <td>A gradient sky.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Each feature can be turned off in the Inspector, so you only pay for
+              what you use. Continue with <a href="#installation">Installation</a>
+              or jump straight to <a href="#quickstart">Quickstart</a>.
+            </p>
+            <h2 id="installation">1.2. Installation</h2>
+            <p>
+              Import Gradient Map Shader from the
+              <a href="https://assetstore.unity.com/packages/slug/414162" target="_blank" rel="noopener noreferrer">Unity Asset Store</a>.
+              The package files are added under:
+            </p>
+            <pre><code class="language-text">Assets/OctopusLab/GradientMapShader</code></pre>
+            <p>
+              <a href="../RichGradient/">Rich Gradient</a> is included in the
+              package. It is the gradient type the materials use, with up to 32
+              color keys. There are no extra setup steps: no Renderer Feature, no
+              project settings to change.
+            </p>
+            <h2 id="quickstart">1.3. Quickstart</h2>
+            <ol>
+              <li>Create a material: <strong>Assets → Create → Material</strong>.</li>
+              <li>Set its shader to <strong>Octopus Lab → Gradient Map Shader → Basic</strong>.</li>
+              <li>In the <strong>Shading</strong> section, click the <strong>Gradient</strong> field and pick your colors.</li>
+              <li>Drag the material onto an object in the scene.</li>
+            </ol>
+            <blockquote>
+              To learn how to add keys and change blend modes in the Gradient
+              field, see <a href="../RichGradient/#editor-basics">Rich Gradient Editor Basics</a>.
+            </blockquote>
+            <figure class="documentation-figure">
+              <img
+                src="./images/quickstart-inspector.png"
+                alt="Gradient Map Shader Basic material in the Inspector"
+              />
+              <figcaption>
+                A Basic material in the Inspector. The Gradient field is in the
+                Shading section.
+              </figcaption>
+            </figure>
+            <p>
+              Try a few colors and rotate the Directional Light to see the result
+              change.
+            </p>
+            <figure class="documentation-figure">
+              <img
+                src="./images/quickstart-gradient-result.png"
+                alt="A gradient and the object it colors"
+              />
+              <figcaption>
+                The same object with two different gradients.
+              </figcaption>
+            </figure>
+            <h2 id="requirements">1.4. Requirements</h2>
+            <ul>
+              <li>Unity 2022.3 or newer</li>
+              <li>Universal Render Pipeline (URP) 14 or newer</li>
+              <li>Works in both Linear and Gamma color space projects</li>
+            </ul>
+            <p>
+              See <a href="#technical-details">Technical Details</a> for tested
+              versions and supported URP features.
+            </p>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="basic-shader">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              2. Basic Shader
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <p>
+              The Basic shader is for 3D objects. Its Inspector is split into
+              sections. This chapter follows the same order. Most sections have an
+              <strong>Enable</strong> toggle; turn off what you don't need.
+            </p>
+            <h2 id="basic-transparency">2.1. Transparency</h2>
+            <ul>
+              <li><strong>Surface Type:</strong> Opaque surfaces are solid. Transparent surfaces let what is behind them show through. In Transparent, the alpha of the gradient is used too.</li>
+              <li><strong>Render Face:</strong> Which sides of the mesh are drawn: Front, Back or Both.</li>
+              <li><strong>Alpha Clipping:</strong> Cuts holes where the <a href="#basic-alpha-map">Alpha Map</a> is below the <strong>Threshold</strong>. Shadows and baked lighting get the same holes.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-transparency-opaque.png" alt="Opaque surface" />
+                <figcaption>Opaque</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-transparency-transparent.png" alt="Transparent surface" />
+                <figcaption>Transparent</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              Only the Alpha Map cuts holes. The alpha of the gradient does not.
+            </blockquote>
+            <h2 id="basic-shading">2.2. Shading</h2>
+            <ul>
+              <li><strong>Gradient Map:</strong> When off, the surface shows grayscale shading instead of the gradient colors. Useful to check the shading on its own.</li>
+              <li><strong>Gradient:</strong> Colors of the surface. See <a href="../RichGradient/#gradient-modes">Gradient Modes</a> for how the colors blend.</li>
+              <li><strong>Shade Type:</strong> How the surface picks colors from the gradient: Light, View, Depth or Flat.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-gradient-map-off.png" alt="Gradient Map off" />
+                <figcaption>Gradient Map off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-gradient-map-on.png" alt="Gradient Map on" />
+                <figcaption>Gradient Map on</figcaption>
+              </figure>
+            </div>
+            <h3 id="shade-light">2.2.1. Light</h3>
+            <p>
+              Follows the lights in the scene. The side facing a light is lighter,
+              the other side darker. Point and
+              Spot lights, light cookies and baked lighting all work.
+            </p>
+            <figure class="documentation-figure documentation-figure--small">
+              <img src="./images/basic-shade-type-light.png" alt="Shade Type Light" />
+            </figure>
+            <h3 id="shade-view">2.2.2. View</h3>
+            <p>
+              Uses its own light that turns with the camera, so the object always
+              looks the same from any angle. Scene lights are ignored. This works
+              like a matcap and is great for shiny metal looks.
+              <strong>Direction</strong> sets where this light comes from:
+              <strong>Pitch</strong> sets its height, <strong>Yaw</strong> turns it
+              around.
+            </p>
+            <figure class="documentation-figure documentation-figure--small">
+              <img src="./images/basic-shade-type-view.png" alt="Shade Type View" />
+            </figure>
+            <h3 id="shade-depth">2.2.3. Depth</h3>
+            <p>
+              Follows how deep the scene is behind the surface, like water.
+              Shallow areas are lighter, deep areas darker.
+            </p>
+            <ul>
+              <li><strong>Depth Size:</strong> How deep the gradient spreads, in meters.</li>
+              <li><strong>Depth Strength:</strong> Brightness of shallow areas. 0 = the whole surface uses the dark end, 1 = full gradient.</li>
+            </ul>
+            <blockquote>
+              Depth needs <strong>Surface Type</strong> set to Transparent and
+              <strong>Depth Texture</strong> enabled on the URP Asset.
+            </blockquote>
+            <figure class="documentation-figure documentation-figure--small">
+              <img src="./images/basic-shade-type-depth.png" alt="Shade Type Depth" />
+            </figure>
+            <h3 id="shade-flat">2.2.4. Flat</h3>
+            <p>
+              The whole surface uses one color. <strong>Luminance</strong> picks
+              it: 0 = left end of the gradient, 1 = right end. Shadows, SSAO,
+              Darken Map and Lighten Map still affect it.
+            </p>
+            <figure class="documentation-figure documentation-figure--small">
+              <img src="./images/basic-shade-type-flat.png" alt="Shade Type Flat" />
+            </figure>
+            <h2 id="basic-maps">2.3. Maps</h2>
+            <p>
+              Textures that add detail to the surface. Each map has its own
+              <strong>Enable</strong> toggle.
+            </p>
+            <h3 id="basic-alpha-map">2.3.1. Alpha Map</h3>
+            <p>
+              Transparent areas of the texture make the surface see-through. With
+              <strong>Alpha Clipping</strong>, they are cut out. Use it for
+              leaves, fences and cut-out shapes. Only the alpha channel is used,
+              and it follows the mesh UVs. For a black and white map, set
+              <strong>Alpha Source</strong> to <strong>From Gray Scale</strong> in
+              its import settings.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-alpha-map-off.png" alt="Alpha Map off" />
+                <figcaption>Alpha Map off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-alpha-map-on.png" alt="Alpha Map on with Alpha Clipping" />
+                <figcaption>Alpha Map on, with Alpha Clipping</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              Alpha Map only works when <strong>Surface Type</strong> is
+              Transparent or <strong>Alpha Clipping</strong> is on.
+            </blockquote>
+            <h3 id="basic-normal-map">2.3.2. Normal Map</h3>
+            <p>
+              Adds bumps and dents to the shading, <a href="#basic-rim">Rim</a>
+              and <a href="#basic-specular">Specular</a>. <strong>Strength</strong>
+              sets how strong the bumps are.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-normal-map-off.png" alt="Normal Map off" />
+                <figcaption>Normal Map off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-normal-map-on.png" alt="Normal Map on" />
+                <figcaption>Normal Map on</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              Normal Map works with the Light and View shade types. Set the
+              texture's <strong>Texture Type</strong> to Normal map in its import
+              settings.
+            </blockquote>
+            <h3 id="basic-darken-map">2.3.3. Darken Map</h3>
+            <p>
+              Dark areas of the texture darken the surface. Use it for dirt, cracks or painted details.
+              <strong>Strength</strong> sets how strong the darkening is.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-darken-map-off.png" alt="Darken Map off" />
+                <figcaption>Darken Map off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-darken-map-on.png" alt="Darken Map on" />
+                <figcaption>Darken Map on</figcaption>
+              </figure>
+            </div>
+            <p><strong>Mapping</strong> sets how the map is placed on the object:</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Mapping</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UV</td>
+                  <td>Uses the mesh UVs.</td>
+                </tr>
+                <tr>
+                  <td>Planar</td>
+                  <td>Projects the map from above. Side faces stretch.</td>
+                </tr>
+                <tr>
+                  <td>Triplanar</td>
+                  <td>Projects the map from all sides without stretching. Costs more than Planar.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-mapping-planar.png" alt="Planar mapping" />
+                <figcaption>Planar</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-mapping-triplanar.png" alt="Triplanar mapping" />
+                <figcaption>Triplanar</figcaption>
+              </figure>
+            </div>
+            <p>
+              Planar and Triplanar don't need UVs, so they work on any mesh. The
+              map stays in place when the object moves and scales with the object.
+            </p>
+            <blockquote>
+              A black and white map is recommended. Only the red channel is used.
+              See <a href="#grayscale-image">Grayscale Image</a>.
+            </blockquote>
+            <h3 id="basic-lighten-map">2.3.4. Lighten Map</h3>
+            <p>
+              Light areas of the texture lighten the surface. Use it for highlights, glow or painted details. It has
+              the same <strong>Mapping</strong> and <strong>Strength</strong>
+              settings as <a href="#basic-darken-map">Darken Map</a>.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-lighten-map-off.png" alt="Lighten Map off" />
+                <figcaption>Lighten Map off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-lighten-map-on.png" alt="Lighten Map on" />
+                <figcaption>Lighten Map on</figcaption>
+              </figure>
+            </div>
+            <h2 id="basic-effects">2.4. Additional Effects</h2>
+            <p>
+              Extra effects on top of the gradient colors, and the shadow
+              settings of the object.
+            </p>
+            <h3 id="basic-fill">2.4.1. Fill</h3>
+            <p>
+              Fades a color over the object along a direction in the world. Use it
+              for snow on top, moss at the bottom or a height fade.
+            </p>
+            <ul>
+              <li><strong>Color:</strong> The fill color.</li>
+              <li><strong>Range:</strong> The fill color fades in between the two values. 0 is the side the Direction points to, 1 is the opposite side.</li>
+              <li><strong>Direction:</strong> Direction of the fill in the world. Pitch sets its height, Yaw turns it around.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-fill-off.png" alt="Fill off" />
+                <figcaption>Fill off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-fill-on.png" alt="Fill on" />
+                <figcaption>Fill on</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              The direction is in world space, so the fill does not turn when the
+              object rotates.
+            </blockquote>
+            <h3 id="basic-rim">2.4.2. Rim</h3>
+            <p>
+              Adds a color to the edges of the object, as seen from the camera.
+              <strong>Range</strong> sets where the rim fades in, from the area
+              facing the camera (0) to the edges (1). Raise the left value for a thinner rim.
+              With a <a href="#basic-normal-map">Normal Map</a>, the rim follows
+              its bumps too.
+            </p>
+            <div class="documentation-figure-row documentation-figure-row--three">
+              <figure class="documentation-figure">
+                <img src="./images/basic-rim-off.png" alt="Rim off" />
+                <figcaption>Rim off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-rim-on.png" alt="Rim on" />
+                <figcaption>Rim on</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-rim-normal-map.png" alt="Rim with Normal Map" />
+                <figcaption>Rim with Normal Map</figcaption>
+              </figure>
+            </div>
+            <h3 id="basic-specular">2.4.3. Specular</h3>
+            <p>
+              Adds a shiny highlight where the light reflects toward the camera.
+              <strong>Range</strong> sets its size: lower values give a wider
+              highlight, higher values a smaller one.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-specular-off.png" alt="Specular off" />
+                <figcaption>Specular off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-specular-on.png" alt="Specular on" />
+                <figcaption>Specular on</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              The highlight disappears in shadow. With the View shade type, it
+              uses the View light instead of the scene lights.
+            </blockquote>
+            <h3 id="basic-outline">2.4.4. Outline</h3>
+            <p>
+              Draws a colored line around the object. <strong>Width</strong> sets
+              its thickness in meters.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-outline-off.png" alt="Outline off" />
+                <figcaption>Outline off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-outline-on.png" alt="Outline on" />
+                <figcaption>Outline on</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              Outline only works on Opaque surfaces without Alpha Clipping. On
+              meshes with hard edges, the line breaks at the corners.
+            </blockquote>
+            <h3 id="basic-shadow">2.4.5. Shadow</h3>
+            <ul>
+              <li><strong>Cast Shadows:</strong> The object casts shadows on other objects.</li>
+              <li><strong>Receive Shadows:</strong> Shadows darken the surface.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/basic-receive-shadows-off.png" alt="Receive Shadows off" />
+                <figcaption>Receive Shadows off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/basic-receive-shadows-on.png" alt="Receive Shadows on" />
+                <figcaption>Receive Shadows on</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              For shadows on Transparent surfaces, enable
+              <strong>Transparent Receive Shadows</strong> on the URP Renderer.
+            </blockquote>
+            <h2 id="basic-advanced">2.5. Advanced Options</h2>
+            <p>
+              The standard Unity material options: <strong>Render Queue</strong>,
+              <strong>Enable GPU Instancing</strong> and <strong>Double Sided
+              Global Illumination</strong>.
+            </p>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="water-shader">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              3. Water Shader
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <p>
+              The Water shader colors water by depth: shallow areas are lighter,
+              deep areas darker. Moving patterns add
+              waves and foam. Water is always transparent.
+            </p>
+            <figure class="documentation-figure">
+              <img src="./images/water-overview.png" alt="Water shader in a scene" />
+              <figcaption>Water with Wave and Perlin Noise.</figcaption>
+            </figure>
+            <h2 id="water-shading">3.1. Shading</h2>
+            <ul>
+              <li><strong>Gradient:</strong> Colors of the water.</li>
+              <li><strong>Depth Size:</strong> How deep the gradient spreads, in meters.</li>
+              <li><strong>Depth Strength:</strong> Brightness of shallow areas. 0 = the whole surface uses the dark end, 1 = full gradient.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/water-depth-size-low.png" alt="Low Depth Size" />
+                <figcaption>Low Depth Size</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/water-depth-size-high.png" alt="High Depth Size" />
+                <figcaption>High Depth Size</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              Water needs <strong>Depth Texture</strong> enabled on the URP Asset.
+            </blockquote>
+            <h2 id="water-mapping">3.2. Mapping</h2>
+            <p>
+              Sets how the Wave and Perlin maps are placed on the water.
+              <strong>Planar</strong> projects them from above and suits flat
+              water. <strong>Triplanar</strong> projects them from all sides and
+              suits sloped water, like a waterfall. If the water is flat, Planar
+              gives the same result with better performance.
+            </p>
+            <h2 id="water-wave">3.3. Wave</h2>
+            <p>
+              A moving pattern that lightens the water.
+            </p>
+            <ul>
+              <li><strong>Wave Map</strong> and <strong>Tiling:</strong> The pattern and its size.</li>
+              <li><strong>Speed:</strong> How fast the waves move (X and Y).</li>
+              <li><strong>Strength:</strong> How strong the waves are. 0 = none, 1 = full.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/water-wave-off.png" alt="Wave off" />
+                <figcaption>Wave off</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/water-wave-on.png" alt="Wave on" />
+                <figcaption>Wave on</figcaption>
+              </figure>
+            </div>
+            <h2 id="water-perlin">3.4. Perlin Noise</h2>
+            <p>
+              A moving pattern for foam or spots on the water.
+            </p>
+            <ul>
+              <li><strong>Perlin Map</strong> and <strong>Tiling:</strong> The pattern and its size.</li>
+              <li><strong>Limit:</strong> Areas of the map brighter than this are shown. Higher values give fewer spots.</li>
+              <li><strong>Distortion:</strong> How much the spots wobble. 0 = no wobble.</li>
+              <li><strong>Speed:</strong> How fast the spots move (X and Y).</li>
+              <li><strong>Strength:</strong> Brightness of the spots. 0 = darkest, 1 = lightest.</li>
+            </ul>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/water-perlin-limit-low.png" alt="Low Limit" />
+                <figcaption>Low Limit</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/water-perlin-limit-high.png" alt="High Limit" />
+                <figcaption>High Limit</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/water-perlin-distortion-low.png" alt="Low Distortion" />
+                <figcaption>Low Distortion</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/water-perlin-distortion-high.png" alt="High Distortion" />
+                <figcaption>High Distortion</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              For Wave and Perlin maps, a black and white map is recommended. Only
+              the red channel is used.
+            </blockquote>
+            <h2 id="water-notes">3.5. Notes</h2>
+            <ul>
+              <li>Only opaque objects under the water count toward its depth.</li>
+              <li>The water is not visible from below.</li>
+              <li>Water has no lighting, shadows, Rim, Specular or Outline.</li>
+              <li><strong>Advanced Options</strong> are the same as in the <a href="#basic-advanced">Basic shader</a>.</li>
+            </ul>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="sprite-shader">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              4. Sprite Shader
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <p>
+              The Sprite shader recolors 2D sprites with a gradient. Assign the material to a <strong>Sprite Renderer</strong>.
+            </p>
+            <h2 id="sprite-shading">4.1. Shading</h2>
+            <p>
+              Pick the colors in the <strong>Gradient</strong> field. The
+              <strong>Color</strong> of the Sprite Renderer tints the result, and
+              the sprite's alpha is kept.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/sprite-original.png" alt="Original sprite" />
+                <figcaption>Original sprite</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/sprite-gradient.png" alt="Sprite with Gradient Map Shader" />
+                <figcaption>With Gradient Map Shader</figcaption>
+              </figure>
+            </div>
+            <blockquote>
+              A black and white sprite is recommended. Only the red channel is
+              used. See <a href="#grayscale-image">Grayscale Image</a>.
+            </blockquote>
+            <h2 id="sprite-notes">4.2. Notes</h2>
+            <ul>
+              <li>Works with the 2D Renderer and the regular URP renderers.</li>
+              <li>Sprite flipping, Sprite Masks, Sorting Groups and 2D Animation (skinned sprites) work.</li>
+              <li>Sprites get no lighting, including 2D lights.</li>
+            </ul>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="skybox-shader">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              5. Skybox Shader
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <p>
+              The Skybox shader fills the sky with a gradient.
+            </p>
+            <h2 id="skybox-setup">5.1. Setup</h2>
+            <ol>
+              <li>Create a material with the <strong>Octopus Lab → Gradient Map Shader → Skybox</strong> shader.</li>
+              <li>Open <strong>Window → Rendering → Lighting → Environment</strong>.</li>
+              <li>Assign the material to <strong>Skybox Material</strong>.</li>
+            </ol>
+            <h2 id="skybox-shading">5.2. Shading</h2>
+            <p>
+              <strong>Direction</strong> sets the direction of the sky gradient.
+              The side it points to is lightest, the opposite side darkest, and
+              the horizon is in between. By default, the sky is light at
+              the top and dark at the bottom.
+            </p>
+            <div class="documentation-figure-row">
+              <figure class="documentation-figure">
+                <img src="./images/skybox-direction-up.png" alt="Skybox direction pointing up" />
+                <figcaption>Pitch 90 (default)</figcaption>
+              </figure>
+              <figure class="documentation-figure">
+                <img src="./images/skybox-direction-tilted.png" alt="Skybox direction tilted" />
+                <figcaption>Tilted direction</figcaption>
+              </figure>
+            </div>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="tools">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              6. Tools
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="grayscale-image">6.1. Grayscale Image</h2>
+            <p>
+              Maps and sprites work best in black and white. To make a black and
+              white copy of an image, right-click a PNG or JPG in the Project
+              window and choose <strong>Create → Grayscale Image</strong>.
+            </p>
+            <p>
+              The copy keeps the import settings of the original, including
+              sprite slices, and keeps the alpha.
+            </p>
+            <figure class="documentation-figure">
+              <img
+                src="./images/tools-grayscale-image.png"
+                alt="Create Grayscale Image menu in the Project window"
+              />
+              <figcaption>
+                Create → Grayscale Image in the Project window.
+              </figcaption>
+            </figure>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="technical-details">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              7. Technical Details
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <p>
+              You don't need this chapter to use the shaders. Read it to
+              understand how they work and what they support.
+            </p>
+            <h2 id="how-it-works">7.1. How It Works</h2>
+            <p>
+              Every pixel first gets a value between 0 and 1: 0 is the left
+              (dark) end of the gradient, 1 is the right (light) end. Then the
+              gradient color at that value is drawn. Each feature just moves this
+              value. In the Basic shader, the steps are:
+            </p>
+            <ol>
+              <li><strong>Shade Type</strong> sets the starting value (Light, View, Depth or Flat).</li>
+              <li><strong>Shadows</strong> and <strong>SSAO</strong> move it toward 0.</li>
+              <li><strong>Baked lighting</strong> moves it toward 1.</li>
+              <li><strong>Darken Map</strong> moves it toward 0, <strong>Lighten Map</strong> toward 1.</li>
+              <li>The <strong>gradient</strong> turns the value into a color.</li>
+              <li><strong>Fill</strong>, <strong>Rim</strong> and <strong>Specular</strong> add their colors on top.</li>
+              <li><strong>Fog</strong> is applied last.</li>
+            </ol>
+            <figure class="documentation-figure">
+              <img
+                src="./images/technical-how-it-works.png"
+                alt="Shading value mapped to the gradient"
+              />
+              <figcaption>
+                The grayscale shading (Gradient Map off) and the same shading
+                through a gradient.
+              </figcaption>
+            </figure>
+            <p>
+              This is why Fill, Rim and Specular are not affected by Darken Map,
+              Lighten Map or shadows: they are added after the gradient.
+            </p>
+            <h2 id="lighting">7.2. Lighting</h2>
+            <p>
+              Lights only make a surface lighter or darker. Their color is never
+              used. The same is true for light cookies, baked lighting, light
+              probes and ambient light. This way, no color that isn't in your
+              gradient appears on screen.
+            </p>
+            <p>
+              Otherwise, lights behave like in URP's Lit shader: shadows, SSAO,
+              light layers and additional light shadows all work the same way.
+            </p>
+            <h2 id="baked-lighting">7.3. Baked Lighting</h2>
+            <p>
+              The Basic shader with the Light shade type supports baked lightmaps,
+              baked shadows and light probes. All lighting modes work: Baked
+              Indirect, Subtractive and Shadowmask.
+            </p>
+            <ul>
+              <li>Ambient light lightens shadows a little, like in Lit. For darker shadows, set <strong>Environment Lighting</strong> to black.</li>
+              <li>Bounced light takes the average color of the gradient.</li>
+              <li>Moving objects get baked light from light probes.</li>
+            </ul>
+            <h2 id="performance">7.4. Performance Tips</h2>
+            <p>
+              With the default settings, the Basic shader costs about the same as
+              URP's Lit and Simple Lit shaders on mobile.
+            </p>
+            <ul>
+              <li>Turn off features you don't use. Disabled features cost nothing.</li>
+              <li>Use Planar instead of Triplanar when the map only needs to look right from above.</li>
+              <li>Outline draws the object a second time.</li>
+              <li>Specular costs more with many lights. Use it only where needed.</li>
+            </ul>
 
-        <h1 id="basic-shader">2. Basic Shader</h1>
-        <p>
-          The Basic shader is for 3D objects. Its Inspector is split into
-          sections. This chapter follows the same order. Most sections have an
-          <strong>Enable</strong> toggle; turn off what you don't need.
-        </p>
-        <h2 id="basic-transparency">2.1. Transparency</h2>
-        <ul>
-          <li><strong>Surface Type:</strong> Opaque surfaces are solid. Transparent surfaces let what is behind them show through. In Transparent, the alpha of the gradient is used too.</li>
-          <li><strong>Render Face:</strong> Which sides of the mesh are drawn: Front, Back or Both.</li>
-          <li><strong>Alpha Clipping:</strong> Cuts holes where the <a href="#basic-alpha-map">Alpha Map</a> is below the <strong>Threshold</strong>. Shadows and baked lighting get the same holes.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-transparency-opaque.png" alt="Opaque surface" />
-            <figcaption>Opaque</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-transparency-transparent.png" alt="Transparent surface" />
-            <figcaption>Transparent</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          Only the Alpha Map cuts holes. The alpha of the gradient does not.
-        </blockquote>
-        <h2 id="basic-shading">2.2. Shading</h2>
-        <ul>
-          <li><strong>Gradient Map:</strong> When off, the surface shows grayscale shading instead of the gradient colors. Useful to check the shading on its own.</li>
-          <li><strong>Gradient:</strong> Colors of the surface. See <a href="../RichGradient/#gradient-modes">Gradient Modes</a> for how the colors blend.</li>
-          <li><strong>Shade Type:</strong> How the surface picks colors from the gradient: Light, View, Depth or Flat.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-gradient-map-off.png" alt="Gradient Map off" />
-            <figcaption>Gradient Map off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-gradient-map-on.png" alt="Gradient Map on" />
-            <figcaption>Gradient Map on</figcaption>
-          </figure>
-        </div>
-        <h3 id="shade-light">2.2.1. Light</h3>
-        <p>
-          Follows the lights in the scene. The side facing a light is lighter,
-          the other side darker. Point and
-          Spot lights, light cookies and baked lighting all work.
-        </p>
-        <figure class="documentation-figure documentation-figure--small">
-          <img src="./images/basic-shade-type-light.png" alt="Shade Type Light" />
-        </figure>
-        <h3 id="shade-view">2.2.2. View</h3>
-        <p>
-          Uses its own light that turns with the camera, so the object always
-          looks the same from any angle. Scene lights are ignored. This works
-          like a matcap and is great for shiny metal looks.
-          <strong>Direction</strong> sets where this light comes from:
-          <strong>Pitch</strong> sets its height, <strong>Yaw</strong> turns it
-          around.
-        </p>
-        <figure class="documentation-figure documentation-figure--small">
-          <img src="./images/basic-shade-type-view.png" alt="Shade Type View" />
-        </figure>
-        <h3 id="shade-depth">2.2.3. Depth</h3>
-        <p>
-          Follows how deep the scene is behind the surface, like water.
-          Shallow areas are lighter, deep areas darker.
-        </p>
-        <ul>
-          <li><strong>Depth Size:</strong> How deep the gradient spreads, in meters.</li>
-          <li><strong>Depth Strength:</strong> Brightness of shallow areas. 0 = the whole surface uses the dark end, 1 = full gradient.</li>
-        </ul>
-        <blockquote>
-          Depth needs <strong>Surface Type</strong> set to Transparent and
-          <strong>Depth Texture</strong> enabled on the URP Asset.
-        </blockquote>
-        <figure class="documentation-figure documentation-figure--small">
-          <img src="./images/basic-shade-type-depth.png" alt="Shade Type Depth" />
-        </figure>
-        <h3 id="shade-flat">2.2.4. Flat</h3>
-        <p>
-          The whole surface uses one color. <strong>Luminance</strong> picks
-          it: 0 = left end of the gradient, 1 = right end. Shadows, SSAO,
-          Darken Map and Lighten Map still affect it.
-        </p>
-        <figure class="documentation-figure documentation-figure--small">
-          <img src="./images/basic-shade-type-flat.png" alt="Shade Type Flat" />
-        </figure>
-        <h2 id="basic-maps">2.3. Maps</h2>
-        <p>
-          Textures that add detail to the surface. Each map has its own
-          <strong>Enable</strong> toggle.
-        </p>
-        <h3 id="basic-alpha-map">2.3.1. Alpha Map</h3>
-        <p>
-          Transparent areas of the texture make the surface see-through. With
-          <strong>Alpha Clipping</strong>, they are cut out. Use it for
-          leaves, fences and cut-out shapes. Only the alpha channel is used,
-          and it follows the mesh UVs. For a black and white map, set
-          <strong>Alpha Source</strong> to <strong>From Gray Scale</strong> in
-          its import settings.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-alpha-map-off.png" alt="Alpha Map off" />
-            <figcaption>Alpha Map off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-alpha-map-on.png" alt="Alpha Map on with Alpha Clipping" />
-            <figcaption>Alpha Map on, with Alpha Clipping</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          Alpha Map only works when <strong>Surface Type</strong> is
-          Transparent or <strong>Alpha Clipping</strong> is on.
-        </blockquote>
-        <h3 id="basic-normal-map">2.3.2. Normal Map</h3>
-        <p>
-          Adds bumps and dents to the shading, <a href="#basic-rim">Rim</a>
-          and <a href="#basic-specular">Specular</a>. <strong>Strength</strong>
-          sets how strong the bumps are.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-normal-map-off.png" alt="Normal Map off" />
-            <figcaption>Normal Map off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-normal-map-on.png" alt="Normal Map on" />
-            <figcaption>Normal Map on</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          Normal Map works with the Light and View shade types. Set the
-          texture's <strong>Texture Type</strong> to Normal map in its import
-          settings.
-        </blockquote>
-        <h3 id="basic-darken-map">2.3.3. Darken Map</h3>
-        <p>
-          Dark areas of the texture darken the surface. Use it for dirt, cracks or painted details.
-          <strong>Strength</strong> sets how strong the darkening is.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-darken-map-off.png" alt="Darken Map off" />
-            <figcaption>Darken Map off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-darken-map-on.png" alt="Darken Map on" />
-            <figcaption>Darken Map on</figcaption>
-          </figure>
-        </div>
-        <p><strong>Mapping</strong> sets how the map is placed on the object:</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Mapping</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>UV</td>
-              <td>Uses the mesh UVs.</td>
-            </tr>
-            <tr>
-              <td>Planar</td>
-              <td>Projects the map from above. Side faces stretch.</td>
-            </tr>
-            <tr>
-              <td>Triplanar</td>
-              <td>Projects the map from all sides without stretching. Costs more than Planar.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-mapping-planar.png" alt="Planar mapping" />
-            <figcaption>Planar</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-mapping-triplanar.png" alt="Triplanar mapping" />
-            <figcaption>Triplanar</figcaption>
-          </figure>
-        </div>
-        <p>
-          Planar and Triplanar don't need UVs, so they work on any mesh. The
-          map stays in place when the object moves and scales with the object.
-        </p>
-        <blockquote>
-          A black and white map is recommended. Only the red channel is used.
-          See <a href="#grayscale-image">Grayscale Image</a>.
-        </blockquote>
-        <h3 id="basic-lighten-map">2.3.4. Lighten Map</h3>
-        <p>
-          Light areas of the texture lighten the surface. Use it for highlights, glow or painted details. It has
-          the same <strong>Mapping</strong> and <strong>Strength</strong>
-          settings as <a href="#basic-darken-map">Darken Map</a>.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-lighten-map-off.png" alt="Lighten Map off" />
-            <figcaption>Lighten Map off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-lighten-map-on.png" alt="Lighten Map on" />
-            <figcaption>Lighten Map on</figcaption>
-          </figure>
-        </div>
-        <h2 id="basic-effects">2.4. Additional Effects</h2>
-        <p>
-          Extra effects on top of the gradient colors, and the shadow
-          settings of the object.
-        </p>
-        <h3 id="basic-fill">2.4.1. Fill</h3>
-        <p>
-          Fades a color over the object along a direction in the world. Use it
-          for snow on top, moss at the bottom or a height fade.
-        </p>
-        <ul>
-          <li><strong>Color:</strong> The fill color.</li>
-          <li><strong>Range:</strong> The fill color fades in between the two values. 0 is the side the Direction points to, 1 is the opposite side.</li>
-          <li><strong>Direction:</strong> Direction of the fill in the world. Pitch sets its height, Yaw turns it around.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-fill-off.png" alt="Fill off" />
-            <figcaption>Fill off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-fill-on.png" alt="Fill on" />
-            <figcaption>Fill on</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          The direction is in world space, so the fill does not turn when the
-          object rotates.
-        </blockquote>
-        <h3 id="basic-rim">2.4.2. Rim</h3>
-        <p>
-          Adds a color to the edges of the object, as seen from the camera.
-          <strong>Range</strong> sets where the rim fades in, from the area
-          facing the camera (0) to the edges (1). Raise the left value for a thinner rim.
-          With a <a href="#basic-normal-map">Normal Map</a>, the rim follows
-          its bumps too.
-        </p>
-        <div class="documentation-figure-row documentation-figure-row--three">
-          <figure class="documentation-figure">
-            <img src="./images/basic-rim-off.png" alt="Rim off" />
-            <figcaption>Rim off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-rim-on.png" alt="Rim on" />
-            <figcaption>Rim on</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-rim-normal-map.png" alt="Rim with Normal Map" />
-            <figcaption>Rim with Normal Map</figcaption>
-          </figure>
-        </div>
-        <h3 id="basic-specular">2.4.3. Specular</h3>
-        <p>
-          Adds a shiny highlight where the light reflects toward the camera.
-          <strong>Range</strong> sets its size: lower values give a wider
-          highlight, higher values a smaller one.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-specular-off.png" alt="Specular off" />
-            <figcaption>Specular off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-specular-on.png" alt="Specular on" />
-            <figcaption>Specular on</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          The highlight disappears in shadow. With the View shade type, it
-          uses the View light instead of the scene lights.
-        </blockquote>
-        <h3 id="basic-outline">2.4.4. Outline</h3>
-        <p>
-          Draws a colored line around the object. <strong>Width</strong> sets
-          its thickness in meters.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-outline-off.png" alt="Outline off" />
-            <figcaption>Outline off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-outline-on.png" alt="Outline on" />
-            <figcaption>Outline on</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          Outline only works on Opaque surfaces without Alpha Clipping. On
-          meshes with hard edges, the line breaks at the corners.
-        </blockquote>
-        <h3 id="basic-shadow">2.4.5. Shadow</h3>
-        <ul>
-          <li><strong>Cast Shadows:</strong> The object casts shadows on other objects.</li>
-          <li><strong>Receive Shadows:</strong> Shadows darken the surface.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/basic-receive-shadows-off.png" alt="Receive Shadows off" />
-            <figcaption>Receive Shadows off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/basic-receive-shadows-on.png" alt="Receive Shadows on" />
-            <figcaption>Receive Shadows on</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          For shadows on Transparent surfaces, enable
-          <strong>Transparent Receive Shadows</strong> on the URP Renderer.
-        </blockquote>
-        <h2 id="basic-advanced">2.5. Advanced Options</h2>
-        <p>
-          The standard Unity material options: <strong>Render Queue</strong>,
-          <strong>Enable GPU Instancing</strong> and <strong>Double Sided
-          Global Illumination</strong>.
-        </p>
-
-        <h1 id="water-shader">3. Water Shader</h1>
-        <p>
-          The Water shader colors water by depth: shallow areas are lighter,
-          deep areas darker. Moving patterns add
-          waves and foam. Water is always transparent.
-        </p>
-        <figure class="documentation-figure">
-          <img src="./images/water-overview.png" alt="Water shader in a scene" />
-          <figcaption>Water with Wave and Perlin Noise.</figcaption>
-        </figure>
-        <h2 id="water-shading">3.1. Shading</h2>
-        <ul>
-          <li><strong>Gradient:</strong> Colors of the water.</li>
-          <li><strong>Depth Size:</strong> How deep the gradient spreads, in meters.</li>
-          <li><strong>Depth Strength:</strong> Brightness of shallow areas. 0 = the whole surface uses the dark end, 1 = full gradient.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/water-depth-size-low.png" alt="Low Depth Size" />
-            <figcaption>Low Depth Size</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/water-depth-size-high.png" alt="High Depth Size" />
-            <figcaption>High Depth Size</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          Water needs <strong>Depth Texture</strong> enabled on the URP Asset.
-        </blockquote>
-        <h2 id="water-mapping">3.2. Mapping</h2>
-        <p>
-          Sets how the Wave and Perlin maps are placed on the water.
-          <strong>Planar</strong> projects them from above and suits flat
-          water. <strong>Triplanar</strong> projects them from all sides and
-          suits sloped water, like a waterfall. If the water is flat, Planar
-          gives the same result with better performance.
-        </p>
-        <h2 id="water-wave">3.3. Wave</h2>
-        <p>
-          A moving pattern that lightens the water.
-        </p>
-        <ul>
-          <li><strong>Wave Map</strong> and <strong>Tiling:</strong> The pattern and its size.</li>
-          <li><strong>Speed:</strong> How fast the waves move (X and Y).</li>
-          <li><strong>Strength:</strong> How strong the waves are. 0 = none, 1 = full.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/water-wave-off.png" alt="Wave off" />
-            <figcaption>Wave off</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/water-wave-on.png" alt="Wave on" />
-            <figcaption>Wave on</figcaption>
-          </figure>
-        </div>
-        <h2 id="water-perlin">3.4. Perlin Noise</h2>
-        <p>
-          A moving pattern for foam or spots on the water.
-        </p>
-        <ul>
-          <li><strong>Perlin Map</strong> and <strong>Tiling:</strong> The pattern and its size.</li>
-          <li><strong>Limit:</strong> Areas of the map brighter than this are shown. Higher values give fewer spots.</li>
-          <li><strong>Distortion:</strong> How much the spots wobble. 0 = no wobble.</li>
-          <li><strong>Speed:</strong> How fast the spots move (X and Y).</li>
-          <li><strong>Strength:</strong> Brightness of the spots. 0 = darkest, 1 = lightest.</li>
-        </ul>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/water-perlin-limit-low.png" alt="Low Limit" />
-            <figcaption>Low Limit</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/water-perlin-limit-high.png" alt="High Limit" />
-            <figcaption>High Limit</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/water-perlin-distortion-low.png" alt="Low Distortion" />
-            <figcaption>Low Distortion</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/water-perlin-distortion-high.png" alt="High Distortion" />
-            <figcaption>High Distortion</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          For Wave and Perlin maps, a black and white map is recommended. Only
-          the red channel is used.
-        </blockquote>
-        <h2 id="water-notes">3.5. Notes</h2>
-        <ul>
-          <li>Only opaque objects under the water count toward its depth.</li>
-          <li>The water is not visible from below.</li>
-          <li>Water has no lighting, shadows, Rim, Specular or Outline.</li>
-          <li><strong>Advanced Options</strong> are the same as in the <a href="#basic-advanced">Basic shader</a>.</li>
-        </ul>
-
-        <h1 id="sprite-shader">4. Sprite Shader</h1>
-        <p>
-          The Sprite shader recolors 2D sprites with a gradient. Assign the material to a <strong>Sprite Renderer</strong>.
-        </p>
-        <h2 id="sprite-shading">4.1. Shading</h2>
-        <p>
-          Pick the colors in the <strong>Gradient</strong> field. The
-          <strong>Color</strong> of the Sprite Renderer tints the result, and
-          the sprite's alpha is kept.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/sprite-original.png" alt="Original sprite" />
-            <figcaption>Original sprite</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/sprite-gradient.png" alt="Sprite with Gradient Map Shader" />
-            <figcaption>With Gradient Map Shader</figcaption>
-          </figure>
-        </div>
-        <blockquote>
-          A black and white sprite is recommended. Only the red channel is
-          used. See <a href="#grayscale-image">Grayscale Image</a>.
-        </blockquote>
-        <h2 id="sprite-notes">4.2. Notes</h2>
-        <ul>
-          <li>Works with the 2D Renderer and the regular URP renderers.</li>
-          <li>Sprite flipping, Sprite Masks, Sorting Groups and 2D Animation (skinned sprites) work.</li>
-          <li>Sprites get no lighting, including 2D lights.</li>
-        </ul>
-
-        <h1 id="skybox-shader">5. Skybox Shader</h1>
-        <p>
-          The Skybox shader fills the sky with a gradient.
-        </p>
-        <h2 id="skybox-setup">5.1. Setup</h2>
-        <ol>
-          <li>Create a material with the <strong>Octopus Lab → Gradient Map Shader → Skybox</strong> shader.</li>
-          <li>Open <strong>Window → Rendering → Lighting → Environment</strong>.</li>
-          <li>Assign the material to <strong>Skybox Material</strong>.</li>
-        </ol>
-        <h2 id="skybox-shading">5.2. Shading</h2>
-        <p>
-          <strong>Direction</strong> sets the direction of the sky gradient.
-          The side it points to is lightest, the opposite side darkest, and
-          the horizon is in between. By default, the sky is light at
-          the top and dark at the bottom.
-        </p>
-        <div class="documentation-figure-row">
-          <figure class="documentation-figure">
-            <img src="./images/skybox-direction-up.png" alt="Skybox direction pointing up" />
-            <figcaption>Pitch 90 (default)</figcaption>
-          </figure>
-          <figure class="documentation-figure">
-            <img src="./images/skybox-direction-tilted.png" alt="Skybox direction tilted" />
-            <figcaption>Tilted direction</figcaption>
-          </figure>
-        </div>
-
-        <h1 id="tools">6. Tools</h1>
-        <h2 id="grayscale-image">6.1. Grayscale Image</h2>
-        <p>
-          Maps and sprites work best in black and white. To make a black and
-          white copy of an image, right-click a PNG or JPG in the Project
-          window and choose <strong>Create → Grayscale Image</strong>.
-        </p>
-        <p>
-          The copy keeps the import settings of the original, including
-          sprite slices, and keeps the alpha.
-        </p>
-        <figure class="documentation-figure">
-          <img
-            src="./images/tools-grayscale-image.png"
-            alt="Create Grayscale Image menu in the Project window"
-          />
-          <figcaption>
-            Create → Grayscale Image in the Project window.
-          </figcaption>
-        </figure>
-
-        <h1 id="technical-details">7. Technical Details</h1>
-        <p>
-          You don't need this chapter to use the shaders. Read it to
-          understand how they work and what they support.
-        </p>
-        <h2 id="how-it-works">7.1. How It Works</h2>
-        <p>
-          Every pixel first gets a value between 0 and 1: 0 is the left
-          (dark) end of the gradient, 1 is the right (light) end. Then the
-          gradient color at that value is drawn. Each feature just moves this
-          value. In the Basic shader, the steps are:
-        </p>
-        <ol>
-          <li><strong>Shade Type</strong> sets the starting value (Light, View, Depth or Flat).</li>
-          <li><strong>Shadows</strong> and <strong>SSAO</strong> move it toward 0.</li>
-          <li><strong>Baked lighting</strong> moves it toward 1.</li>
-          <li><strong>Darken Map</strong> moves it toward 0, <strong>Lighten Map</strong> toward 1.</li>
-          <li>The <strong>gradient</strong> turns the value into a color.</li>
-          <li><strong>Fill</strong>, <strong>Rim</strong> and <strong>Specular</strong> add their colors on top.</li>
-          <li><strong>Fog</strong> is applied last.</li>
-        </ol>
-        <figure class="documentation-figure">
-          <img
-            src="./images/technical-how-it-works.png"
-            alt="Shading value mapped to the gradient"
-          />
-          <figcaption>
-            The grayscale shading (Gradient Map off) and the same shading
-            through a gradient.
-          </figcaption>
-        </figure>
-        <p>
-          This is why Fill, Rim and Specular are not affected by Darken Map,
-          Lighten Map or shadows: they are added after the gradient.
-        </p>
-        <h2 id="lighting">7.2. Lighting</h2>
-        <p>
-          Lights only make a surface lighter or darker. Their color is never
-          used. The same is true for light cookies, baked lighting, light
-          probes and ambient light. This way, no color that isn't in your
-          gradient appears on screen.
-        </p>
-        <p>
-          Otherwise, lights behave like in URP's Lit shader: shadows, SSAO,
-          light layers and additional light shadows all work the same way.
-        </p>
-        <h2 id="baked-lighting">7.3. Baked Lighting</h2>
-        <p>
-          The Basic shader with the Light shade type supports baked lightmaps,
-          baked shadows and light probes. All lighting modes work: Baked
-          Indirect, Subtractive and Shadowmask.
-        </p>
-        <ul>
-          <li>Ambient light lightens shadows a little, like in Lit. For darker shadows, set <strong>Environment Lighting</strong> to black.</li>
-          <li>Bounced light takes the average color of the gradient.</li>
-          <li>Moving objects get baked light from light probes.</li>
-        </ul>
-        <h2 id="performance">7.4. Performance Tips</h2>
-        <p>
-          With the default settings, the Basic shader costs about the same as
-          URP's Lit and Simple Lit shaders on mobile.
-        </p>
-        <ul>
-          <li>Turn off features you don't use. Disabled features cost nothing.</li>
-          <li>Use Planar instead of Triplanar when the map only needs to look right from above.</li>
-          <li>Outline draws the object a second time.</li>
-          <li>Specular costs more with many lights. Use it only where needed.</li>
-        </ul>
-
-        <h2 id="tested-versions">7.5. Tested Versions</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Unity</th>
-              <th>URP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2022.3</td>
-              <td>14</td>
-            </tr>
-            <tr>
-              <td>2023.2</td>
-              <td>16</td>
-            </tr>
-            <tr>
-              <td>6000.0</td>
-              <td>17.0</td>
-            </tr>
-            <tr>
-              <td>6000.3 (LTS)</td>
-              <td>17.3</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Tested in the Editor on macOS, and in builds on iOS and Android.
-        </p>
-        <h2 id="rendering-features">7.6. Rendering Features</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Forward, Forward+</td>
-              <td>Supported.</td>
-            </tr>
-            <tr>
-              <td>Deferred</td>
-              <td>Supported. Gradient Map Shader objects are drawn forward, so the per-object light limit of Forward applies. Use Forward+ for many lights.</td>
-            </tr>
-            <tr>
-              <td>Render Graph</td>
-              <td>Supported, on and off.</td>
-            </tr>
-            <tr>
-              <td>SRP Batcher, GPU Instancing</td>
-              <td>Supported.</td>
-            </tr>
-            <tr>
-              <td>Additional lights</td>
-              <td>Per Pixel and Per Vertex. Per Vertex lights affect only the Light shade type.</td>
-            </tr>
-            <tr>
-              <td>Shadows</td>
-              <td>Main and additional light shadows, cascades, soft shadows, Screen Space Shadows.</td>
-            </tr>
-            <tr>
-              <td>Light Layers, Light Cookies</td>
-              <td>Supported in the Basic shader.</td>
-            </tr>
-            <tr>
-              <td>Depth Priming, Depth Texture, Depth Normals</td>
-              <td>Supported, including Normal Map.</td>
-            </tr>
-            <tr>
-              <td>SSAO</td>
-              <td>Supported. Occluded areas get darker.</td>
-            </tr>
-            <tr>
-              <td>Decals</td>
-              <td>Screen Space technique in Forward and Forward+.</td>
-            </tr>
-            <tr>
-              <td>Fog</td>
-              <td>Basic (including Outline) and Water.</td>
-            </tr>
-            <tr>
-              <td>Lightmaps, Light Probes, APV</td>
-              <td>Basic shader, Light shade type. See <a href="#baked-lighting">Baked Lighting</a>.</td>
-            </tr>
-            <tr>
-              <td>LOD Cross Fade</td>
-              <td>Supported in the Basic shader.</td>
-            </tr>
-            <tr>
-              <td>Post-processing, MSAA, HDR</td>
-              <td>Supported. Gradient colors stay between 0 and 1, so keep the Bloom Threshold low.</td>
-            </tr>
-            <tr>
-              <td>Orthographic camera</td>
-              <td>Supported.</td>
-            </tr>
-            <tr>
-              <td>2D Renderer</td>
-              <td>Sprite shader only.</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2 id="project-settings">7.7. Project Settings</h2>
-        <p>
-          The package never changes your project settings. Some features need
-          a setting enabled by you:
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Setting</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Depth shade type, Water</td>
-              <td><strong>Depth Texture</strong> on the URP Asset.</td>
-            </tr>
-            <tr>
-              <td>Shadows on Transparent surfaces</td>
-              <td><strong>Transparent Receive Shadows</strong> on the URP Renderer.</td>
-            </tr>
-            <tr>
-              <td>Additional light shadows</td>
-              <td>Additional light shadows on the URP Asset and <strong>Shadow Type</strong> on the light.</td>
-            </tr>
-            <tr>
-              <td>Light Cookies</td>
-              <td><strong>Light Cookies</strong> on the URP Asset.</td>
-            </tr>
-            <tr>
-              <td>LOD Cross Fade</td>
-              <td><strong>LOD Cross Fade</strong> on the URP Asset (on by default) and Fade Mode Cross Fade on the LOD Group.</td>
-            </tr>
-            <tr>
-              <td>Decals</td>
-              <td>Technique <strong>Screen Space</strong> on the Decal Renderer Feature.</td>
-            </tr>
-          </tbody>
-        </table>
-        <h2 id="not-supported">7.8. Not Supported</h2>
-        <ul>
-          <li><strong>Built-in Render Pipeline and HDRP.</strong> The package is made for URP only.</li>
-          <li><strong>Entities Graphics (DOTS).</strong> Objects are not visible. With GPU Resident Drawer, objects are drawn the regular way.</li>
-          <li><strong>Motion Vectors.</strong> Moving objects can leave trails with TAA, Motion Blur and STP.</li>
-          <li><strong>DBuffer Decals.</strong> The decal color would replace the gradient colors. Use Screen Space decals.</li>
-          <li><strong>Reflection Probes</strong> and <strong>Realtime GI</strong>.</li>
-          <li><strong>Particles, Terrain and UI.</strong> These need their own shaders.</li>
-        </ul>
-
-        <h1 id="api-section">8. API</h1>
-        <h2 id="api">8.1. Set Gradient</h2>
-        <p>
-          Use <code>SetGradient</code> to change a material's gradient from
-          code. It is in the <code>OctopusLab.GradientMapShader</code>
-          namespace.
-        </p>
-        <pre><code class="language-csharp">using OctopusLab.GradientMapShader;
+            <h2 id="tested-versions">7.5. Tested Versions</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Unity</th>
+                  <th>URP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2022.3</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>2023.2</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td>6000.0</td>
+                  <td>17.0</td>
+                </tr>
+                <tr>
+                  <td>6000.3 (LTS)</td>
+                  <td>17.3</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Tested in the Editor on macOS, and in builds on iOS and Android.
+            </p>
+            <h2 id="rendering-features">7.6. Rendering Features</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Forward, Forward+</td>
+                  <td>Supported.</td>
+                </tr>
+                <tr>
+                  <td>Deferred</td>
+                  <td>Supported. Gradient Map Shader objects are drawn forward, so the per-object light limit of Forward applies. Use Forward+ for many lights.</td>
+                </tr>
+                <tr>
+                  <td>Render Graph</td>
+                  <td>Supported, on and off.</td>
+                </tr>
+                <tr>
+                  <td>SRP Batcher, GPU Instancing</td>
+                  <td>Supported.</td>
+                </tr>
+                <tr>
+                  <td>Additional lights</td>
+                  <td>Per Pixel and Per Vertex. Per Vertex lights affect only the Light shade type.</td>
+                </tr>
+                <tr>
+                  <td>Shadows</td>
+                  <td>Main and additional light shadows, cascades, soft shadows, Screen Space Shadows.</td>
+                </tr>
+                <tr>
+                  <td>Light Layers, Light Cookies</td>
+                  <td>Supported in the Basic shader.</td>
+                </tr>
+                <tr>
+                  <td>Depth Priming, Depth Texture, Depth Normals</td>
+                  <td>Supported, including Normal Map.</td>
+                </tr>
+                <tr>
+                  <td>SSAO</td>
+                  <td>Supported. Occluded areas get darker.</td>
+                </tr>
+                <tr>
+                  <td>Decals</td>
+                  <td>Screen Space technique in Forward and Forward+.</td>
+                </tr>
+                <tr>
+                  <td>Fog</td>
+                  <td>Basic (including Outline) and Water.</td>
+                </tr>
+                <tr>
+                  <td>Lightmaps, Light Probes, APV</td>
+                  <td>Basic shader, Light shade type. See <a href="#baked-lighting">Baked Lighting</a>.</td>
+                </tr>
+                <tr>
+                  <td>LOD Cross Fade</td>
+                  <td>Supported in the Basic shader.</td>
+                </tr>
+                <tr>
+                  <td>Post-processing, MSAA, HDR</td>
+                  <td>Supported. Gradient colors stay between 0 and 1, so keep the Bloom Threshold low.</td>
+                </tr>
+                <tr>
+                  <td>Orthographic camera</td>
+                  <td>Supported.</td>
+                </tr>
+                <tr>
+                  <td>2D Renderer</td>
+                  <td>Sprite shader only.</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 id="project-settings">7.7. Project Settings</h2>
+            <p>
+              The package never changes your project settings. Some features need
+              a setting enabled by you:
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Setting</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Depth shade type, Water</td>
+                  <td><strong>Depth Texture</strong> on the URP Asset.</td>
+                </tr>
+                <tr>
+                  <td>Shadows on Transparent surfaces</td>
+                  <td><strong>Transparent Receive Shadows</strong> on the URP Renderer.</td>
+                </tr>
+                <tr>
+                  <td>Additional light shadows</td>
+                  <td>Additional light shadows on the URP Asset and <strong>Shadow Type</strong> on the light.</td>
+                </tr>
+                <tr>
+                  <td>Light Cookies</td>
+                  <td><strong>Light Cookies</strong> on the URP Asset.</td>
+                </tr>
+                <tr>
+                  <td>LOD Cross Fade</td>
+                  <td><strong>LOD Cross Fade</strong> on the URP Asset (on by default) and Fade Mode Cross Fade on the LOD Group.</td>
+                </tr>
+                <tr>
+                  <td>Decals</td>
+                  <td>Technique <strong>Screen Space</strong> on the Decal Renderer Feature.</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 id="not-supported">7.8. Not Supported</h2>
+            <ul>
+              <li><strong>Built-in Render Pipeline and HDRP.</strong> The package is made for URP only.</li>
+              <li><strong>Entities Graphics (DOTS).</strong> Objects are not visible. With GPU Resident Drawer, objects are drawn the regular way.</li>
+              <li><strong>Motion Vectors.</strong> Moving objects can leave trails with TAA, Motion Blur and STP.</li>
+              <li><strong>DBuffer Decals.</strong> The decal color would replace the gradient colors. Use Screen Space decals.</li>
+              <li><strong>Reflection Probes</strong> and <strong>Realtime GI</strong>.</li>
+              <li><strong>Particles, Terrain and UI.</strong> These need their own shaders.</li>
+            </ul>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="api-section">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              8. API
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="api">8.1. Set Gradient</h2>
+            <p>
+              Use <code>SetGradient</code> to change a material's gradient from
+              code. It is in the <code>OctopusLab.GradientMapShader</code>
+              namespace.
+            </p>
+            <pre><code class="language-csharp">using OctopusLab.GradientMapShader;
 using OctopusLab.RichGradient;
 using UnityEngine;
 
@@ -1105,302 +1173,314 @@ public class GradientChanger : MonoBehaviour
         GetComponent&lt;Renderer&gt;().material.SetGradient(_gradient);
     }
 }</code></pre>
-        <ul>
-          <li>
-            <code>renderer.material</code> changes only that object.
-            <code>renderer.sharedMaterial</code> changes every object that uses
-            the material.
-          </li>
-          <li>You can call it every frame. It does not allocate memory.</li>
-          <li>
-            A material copied from one that used SetGradient shares its
-            gradient. Call SetGradient on the copy to give it its own.
-          </li>
-          <li>
-            For a Unity <code>Gradient</code>, use
-            <code>RichGradient.FromGradient(gradient)</code>. See the
-            <a href="../RichGradient/#api">Rich Gradient API</a>.
-          </li>
-          <li>
-            If your scripts have their own Assembly Definition, add
-            <code>OctopusLab.GradientMapShader</code> and
-            <code>OctopusLab.RichGradient</code> to its references.
-          </li>
-        </ul>
-        <h2 id="api-gradient-asset">8.2. Gradient Asset</h2>
-        <p>
-          Each material saves its gradient in a small asset inside the
-          material file, named <strong>&lt;Material Name&gt; Gradient</strong>.
-          The <strong>Gradient</strong> field in the Inspector edits this
-          asset.
-        </p>
-        <figure class="documentation-figure documentation-figure--small">
-          <img
-            src="./images/api-gradient-asset.png"
-            alt="Gradient asset under a material in the Project window"
-          />
-          <figcaption>The Gradient asset under its material.</figcaption>
-        </figure>
-        <p>
-          From code, it is a <code>GradientTextureSo</code>. Set its
-          <code>Gradient</code> to change the gradient saved in the material:
-        </p>
-        <pre><code class="language-csharp">[SerializeField] private GradientTextureSo _gradientAsset;
+            <ul>
+              <li>
+                <code>renderer.material</code> changes only that object.
+                <code>renderer.sharedMaterial</code> changes every object that uses
+                the material.
+              </li>
+              <li>You can call it every frame. It does not allocate memory.</li>
+              <li>
+                A material copied from one that used SetGradient shares its
+                gradient. Call SetGradient on the copy to give it its own.
+              </li>
+              <li>
+                For a Unity <code>Gradient</code>, use
+                <code>RichGradient.FromGradient(gradient)</code>. See the
+                <a href="../RichGradient/#api">Rich Gradient API</a>.
+              </li>
+              <li>
+                If your scripts have their own Assembly Definition, add
+                <code>OctopusLab.GradientMapShader</code> and
+                <code>OctopusLab.RichGradient</code> to its references.
+              </li>
+            </ul>
+            <h2 id="api-gradient-asset">8.2. Gradient Asset</h2>
+            <p>
+              Each material saves its gradient in a small asset inside the
+              material file, named <strong>&lt;Material Name&gt; Gradient</strong>.
+              The <strong>Gradient</strong> field in the Inspector edits this
+              asset.
+            </p>
+            <figure class="documentation-figure documentation-figure--small">
+              <img
+                src="./images/api-gradient-asset.png"
+                alt="Gradient asset under a material in the Project window"
+              />
+              <figcaption>The Gradient asset under its material.</figcaption>
+            </figure>
+            <p>
+              From code, it is a <code>GradientTextureSo</code>. Set its
+              <code>Gradient</code> to change the gradient saved in the material:
+            </p>
+            <pre><code class="language-csharp">[SerializeField] private GradientTextureSo _gradientAsset;
 
 _gradientAsset.Gradient = newGradient;</code></pre>
-        <h2 id="api-gradient-asset-vs-set-gradient">8.3. Which One to Use?</h2>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>SetGradient</th>
-              <th>Gradient Asset</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Changes</td>
-              <td>The material while the game runs</td>
-              <td>The gradient saved in the material file</td>
-            </tr>
-            <tr>
-              <td>Change is saved</td>
-              <td>No</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Use it for</td>
-              <td>Gameplay, effects, color changes</td>
-              <td>Editor tools</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          <strong>In most cases, use SetGradient.</strong>
-        </p>
-        <blockquote>
-          In the Editor, SetGradient on a material asset, such as
-          <code>renderer.sharedMaterial</code>, is saved like any other change
-          to a material asset. Use <code>renderer.material</code> to avoid this.
-        </blockquote>
-        <h2 id="api-material-values">8.4. Other Material Values</h2>
-        <p>
-          Values such as colors, strengths and sizes can be changed from code
-          with Unity's <code>SetFloat</code>, <code>SetColor</code>,
-          <code>SetVector</code> and <code>SetTexture</code>:
-        </p>
-        <pre><code class="language-csharp">material.SetColor("_RimColor", Color.cyan);
+            <h2 id="api-gradient-asset-vs-set-gradient">8.3. Which One to Use?</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>SetGradient</th>
+                  <th>Gradient Asset</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Changes</td>
+                  <td>The material while the game runs</td>
+                  <td>The gradient saved in the material file</td>
+                </tr>
+                <tr>
+                  <td>Change is saved</td>
+                  <td>No</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Use it for</td>
+                  <td>Gameplay, effects, color changes</td>
+                  <td>Editor tools</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              <strong>In most cases, use SetGradient.</strong>
+            </p>
+            <blockquote>
+              In the Editor, SetGradient on a material asset, such as
+              <code>renderer.sharedMaterial</code>, is saved like any other change
+              to a material asset. Use <code>renderer.material</code> to avoid this.
+            </blockquote>
+            <h2 id="api-material-values">8.4. Other Material Values</h2>
+            <p>
+              Values such as colors, strengths and sizes can be changed from code
+              with Unity's <code>SetFloat</code>, <code>SetColor</code>,
+              <code>SetVector</code> and <code>SetTexture</code>:
+            </p>
+            <pre><code class="language-csharp">material.SetColor("_RimColor", Color.cyan);
 material.SetFloat("_OutlineWidth", 0.1f);</code></pre>
-        <table>
-          <thead>
-            <tr>
-              <th>Shader</th>
-              <th>Property</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>All</td>
-              <td><code>_GradientMapEnabled</code></td>
-              <td>Float (0 = off, 1 = on)</td>
-            </tr>
-            <tr>
-              <td rowspan="13">Basic</td>
-              <td><code>_Cutoff</code></td>
-              <td>Float (0–1)</td>
-            </tr>
-            <tr>
-              <td><code>_ViewAxis</code>, <code>_FillAxis</code></td>
-              <td>Vector (direction)</td>
-            </tr>
-            <tr>
-              <td><code>_DepthSize</code></td>
-              <td>Float</td>
-            </tr>
-            <tr>
-              <td><code>_DepthStrength</code>, <code>_FlatLuminance</code></td>
-              <td>Float (0–1)</td>
-            </tr>
-            <tr>
-              <td><code>_NormalMap</code>, <code>_DarkenMap</code>, <code>_LightenMap</code></td>
-              <td>Texture</td>
-            </tr>
-            <tr>
-              <td><code>_NormalMapStrength</code>, <code>_DarkenMapStrength</code>, <code>_LightenMapStrength</code></td>
-              <td>Float (0–1)</td>
-            </tr>
-            <tr>
-              <td><code>_FillColor</code></td>
-              <td>Color</td>
-            </tr>
-            <tr>
-              <td><code>_FillStart</code>, <code>_FillEnd</code></td>
-              <td>Float</td>
-            </tr>
-            <tr>
-              <td><code>_RimColor</code></td>
-              <td>Color</td>
-            </tr>
-            <tr>
-              <td><code>_RimMin</code>, <code>_RimMax</code></td>
-              <td>Float</td>
-            </tr>
-            <tr>
-              <td><code>_SpecularColor</code></td>
-              <td>Color</td>
-            </tr>
-            <tr>
-              <td><code>_SpecularMin</code>, <code>_SpecularMax</code></td>
-              <td>Float</td>
-            </tr>
-            <tr>
-              <td><code>_OutlineColor</code>, <code>_OutlineWidth</code></td>
-              <td>Color, Float</td>
-            </tr>
-            <tr>
-              <td rowspan="5">Water</td>
-              <td><code>_DepthSize</code></td>
-              <td>Float</td>
-            </tr>
-            <tr>
-              <td><code>_DepthStrength</code></td>
-              <td>Float (0–1)</td>
-            </tr>
-            <tr>
-              <td><code>_WaveMap</code>, <code>_PerlinMap</code></td>
-              <td>Texture</td>
-            </tr>
-            <tr>
-              <td><code>_WaveSpeed</code>, <code>_PerlinSpeed</code></td>
-              <td>Vector (x, y)</td>
-            </tr>
-            <tr>
-              <td><code>_WaveStrength</code>, <code>_PerlinLimit</code>, <code>_PerlinDistortion</code>, <code>_PerlinStrength</code></td>
-              <td>Float (0–1)</td>
-            </tr>
-            <tr>
-              <td>Sprite</td>
-              <td><code>_Color</code></td>
-              <td>Color (Tint)</td>
-            </tr>
-            <tr>
-              <td>Skybox</td>
-              <td><code>_DirectionAxis</code></td>
-              <td>Vector (direction)</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          The direction values take a direction vector, such as
-          <code>Vector3.up</code>. The Pitch and Yaw fields in the Inspector
-          are not updated when you change them from code.
-        </p>
-        <blockquote>
-          Some settings only work when changed in the Inspector: Surface Type,
-          Alpha Clipping, Shade Type, Mapping, Alpha Map, Cast
-          Shadows, Receive Shadows and every <strong>Enable</strong> toggle.
-          Changing them from code does not turn the effect on or off. The same
-          is true for URP's Lit shader. To create a material from code, copy
-          one you set up in the Inspector: <code>new Material(existingMaterial)</code>.
-        </blockquote>
-        <h2 id="api-memory">8.5. Memory</h2>
-        <ul>
-          <li>
-            <code>renderer.material</code> creates a copy of the material.
-            Destroy it with <code>Destroy(material)</code> when you no longer
-            need it, as with any Unity material.
-          </li>
-          <li>
-            The first <code>SetGradient</code> call on a material creates a
-            small gradient texture (128×1) for it. Later calls draw into the
-            same texture. It is freed when Unity unloads unused assets, for
-            example when a new scene loads.
-          </li>
-          <li>There is no separate method to release anything.</li>
-        </ul>
-
-        <h1 id="support">9. Support</h1>
-        <h2 id="faq">9.1. FAQ</h2>
-        <blockquote class="documentation-faq-question">
-          Depth mode or the Water shader looks flat. Why?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Turn on <strong>Depth Texture</strong> on the URP Asset. Depth mode
-          also needs the material's Surface Type set to Transparent.
-        </p>
-        <blockquote class="documentation-faq-question">
-          Why are Outline or Alpha Map grayed out?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Outline works on Opaque materials with Alpha Clipping off. Alpha Map
-          works on Transparent materials or with Alpha Clipping on. Your Enable
-          setting is kept and comes back when the condition is met.
-        </p>
-        <blockquote class="documentation-faq-question">
-          My transparent object doesn't receive shadows.
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Turn on <strong>Transparent Receive Shadows</strong> on the URP
-          Renderer.
-        </p>
-        <blockquote class="documentation-faq-question">
-          My sprite colors look wrong.
-        </blockquote>
-        <p class="documentation-faq-answer">
-          The Sprite shader reads only the red channel. Use a black and white
-          sprite. You can make one with
-          <a href="#grayscale-image">Grayscale Image</a>.
-        </p>
-        <blockquote class="documentation-faq-question">
-          Can I use HDR colors in the gradient?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Not currently. See <a href="../RichGradient/#limitations">Rich Gradient Limitations</a>.
-        </p>
-        <blockquote class="documentation-faq-question">
-          <code>SetGradient</code> changed every object. How do I change only one?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Call it on <code>renderer.material</code> instead of
-          <code>renderer.sharedMaterial</code>.
-        </p>
-        <h2 id="limitations">9.2. Limitations</h2>
-        <ul>
-          <li>Fill uses world axes. It does not rotate with the object.</li>
-          <li>Fill, Rim and Specular are not affected by Darken Map and Lighten Map.</li>
-          <li>Outline can break at the corners of hard-edged meshes.</li>
-          <li>Normal Map works only with Light and View shade types.</li>
-          <li>Water is not visible from below.</li>
-          <li>Sprite and Skybox shaders have no lighting or shadows.</li>
-          <li>
-            A material copied from one that used <code>SetGradient</code>
-            shares its gradient until <code>SetGradient</code> is called on the
-            copy.
-          </li>
-          <li>
-            For unsupported pipelines and features, see
-            <a href="#not-supported">Not Supported</a>.
-          </li>
-        </ul>
-        <h2 id="changelog">9.3. Changelog</h2>
-        <p>
-          Release notes for Gradient Map Shader are maintained in the package
-          changelog.
-        </p>
-        <a class="button-medium" href="./CHANGELOG.md">
-          View Changelog
-        </a>
-        <h2 id="contact">9.4. Contact</h2>
-        <p>
-          Have a question, found a bug, or have feedback? Send us an email.
-        </p>
-        <a class="button-medium" href="mailto:octopuslabunity@gmail.com">
-          <span class="button-label">
-            <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
-            octopuslabunity@gmail.com
-          </span>
-        </a>
+            <table>
+              <thead>
+                <tr>
+                  <th>Shader</th>
+                  <th>Property</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>All</td>
+                  <td><code>_GradientMapEnabled</code></td>
+                  <td>Float (0 = off, 1 = on)</td>
+                </tr>
+                <tr>
+                  <td rowspan="13">Basic</td>
+                  <td><code>_Cutoff</code></td>
+                  <td>Float (0–1)</td>
+                </tr>
+                <tr>
+                  <td><code>_ViewAxis</code>, <code>_FillAxis</code></td>
+                  <td>Vector (direction)</td>
+                </tr>
+                <tr>
+                  <td><code>_DepthSize</code></td>
+                  <td>Float</td>
+                </tr>
+                <tr>
+                  <td><code>_DepthStrength</code>, <code>_FlatLuminance</code></td>
+                  <td>Float (0–1)</td>
+                </tr>
+                <tr>
+                  <td><code>_NormalMap</code>, <code>_DarkenMap</code>, <code>_LightenMap</code></td>
+                  <td>Texture</td>
+                </tr>
+                <tr>
+                  <td><code>_NormalMapStrength</code>, <code>_DarkenMapStrength</code>, <code>_LightenMapStrength</code></td>
+                  <td>Float (0–1)</td>
+                </tr>
+                <tr>
+                  <td><code>_FillColor</code></td>
+                  <td>Color</td>
+                </tr>
+                <tr>
+                  <td><code>_FillStart</code>, <code>_FillEnd</code></td>
+                  <td>Float</td>
+                </tr>
+                <tr>
+                  <td><code>_RimColor</code></td>
+                  <td>Color</td>
+                </tr>
+                <tr>
+                  <td><code>_RimMin</code>, <code>_RimMax</code></td>
+                  <td>Float</td>
+                </tr>
+                <tr>
+                  <td><code>_SpecularColor</code></td>
+                  <td>Color</td>
+                </tr>
+                <tr>
+                  <td><code>_SpecularMin</code>, <code>_SpecularMax</code></td>
+                  <td>Float</td>
+                </tr>
+                <tr>
+                  <td><code>_OutlineColor</code>, <code>_OutlineWidth</code></td>
+                  <td>Color, Float</td>
+                </tr>
+                <tr>
+                  <td rowspan="5">Water</td>
+                  <td><code>_DepthSize</code></td>
+                  <td>Float</td>
+                </tr>
+                <tr>
+                  <td><code>_DepthStrength</code></td>
+                  <td>Float (0–1)</td>
+                </tr>
+                <tr>
+                  <td><code>_WaveMap</code>, <code>_PerlinMap</code></td>
+                  <td>Texture</td>
+                </tr>
+                <tr>
+                  <td><code>_WaveSpeed</code>, <code>_PerlinSpeed</code></td>
+                  <td>Vector (x, y)</td>
+                </tr>
+                <tr>
+                  <td><code>_WaveStrength</code>, <code>_PerlinLimit</code>, <code>_PerlinDistortion</code>, <code>_PerlinStrength</code></td>
+                  <td>Float (0–1)</td>
+                </tr>
+                <tr>
+                  <td>Sprite</td>
+                  <td><code>_Color</code></td>
+                  <td>Color (Tint)</td>
+                </tr>
+                <tr>
+                  <td>Skybox</td>
+                  <td><code>_DirectionAxis</code></td>
+                  <td>Vector (direction)</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              The direction values take a direction vector, such as
+              <code>Vector3.up</code>. The Pitch and Yaw fields in the Inspector
+              are not updated when you change them from code.
+            </p>
+            <blockquote>
+              Some settings only work when changed in the Inspector: Surface Type,
+              Alpha Clipping, Shade Type, Mapping, Alpha Map, Cast
+              Shadows, Receive Shadows and every <strong>Enable</strong> toggle.
+              Changing them from code does not turn the effect on or off. The same
+              is true for URP's Lit shader. To create a material from code, copy
+              one you set up in the Inspector: <code>new Material(existingMaterial)</code>.
+            </blockquote>
+            <h2 id="api-memory">8.5. Memory</h2>
+            <ul>
+              <li>
+                <code>renderer.material</code> creates a copy of the material.
+                Destroy it with <code>Destroy(material)</code> when you no longer
+                need it, as with any Unity material.
+              </li>
+              <li>
+                The first <code>SetGradient</code> call on a material creates a
+                small gradient texture (128×1) for it. Later calls draw into the
+                same texture. It is freed when Unity unloads unused assets, for
+                example when a new scene loads.
+              </li>
+              <li>There is no separate method to release anything.</li>
+            </ul>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="support">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              9. Support
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="faq">9.1. FAQ</h2>
+            <blockquote class="documentation-faq-question">
+              Depth mode or the Water shader looks flat. Why?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Turn on <strong>Depth Texture</strong> on the URP Asset. Depth mode
+              also needs the material's Surface Type set to Transparent.
+            </p>
+            <blockquote class="documentation-faq-question">
+              Why are Outline or Alpha Map grayed out?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Outline works on Opaque materials with Alpha Clipping off. Alpha Map
+              works on Transparent materials or with Alpha Clipping on. Your Enable
+              setting is kept and comes back when the condition is met.
+            </p>
+            <blockquote class="documentation-faq-question">
+              My transparent object doesn't receive shadows.
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Turn on <strong>Transparent Receive Shadows</strong> on the URP
+              Renderer.
+            </p>
+            <blockquote class="documentation-faq-question">
+              My sprite colors look wrong.
+            </blockquote>
+            <p class="documentation-faq-answer">
+              The Sprite shader reads only the red channel. Use a black and white
+              sprite. You can make one with
+              <a href="#grayscale-image">Grayscale Image</a>.
+            </p>
+            <blockquote class="documentation-faq-question">
+              Can I use HDR colors in the gradient?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Not currently. See <a href="../RichGradient/#limitations">Rich Gradient Limitations</a>.
+            </p>
+            <blockquote class="documentation-faq-question">
+              <code>SetGradient</code> changed every object. How do I change only one?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Call it on <code>renderer.material</code> instead of
+              <code>renderer.sharedMaterial</code>.
+            </p>
+            <h2 id="limitations">9.2. Limitations</h2>
+            <ul>
+              <li>Fill uses world axes. It does not rotate with the object.</li>
+              <li>Fill, Rim and Specular are not affected by Darken Map and Lighten Map.</li>
+              <li>Outline can break at the corners of hard-edged meshes.</li>
+              <li>Normal Map works only with Light and View shade types.</li>
+              <li>Water is not visible from below.</li>
+              <li>Sprite and Skybox shaders have no lighting or shadows.</li>
+              <li>
+                A material copied from one that used <code>SetGradient</code>
+                shares its gradient until <code>SetGradient</code> is called on the
+                copy.
+              </li>
+              <li>
+                For unsupported pipelines and features, see
+                <a href="#not-supported">Not Supported</a>.
+              </li>
+            </ul>
+            <h2 id="changelog">9.3. Changelog</h2>
+            <p>
+              Release notes for Gradient Map Shader are maintained in the package
+              changelog.
+            </p>
+            <a class="button-medium" href="./CHANGELOG.md">
+              View Changelog
+            </a>
+            <h2 id="contact">9.4. Contact</h2>
+            <p>
+              Have a question, found a bug, or have feedback? Send us an email.
+            </p>
+            <a class="button-medium" href="mailto:octopuslabunity@gmail.com">
+              <span class="button-label">
+                <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
+                octopuslabunity@gmail.com
+              </span>
+            </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
     <footer class="documentation-copyright documentation-copyright--page">
@@ -1408,6 +1488,7 @@ material.SetFloat("_OutlineWidth", 0.1f);</code></pre>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/main-accordion.js"></script>
     <script src="../scripts/nav-accordion.js"></script>
     <script src="../scripts/gallery.js"></script>
     <script src="../scripts/lightbox.js"></script>

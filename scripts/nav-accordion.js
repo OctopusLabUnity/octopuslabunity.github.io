@@ -1,6 +1,15 @@
 (() => {
   const DURATION_MS = 150;
 
+  const hashGroup = [...document.querySelectorAll(".documentation-nav-links a")]
+    .find((link) => location.hash && link.getAttribute("href") === location.hash)
+    ?.closest(".documentation-nav-group");
+  if (hashGroup) {
+    document.querySelectorAll(".documentation-nav-group").forEach((group) => {
+      group.classList.toggle("is-open", group === hashGroup);
+    });
+  }
+
   const accordionGroups = Array.from(
     document.querySelectorAll(".documentation-nav-group")
   )

@@ -138,44 +138,49 @@
         </a>
       </div>
       <div class="documentation-content">
-        <div class="documentation-title">
-          <h1 id="getting-started">1. Getting Started</h1>
-        </div>
-        <h2 id="overview">1.1. Overview</h2>
-        <p>
-          Rich Gradient is a serializable gradient type for Unity with up to
-          <strong>32 color keys and 32 alpha keys</strong> — four times what
-          Unity's built-in <code>Gradient</code> allows, which helps with
-          multi-stop looks like skies, status bars, or stylized lighting. Drop
-          a <code>RichGradient</code> field into any <code>MonoBehaviour</code>
-          or <code>ScriptableObject</code> exactly like a regular gradient
-          field, and get a dedicated editor window, an OKLab-based
-          <a href="#gradient-modes">Perceptual Blend mode</a> for smoother
-          transitions between saturated hues, and lossless two-way conversion
-          to and from Unity's native <code>Gradient</code>.
-        </p>
-        <p>
-          It has no render-pipeline dependency. Continue with
-          <a href="#installation">Installation</a> or jump straight to
-          <a href="#quickstart">Quickstart</a>.
-        </p>
-        <h2 id="installation">1.2. Installation</h2>
-        <p>
-          Import Rich Gradient from the
-          <a href="https://assetstore.unity.com/packages/slug/414152" target="_blank" rel="noopener noreferrer">Unity Asset Store</a>.
-          The package files are added under:
-        </p>
-        <pre><code class="language-text">Assets/OctopusLab/RichGradient</code></pre>
-        <p>
-          Continue with <a href="#quickstart">Quickstart</a> to add your first
-          gradient field.
-        </p>
-        <h2 id="quickstart">1.3. Quickstart</h2>
-        <p>
-          Add a <code>RichGradient</code> field to any component. A new gradient
-          is white and fully opaque.
-        </p>
-        <pre><code class="language-csharp">using OctopusLab.RichGradient;
+        <section class="documentation-main-section is-open">
+          <h1 id="getting-started">
+            <button type="button" class="documentation-main-toggle" aria-expanded="true">
+              1. Getting Started
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="overview">1.1. Overview</h2>
+            <p>
+              Rich Gradient is a serializable gradient type for Unity with up to
+              <strong>32 color keys and 32 alpha keys</strong> — four times what
+              Unity's built-in <code>Gradient</code> allows, which helps with
+              multi-stop looks like skies, status bars, or stylized lighting. Drop
+              a <code>RichGradient</code> field into any <code>MonoBehaviour</code>
+              or <code>ScriptableObject</code> exactly like a regular gradient
+              field, and get a dedicated editor window, an OKLab-based
+              <a href="#gradient-modes">Perceptual Blend mode</a> for smoother
+              transitions between saturated hues, and lossless two-way conversion
+              to and from Unity's native <code>Gradient</code>.
+            </p>
+            <p>
+              It has no render-pipeline dependency. Continue with
+              <a href="#installation">Installation</a> or jump straight to
+              <a href="#quickstart">Quickstart</a>.
+            </p>
+            <h2 id="installation">1.2. Installation</h2>
+            <p>
+              Import Rich Gradient from the
+              <a href="https://assetstore.unity.com/packages/slug/414152" target="_blank" rel="noopener noreferrer">Unity Asset Store</a>.
+              The package files are added under:
+            </p>
+            <pre><code class="language-text">Assets/OctopusLab/RichGradient</code></pre>
+            <p>
+              Continue with <a href="#quickstart">Quickstart</a> to add your first
+              gradient field.
+            </p>
+            <h2 id="quickstart">1.3. Quickstart</h2>
+            <p>
+              Add a <code>RichGradient</code> field to any component. A new gradient
+              is white and fully opaque.
+            </p>
+            <pre><code class="language-csharp">using OctopusLab.RichGradient;
 using UnityEngine;
 
 public class GradientUser : MonoBehaviour
@@ -188,153 +193,173 @@ public class GradientUser : MonoBehaviour
         Debug.Log(mid);
     }
 }</code></pre>
-        <p>
-          <code>Evaluate</code> takes a time from 0 to 1 and returns the color,
-          including alpha. Values outside that range are clamped. Times before
-          the first key or after the last key use that endpoint key.
-        </p>
-        <figure class="documentation-figure">
-          <img
-            src="./images/inspector.png"
-            alt="RichGradient swatch field in the Unity Inspector"
-          />
-          <figcaption>
-            The <code>RichGradient</code> swatch as it appears in the Inspector.
-          </figcaption>
-        </figure>
-        <h2 id="requirements">1.4. Requirements</h2>
-        <ul>
-          <li>Unity 2022.3 or newer (tested in 2022.3, 2023.2, and 6000.0)</li>
-          <li>No other package dependencies</li>
-          <li>No render-pipeline dependency — tested in the Built-in and Universal Render Pipelines</li>
-          <li>Works in both Linear and Gamma color space projects</li>
-        </ul>
-        <h1 id="workflow">2. Workflow</h1>
-        <h2 id="editor-basics">2.1. Editor Basics</h2>
-        <p>
-          A serialized <code>RichGradient</code> is drawn as a swatch. Click the
-          swatch, or focus it and press Space or Enter, to open the editor. It
-          works much like Unity's own gradient editor:
-        </p>
-        <ul>
-          <li>Click an empty spot on the top row to add an alpha key, or on the bottom row to add a color key.</li>
-          <li>Drag a key to move it.</li>
-          <li>Drag a key away from its row to remove it.</li>
-          <li>Press Delete or Backspace to remove the selected key.</li>
-          <li>One color key and one alpha key always remain, and each row holds at most 32 keys.</li>
-          <li>Alpha is edited with its own slider — the color field does not edit alpha.</li>
-        </ul>
-        <figure class="documentation-figure">
-          <img
-            src="./images/editor.png"
-            alt="Rich Gradient Editor window with several color and alpha keys"
-          />
-          <figcaption>
-            The Rich Gradient Editor window.
-          </figcaption>
-        </figure>
-        <h2 id="gradient-modes">2.2. Gradient Modes</h2>
-        <p>
-          <code>Mode</code> controls how both color and alpha interpolate
-          between keys:
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Mode</th>
-              <th>Color</th>
-              <th>Alpha</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>Blend</code></td>
-              <td>Interpolates in RGB</td>
-              <td>Interpolates</td>
-            </tr>
-            <tr>
-              <td><code>Fixed</code></td>
-              <td>Holds each key until the next key</td>
-              <td>Holds each key until the next key</td>
-            </tr>
-            <tr>
-              <td><code>PerceptualBlend</code></td>
-              <td>Interpolates in OKLab color space</td>
-              <td>Interpolates</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Perceptual blending keeps transitions between saturated colors more
-          even than RGB blending.
-        </p>
-        <pre><code class="language-csharp">_gradient.Mode = RichGradientMode.PerceptualBlend;</code></pre>
-        <figure class="documentation-figure">
-          <img
-            src="./images/blend-modes.png"
-            alt="Comparison of Blend and PerceptualBlend across saturated hues"
-          />
-          <figcaption>
-            <code>Blend</code> vs. <code>PerceptualBlend</code> across saturated
-            hues.
-          </figcaption>
-        </figure>
-        <h1 id="reference">3. Reference</h1>
-        <h2 id="api">3.1. RichGradient API</h2>
-        <p>All types are in the <code>OctopusLab.RichGradient</code> namespace.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Member</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>Evaluate(float time)</code></td>
-              <td>Returns the color at that time, including alpha.</td>
-            </tr>
-            <tr>
-              <td><code>SetKeys(colorKeys, alphaKeys)</code></td>
-              <td>Replaces both sets of keys and raises <code>OnChanged</code>.</td>
-            </tr>
-            <tr>
-              <td><code>ColorKeys</code> / <code>AlphaKeys</code></td>
-              <td>Read or replace one set of keys.</td>
-            </tr>
-            <tr>
-              <td><code>Mode</code></td>
-              <td>Reads or sets the blend mode.</td>
-            </tr>
-            <tr>
-              <td><code>ColorKeyCount</code> / <code>AlphaKeyCount</code></td>
-              <td>Current number of keys in each set.</td>
-            </tr>
-            <tr>
-              <td><code>Clone()</code></td>
-              <td>Returns an independent copy.</td>
-            </tr>
-            <tr>
-              <td><code>OnChanged</code></td>
-              <td>Raised after the keys or the mode change.</td>
-            </tr>
-            <tr>
-              <td><code>MaxKeyCount</code></td>
-              <td>32 — the maximum number of color or alpha keys.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Keys passed to the API are clamped to the 0–1 range, sorted by time,
-          and limited to 32. Extra keys are discarded.
-        </p>
-        <h2 id="keys">3.2. Color &amp; Alpha Keys</h2>
-        <p>
-          <code>RichGradientColorKey</code> stores <code>Color</code> and
-          <code>Time</code>. <code>RichGradientAlphaKey</code> stores
-          <code>Alpha</code> and <code>Time</code>.
-        </p>
-        <pre><code class="language-csharp">var colorKeys = new[]
+            <p>
+              <code>Evaluate</code> takes a time from 0 to 1 and returns the color,
+              including alpha. Values outside that range are clamped. Times before
+              the first key or after the last key use that endpoint key.
+            </p>
+            <figure class="documentation-figure">
+              <img
+                src="./images/inspector.png"
+                alt="RichGradient swatch field in the Unity Inspector"
+              />
+              <figcaption>
+                The <code>RichGradient</code> swatch as it appears in the Inspector.
+              </figcaption>
+            </figure>
+            <h2 id="requirements">1.4. Requirements</h2>
+            <ul>
+              <li>Unity 2022.3 or newer (tested in 2022.3, 2023.2, and 6000.0)</li>
+              <li>No other package dependencies</li>
+              <li>No render-pipeline dependency — tested in the Built-in and Universal Render Pipelines</li>
+              <li>Works in both Linear and Gamma color space projects</li>
+            </ul>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="workflow">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              2. Workflow
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="editor-basics">2.1. Editor Basics</h2>
+            <p>
+              A serialized <code>RichGradient</code> is drawn as a swatch. Click the
+              swatch, or focus it and press Space or Enter, to open the editor. It
+              works much like Unity's own gradient editor:
+            </p>
+            <ul>
+              <li>Click an empty spot on the top row to add an alpha key, or on the bottom row to add a color key.</li>
+              <li>Drag a key to move it.</li>
+              <li>Drag a key away from its row to remove it.</li>
+              <li>Press Delete or Backspace to remove the selected key.</li>
+              <li>One color key and one alpha key always remain, and each row holds at most 32 keys.</li>
+              <li>Alpha is edited with its own slider — the color field does not edit alpha.</li>
+            </ul>
+            <figure class="documentation-figure">
+              <img
+                src="./images/editor.png"
+                alt="Rich Gradient Editor window with several color and alpha keys"
+              />
+              <figcaption>
+                The Rich Gradient Editor window.
+              </figcaption>
+            </figure>
+            <h2 id="gradient-modes">2.2. Gradient Modes</h2>
+            <p>
+              <code>Mode</code> controls how both color and alpha interpolate
+              between keys:
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Mode</th>
+                  <th>Color</th>
+                  <th>Alpha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>Blend</code></td>
+                  <td>Interpolates in RGB</td>
+                  <td>Interpolates</td>
+                </tr>
+                <tr>
+                  <td><code>Fixed</code></td>
+                  <td>Holds each key until the next key</td>
+                  <td>Holds each key until the next key</td>
+                </tr>
+                <tr>
+                  <td><code>PerceptualBlend</code></td>
+                  <td>Interpolates in OKLab color space</td>
+                  <td>Interpolates</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Perceptual blending keeps transitions between saturated colors more
+              even than RGB blending.
+            </p>
+            <pre><code class="language-csharp">_gradient.Mode = RichGradientMode.PerceptualBlend;</code></pre>
+            <figure class="documentation-figure">
+              <img
+                src="./images/blend-modes.png"
+                alt="Comparison of Blend and PerceptualBlend across saturated hues"
+              />
+              <figcaption>
+                <code>Blend</code> vs. <code>PerceptualBlend</code> across saturated
+                hues.
+              </figcaption>
+            </figure>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="reference">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              3. Reference
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="api">3.1. RichGradient API</h2>
+            <p>All types are in the <code>OctopusLab.RichGradient</code> namespace.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>Evaluate(float time)</code></td>
+                  <td>Returns the color at that time, including alpha.</td>
+                </tr>
+                <tr>
+                  <td><code>SetKeys(colorKeys, alphaKeys)</code></td>
+                  <td>Replaces both sets of keys and raises <code>OnChanged</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>ColorKeys</code> / <code>AlphaKeys</code></td>
+                  <td>Read or replace one set of keys.</td>
+                </tr>
+                <tr>
+                  <td><code>Mode</code></td>
+                  <td>Reads or sets the blend mode.</td>
+                </tr>
+                <tr>
+                  <td><code>ColorKeyCount</code> / <code>AlphaKeyCount</code></td>
+                  <td>Current number of keys in each set.</td>
+                </tr>
+                <tr>
+                  <td><code>Clone()</code></td>
+                  <td>Returns an independent copy.</td>
+                </tr>
+                <tr>
+                  <td><code>OnChanged</code></td>
+                  <td>Raised after the keys or the mode change.</td>
+                </tr>
+                <tr>
+                  <td><code>MaxKeyCount</code></td>
+                  <td>32 — the maximum number of color or alpha keys.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Keys passed to the API are clamped to the 0–1 range, sorted by time,
+              and limited to 32. Extra keys are discarded.
+            </p>
+            <h2 id="keys">3.2. Color &amp; Alpha Keys</h2>
+            <p>
+              <code>RichGradientColorKey</code> stores <code>Color</code> and
+              <code>Time</code>. <code>RichGradientAlphaKey</code> stores
+              <code>Alpha</code> and <code>Time</code>.
+            </p>
+            <pre><code class="language-csharp">var colorKeys = new[]
 {
     new RichGradientColorKey(Color.red, 0f),
     new RichGradientColorKey(Color.yellow, 0.5f),
@@ -346,26 +371,26 @@ var alphaKeys = new[]
     new RichGradientAlphaKey(1f, 0f),
     new RichGradientAlphaKey(0f, 1f)
 };</code></pre>
-        <h2 id="interop">3.3. Unity Gradient Interop</h2>
-        <p>
-          <code>FromGradient(Gradient)</code> copies a Unity gradient into a new
-          <code>RichGradient</code>. <code>ToGradient()</code> copies a
-          <code>RichGradient</code> back into a Unity <code>Gradient</code>.
-        </p>
-        <blockquote>
-          <code>ToGradient()</code> keeps at most 8 color keys and 8 alpha keys,
-          because that is Unity's <code>Gradient</code> limit. Keys are sorted
-          by time first, so the earliest 8 of each type are kept. See also
-          <a href="#limitations">Limitations</a>.
-        </blockquote>
-        <pre><code class="language-csharp">RichGradient fromUnity = RichGradient.FromGradient(unityGradient);
+            <h2 id="interop">3.3. Unity Gradient Interop</h2>
+            <p>
+              <code>FromGradient(Gradient)</code> copies a Unity gradient into a new
+              <code>RichGradient</code>. <code>ToGradient()</code> copies a
+              <code>RichGradient</code> back into a Unity <code>Gradient</code>.
+            </p>
+            <blockquote>
+              <code>ToGradient()</code> keeps at most 8 color keys and 8 alpha keys,
+              because that is Unity's <code>Gradient</code> limit. Keys are sorted
+              by time first, so the earliest 8 of each type are kept. See also
+              <a href="#limitations">Limitations</a>.
+            </blockquote>
+            <pre><code class="language-csharp">RichGradient fromUnity = RichGradient.FromGradient(unityGradient);
 Gradient backToUnity = fromUnity.ToGradient();</code></pre>
-        <h2 id="code-examples">3.4. Code Examples</h2>
-        <p>
-          Reacting to <code>OnChanged</code> to refresh a texture whenever the
-          keys or mode change:
-        </p>
-        <pre><code class="language-csharp">private void OnEnable()
+            <h2 id="code-examples">3.4. Code Examples</h2>
+            <p>
+              Reacting to <code>OnChanged</code> to refresh a texture whenever the
+              keys or mode change:
+            </p>
+            <pre><code class="language-csharp">private void OnEnable()
 {
     _richGradient.OnChanged += UpdateTexture;
 }
@@ -385,60 +410,73 @@ private void UpdateTexture()
 
     _texture.Apply();
 }</code></pre>
-        <h1 id="support">4. Support</h1>
-        <h2 id="faq">4.1. FAQ</h2>
-        <blockquote class="documentation-faq-question">
-          Why does <code>ToGradient()</code> show fewer keys than my Rich
-          Gradient?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Unity's <code>Gradient</code> is limited to 8 keys.
-          <code>ToGradient()</code> sorts by time and keeps the earliest 8 of
-          each type.
-        </p>
-        <blockquote class="documentation-faq-question">
-          Can I use HDR colors?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          Not currently — the editor color field does not support HDR colors.
-          It also does not support the eyedropper, since Unity's editor API
-          does not expose that tool to custom color fields.
-        </p>
-        <blockquote class="documentation-faq-question">
-          Does Rich Gradient depend on URP or HDRP?
-        </blockquote>
-        <p class="documentation-faq-answer">
-          No. It has no render-pipeline dependency and works in any pipeline.
-        </p>
-        <h2 id="limitations">4.2. Limitations</h2>
-        <ul>
-          <li>
-            <code>ToGradient()</code> keeps at most 8 color keys and 8 alpha
-            keys, because that is Unity's <code>Gradient</code> limit. Keys are
-            sorted by time first, so the earliest 8 of each type are kept.
-          </li>
-          <li>Keys beyond 32 are discarded without a warning.</li>
-          <li>The editor color field does not support HDR colors.</li>
-          <li>The eyedropper is not available either, since Unity's editor API does not expose that tool to custom color fields.</li>
-        </ul>
-        <h2 id="changelog">4.3. Changelog</h2>
-        <p>
-          Release notes for Rich Gradient are maintained in the package
-          changelog.
-        </p>
-        <a class="button-medium" href="./CHANGELOG.md">
-          View Changelog
-        </a>
-        <h2 id="contact">4.4. Contact</h2>
-        <p>
-          Have a question, found a bug, or have feedback? Send us an email.
-        </p>
-        <a class="button-medium" href="mailto:octopuslabunity@gmail.com">
-          <span class="button-label">
-            <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
-            octopuslabunity@gmail.com
-          </span>
-        </a>
+            </div>
+          </div>
+        </section>
+        <section class="documentation-main-section">
+          <h1 id="support">
+            <button type="button" class="documentation-main-toggle" aria-expanded="false">
+              4. Support
+            </button>
+          </h1>
+          <div class="documentation-main-panel">
+            <div class="documentation-main-body">
+            <h2 id="faq">4.1. FAQ</h2>
+            <blockquote class="documentation-faq-question">
+              Why does <code>ToGradient()</code> show fewer keys than my Rich
+              Gradient?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Unity's <code>Gradient</code> is limited to 8 keys.
+              <code>ToGradient()</code> sorts by time and keeps the earliest 8 of
+              each type.
+            </p>
+            <blockquote class="documentation-faq-question">
+              Can I use HDR colors?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              Not currently — the editor color field does not support HDR colors.
+              It also does not support the eyedropper, since Unity's editor API
+              does not expose that tool to custom color fields.
+            </p>
+            <blockquote class="documentation-faq-question">
+              Does Rich Gradient depend on URP or HDRP?
+            </blockquote>
+            <p class="documentation-faq-answer">
+              No. It has no render-pipeline dependency and works in any pipeline.
+            </p>
+            <h2 id="limitations">4.2. Limitations</h2>
+            <ul>
+              <li>
+                <code>ToGradient()</code> keeps at most 8 color keys and 8 alpha
+                keys, because that is Unity's <code>Gradient</code> limit. Keys are
+                sorted by time first, so the earliest 8 of each type are kept.
+              </li>
+              <li>Keys beyond 32 are discarded without a warning.</li>
+              <li>The editor color field does not support HDR colors.</li>
+              <li>The eyedropper is not available either, since Unity's editor API does not expose that tool to custom color fields.</li>
+            </ul>
+            <h2 id="changelog">4.3. Changelog</h2>
+            <p>
+              Release notes for Rich Gradient are maintained in the package
+              changelog.
+            </p>
+            <a class="button-medium" href="./CHANGELOG.md">
+              View Changelog
+            </a>
+            <h2 id="contact">4.4. Contact</h2>
+            <p>
+              Have a question, found a bug, or have feedback? Send us an email.
+            </p>
+            <a class="button-medium" href="mailto:octopuslabunity@gmail.com">
+              <span class="button-label">
+                <i class="fa-solid fa-envelope button-medium-icon" aria-hidden="true"></i>
+                octopuslabunity@gmail.com
+              </span>
+            </a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
     <footer class="documentation-copyright documentation-copyright--page">
@@ -446,6 +484,7 @@ private void UpdateTexture()
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/main-accordion.js"></script>
     <script src="../scripts/nav-accordion.js"></script>
     <script src="../scripts/gallery.js"></script>
     <script src="../scripts/lightbox.js"></script>
