@@ -158,6 +158,12 @@ li {
   margin-bottom: 4px;
 }
 
+strong {
+  font-variation-settings:
+    "wght" 700,
+    "wdth" 105;
+}
+
 blockquote {
   padding: 16px 20px;
   border-left: 5px solid var(--color-brand);
