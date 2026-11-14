@@ -159,8 +159,9 @@
             <div class="documentation-nav-links">
               <a href="#api">8.1. Set Gradient</a>
               <a href="#api-gradient-asset">8.2. Gradient Asset</a>
-              <a href="#api-material-values">8.3. Other Material Values</a>
-              <a href="#api-memory">8.4. Memory</a>
+              <a href="#api-gradient-asset-vs-set-gradient">8.3. Which One to Use?</a>
+              <a href="#api-material-values">8.4. Other Material Values</a>
+              <a href="#api-memory">8.5. Memory</a>
             </div>
           </div>
         </div>
@@ -1085,23 +1086,10 @@
         <h1 id="api-section">8. API</h1>
         <h2 id="api">8.1. Set Gradient</h2>
         <p>
-          You can change a material's gradient from code with one method. All
-          types are in the <code>OctopusLab.GradientMapShader</code> namespace.
+          Use <code>SetGradient</code> to change a material's gradient from
+          code. It is in the <code>OctopusLab.GradientMapShader</code>
+          namespace.
         </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Member</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>material.SetGradient(RichGradient)</code></td>
-              <td>Sets the gradient of the material.</td>
-            </tr>
-          </tbody>
-        </table>
         <pre><code class="language-csharp">using OctopusLab.GradientMapShader;
 using OctopusLab.RichGradient;
 using UnityEngine;
@@ -1115,33 +1103,21 @@ public class GradientChanger : MonoBehaviour
         GetComponent&lt;Renderer&gt;().material.SetGradient(_gradient);
     }
 }</code></pre>
-        <p>
-          To create or edit a <code>RichGradient</code> in code, see the
-          <a href="../RichGradient/#api">Rich Gradient API</a>. To use a Unity
-          <code>Gradient</code>, convert it first
-          (<a href="../RichGradient/#interop">Unity Gradient Interop</a>):
-        </p>
-        <pre><code class="language-csharp">material.SetGradient(RichGradient.FromGradient(unityGradient));</code></pre>
         <ul>
-          <li>Works with all four shaders: Basic, Water, Sprite and Skybox.</li>
           <li>
             <code>renderer.material</code> changes only that object.
             <code>renderer.sharedMaterial</code> changes every object that uses
             the material.
           </li>
-          <li>
-            In the Editor, calling it on a material asset updates the
-            <a href="#api-gradient-asset">Gradient Asset</a> of the material,
-            so the new gradient also shows in the Inspector. A change made
-            during Play mode is kept after Play mode ends, like any material
-            change.
-          </li>
           <li>You can call it every frame. It does not allocate memory.</li>
-          <li>It does nothing on a material that does not use a Gradient Map Shader.</li>
-          <li>Passing <code>null</code> throws an <code>ArgumentNullException</code>.</li>
           <li>
-            There is no method to read the gradient back. Keep your own
-            reference to the <code>RichGradient</code> you set.
+            A material copied from one that used SetGradient shares its
+            gradient. Call SetGradient on the copy to give it its own.
+          </li>
+          <li>
+            For a Unity <code>Gradient</code>, use
+            <code>RichGradient.FromGradient(gradient)</code>. See the
+            <a href="../RichGradient/#api">Rich Gradient API</a>.
           </li>
           <li>
             If your scripts have their own Assembly Definition, add
@@ -1151,12 +1127,10 @@ public class GradientChanger : MonoBehaviour
         </ul>
         <h2 id="api-gradient-asset">8.2. Gradient Asset</h2>
         <p>
-          A material can't store a gradient, so each Gradient Map Shader
-          material keeps it in a small asset inside the material file. You can
-          see it under the material in the Project window, named
-          <strong>&lt;Material Name&gt; Gradient</strong>. It is created when
-          the material starts using a Gradient Map Shader, and removed when the
-          material switches to another shader.
+          Each material saves its gradient in a small asset inside the
+          material file, named <strong>&lt;Material Name&gt; Gradient</strong>.
+          The <strong>Gradient</strong> field in the Inspector edits this
+          asset.
         </p>
         <figure class="documentation-figure documentation-figure--small">
           <img
@@ -1166,50 +1140,48 @@ public class GradientChanger : MonoBehaviour
           <figcaption>The Gradient asset under its material.</figcaption>
         </figure>
         <p>
-          Select it to edit the gradient in its own Inspector. This is the same
-          gradient as the <strong>Gradient</strong> field of the material, so
-          a change in one shows in the other.
+          From code, it is a <code>GradientTextureSo</code>. Set its
+          <code>Gradient</code> to change the gradient saved in the material:
         </p>
-        <p>
-          The asset is a <code>GradientTextureSo</code>. To change the gradient
-          from code, assign it to a field and use its members:
-        </p>
+        <pre><code class="language-csharp">[SerializeField] private GradientTextureSo _gradientAsset;
+
+_gradientAsset.Gradient = newGradient;</code></pre>
+        <h2 id="api-gradient-asset-vs-set-gradient">8.3. Which One to Use?</h2>
         <table>
           <thead>
             <tr>
-              <th>Member</th>
-              <th>Description</th>
+              <th></th>
+              <th>SetGradient</th>
+              <th>Gradient Asset</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><code>Gradient</code></td>
-              <td>
-                Reads or sets the gradient. Setting it stores a copy. Editing
-                the keys or the mode of the returned gradient also updates the
-                material.
-              </td>
+              <td>Changes</td>
+              <td>The material while the game runs</td>
+              <td>The gradient saved in the material file</td>
             </tr>
             <tr>
-              <td><code>Texture</code></td>
-              <td>The 128×1 texture the gradient is drawn into. Read only.</td>
+              <td>Change is saved</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Use it for</td>
+              <td>Gameplay, effects, color changes</td>
+              <td>Editor tools</td>
             </tr>
           </tbody>
         </table>
-        <pre><code class="language-csharp">[SerializeField] private GradientTextureSo _gradientAsset;
-[SerializeField] private RichGradient _newGradient;
-
-private void ChangeGradient()
-{
-    _gradientAsset.Gradient = _newGradient;
-}</code></pre>
+        <p>
+          <strong>In most cases, use SetGradient.</strong>
+        </p>
         <blockquote>
-          A change to the Gradient Asset affects every object that uses the
-          material. In the Editor it is saved to the material, even in Play
-          mode. To change a single object, use
-          <a href="#api">SetGradient</a> on <code>renderer.material</code>.
+          In the Editor, SetGradient on a material asset, such as
+          <code>renderer.sharedMaterial</code>, is saved like any other change
+          to a material asset. Use <code>renderer.material</code> to avoid this.
         </blockquote>
-        <h2 id="api-material-values">8.3. Other Material Values</h2>
+        <h2 id="api-material-values">8.4. Other Material Values</h2>
         <p>
           Values such as colors, strengths and sizes can be changed from code
           with Unity's <code>SetFloat</code>, <code>SetColor</code>,
@@ -1324,13 +1296,13 @@ material.SetFloat("_OutlineWidth", 0.1f);</code></pre>
         </p>
         <blockquote>
           Some settings only work when changed in the Inspector: Surface Type,
-          Render Face, Alpha Clipping, Shade Type, Mapping, Alpha Map, Cast
+          Alpha Clipping, Shade Type, Mapping, Alpha Map, Cast
           Shadows, Receive Shadows and every <strong>Enable</strong> toggle.
           Changing them from code does not turn the effect on or off. The same
           is true for URP's Lit shader. To create a material from code, copy
           one you set up in the Inspector: <code>new Material(existingMaterial)</code>.
         </blockquote>
-        <h2 id="api-memory">8.4. Memory</h2>
+        <h2 id="api-memory">8.5. Memory</h2>
         <ul>
           <li>
             <code>renderer.material</code> creates a copy of the material.
